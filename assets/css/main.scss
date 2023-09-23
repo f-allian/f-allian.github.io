@@ -14,3 +14,8 @@ $max-content-width: {{ site.max_width }};
   "distill",
   "cv"
 ;
+
+.github_anchors {
+  display: inline-block;
+  margin-right: 10px;
+}

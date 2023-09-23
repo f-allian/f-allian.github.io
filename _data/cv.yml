@@ -1,97 +1,52 @@
-- title: General Information
-  type: map
+- title: Experience 💼
+  type: table
   contents:
-    - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
-
-- title: Education
-  type: time_table
-  contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
-
-- title: Experience
-  type: time_table
-  contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
-      description:
-        - Description 1.
-        - Description 2.
-
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
+    - title: Research Data Engineer, The University of Sheffield
+      year: 07/23 - Now
       description:
 
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
+        - "Collaborating with academics from various disciplines to develop their data and software products into research workflows."
+        - "Delivering consultations and technical training to support researchers and students across the University."
 
-- title: Open Source Projects
-  type: time_table
+
+    - title: Data Coach, Multiverse
+      year: 06/21 - 07/23
+      description:
+        - "Developed the next generation of data analysts and data scientists through one-to-one coaching and group delivery, enabling businesses to thrive through their digital transformations."
+        - "Created pedagogical solutions for the technical development of a team of +80 coaches on 
+          topics such as data mining using web scraping and natural language processing, time series forecasting, and clustering techniques for pattern recognition."
+
+
+
+- title: Education 🎓
+  type: table
   contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+    - title: "Ph.D. Applied Mathematics, The University of Sheffield"
+      year: 09/17 - 07/21
+      description:
+        - Thesis - <a href="https://etheses.whiterose.ac.uk/30106/">An Analysis of Magnetohydrodynamic Waves and Oscillations in the Solar Corona</a>.
+        - Published two, first-authored, peer-reviewed journal articles, and presented at multiple national and international conferences.
+        - Developed a novel technique for detecting signals in observations of the Sun's atmospheres.
 
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 1921
-      items: 
-        - Nobel Prize in Physics 
-        - Matteucci Medal
-    - year: 2029
-      items: 
-        - Max Planck Medal
+    - title: "M.Sci. Physics with Astrophysics, University of Glasgow (1<sup>st</sup> Class)"
+      year: 09/12 - 06/17
+      description:
+        - "Master's Thesis - A Statistical Analysis of Type III Solar Radio Bursts."
+        - "Modules with over 85% GPA include: Relativistic quantum field theory, General relativity and gravitation, Astronomical data analysis, Dynamics, electrodynamics and relativity."
 
-- title: Academic Interests
+- title: Skills 💻
   type: nested_list
   contents:
-    - title: Topic 1.
-      items: 
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
+    - title: "Programming"
       items:
-        - Description 1.
-        - Description 2.
+        - "Python (8 years), Git, Linux/Bash, MATLAB (3 years), CSS, HTML, IDL (2 years), JavaScript (1 year). "
+    - title: "General"
+      items:
+        - "Coaching, mentoring, data science, mathematical and statistical modelling, technical writing."
 
-- title: Other Interests
+
+- title: Hobbies 🌱
   type: list
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - "In my spare time, I enjoy working out, playing chess and learning some song I'm obsessed with on the piano!"
+
