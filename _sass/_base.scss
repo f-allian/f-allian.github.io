@@ -420,7 +420,7 @@ footer.sticky-bottom {
   }
   ol.bibliography {
     list-style: none;
-    padding: 0px;
+    padding: 1px;
     max-width:100%;
 
 
@@ -513,6 +513,15 @@ footer.sticky-bottom {
         p {
           line-height: 1.4em;
           margin-left: 0px;
+          height:auto;
+          max-width: 120%;
+          text-align:left;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          display:inline-block;
+          position:relative;
+          width:90%;
+          text-decoration:none;
         }
         pre {
           font-size: 1em;
@@ -910,7 +919,7 @@ footer.sticky-bottom {
 
         display:flex;
         float:center;
-        transform:  scale(0.55) translate(-5px, -46px);
+        transform:  scale(0.5) translate(-5px, -46px);
         max-width:100%;
         width:10%;
 
@@ -945,7 +954,7 @@ footer.sticky-bottom {
           margin-left: 0px;
           margin-right:20px;
           margin-bottom:50px;
-          margin-top:0px;
+          margin-top:10px;
           word-wrap: break-word;
           overflow-wrap: break-word;
           display:inline-block;
@@ -1087,7 +1096,7 @@ footer.sticky-bottom {
 
         display:inline-block;
         float:left;
-        transform:  scale(0.6) translate(-10px, -42px);
+        transform:  scale(0.55) translate(-10px, -42px);
 
         span {
           display: auto;
@@ -1119,9 +1128,9 @@ footer.sticky-bottom {
           line-height: 1.4em;
           text-align:left;
           margin-left: 0px;
-          margin-right:0px;
+          margin-right:10px;
           margin-bottom:50px;
-          margin-top:0px;
+          margin-top:15px;
           word-wrap: break-word;
           overflow-wrap: break-word;
           display:inline-block;
