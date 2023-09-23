@@ -13,23 +13,29 @@ hr {
 }
 
 table {
+
+  background-color: var(--global-bg-color);
     td, th {
       color: var(--global-text-color);
+      background-color: var(--global-bg-color);
       max-width: 100%;
     }
     td {
       font-size: 1rem;
+      background-color: var(--global-bg-color);
       max-width:100%;
     }
 
     th {
       font-size: 1rem;
+      background-color: var(--global-bg-color);
       max-width:100%;
     }
 }
 
 a, table.table a {
   color: var(--global-theme-color);
+  background-color: var(--global-bg-color);
   &:hover {
     color: var(--global-theme-color);
     text-decoration: underline;
@@ -1370,3 +1376,5 @@ html.transition *:after {
   colors: var(--global-footer-text-color);
 
 }
+
+
