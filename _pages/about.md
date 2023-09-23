@@ -26,9 +26,4 @@ into workflows to produce high quality research frameworks.
 Previously, I attained my PhD in Applied Mathematics, where I utilised <a href="https://sdo.gsfc.nasa.gov/data/">NASA</a> observational data from the Sun to better understand how its atmospheres are heated to multi-million degree temperatures. 
 I also hold an MSci in Physics with Astrophysics from <a href="https://www.gla.ac.uk//">Glasgow University</a>.
 
-I'm passionate about making technical content accessible for everyone. 
-
-<div class="loader"></div>
-<script>
-  $(".loader").html(twemoji.parse('🍣'));
-</script>
+I'm passionate about making technical content accessible for everyone.
