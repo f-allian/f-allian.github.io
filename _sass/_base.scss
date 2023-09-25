@@ -1382,7 +1382,8 @@ html.transition *:after {
             flex-direction: column; /* Stack children vertically */
             align-items: center; /* Center horizontally */
             justify-content: center; /* Center vertically */
-            margin: 10px;
+            margin-top: 15px;
+            margin-right:10px;
             max-height: 100%;
             max-width: 100%;
         }
