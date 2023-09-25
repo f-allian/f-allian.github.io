@@ -8,11 +8,45 @@ profile:
   align: center
   image: prof_pic.jpg
   address: >
-    
-    <p> </p>
-    <p>  </p> 
-   
+    <html>
+    <head>
+    <style>
+        /* Style for the music emoji */
+        .music-emoji {
+            font-size: 12px; /* Adjust the font size as needed */
+            margin: 10 px; /* Adjust the spacing between emoji and image */
+        }
+    </style>
+    </head>
+    <body>
+    <div id="spotify-container">
+        <!-- The music emoji will be inserted here -->
+        <div class="music-emoji">🎵 <em> Currently listening to </em>: </div>
+    </div>
 
+    <script>
+        // Define the Spotify profile information
+        const spotifyProfile = {
+            image_url: "https://spotify-github-profile.vercel.app/api/view?uid=11130333962&cover_image=true&theme=novatorem&show_offline=true&background_color=121212&interchange=false&bar_color=53b14f&bar_color_cover=true",
+            hyperlink_url: "https://spotify-github-profile.vercel.app/api/view?uid=11130333962&redirect=true"
+        };
+
+        // Create an <a> element with an <img> element inside
+        const spotifyLink = document.createElement("a");
+        const spotifyImage = document.createElement("img");
+
+        // Set the image source and hyperlink URL
+        spotifyImage.src = spotifyProfile.image_url;
+        spotifyLink.href = spotifyProfile.hyperlink_url;
+
+        // Append the image to the link and the link to the container
+        spotifyLink.appendChild(spotifyImage);
+        document.getElementById("spotify-container").appendChild(spotifyLink);
+    </script>
+    </body>
+    </html>
+
+    
 news: true # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
@@ -27,3 +61,4 @@ Previously, I attained my PhD in Applied Mathematics, where I utilised <a href="
 I also hold an MSci in Physics with Astrophysics from <a href="https://www.gla.ac.uk//">Glasgow University</a>.
 
 I'm passionate about making technical content accessible for everyone.
+

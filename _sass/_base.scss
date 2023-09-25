@@ -1377,4 +1377,12 @@ html.transition *:after {
 
 }
 
-
+#spotify-container {
+            display: flex;
+            flex-direction: column; /* Stack children vertically */
+            align-items: center; /* Center horizontally */
+            justify-content: center; /* Center vertically */
+            margin: 10px;
+            max-height: 100%;
+            max-width: 100%;
+        }
