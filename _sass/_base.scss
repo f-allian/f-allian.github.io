@@ -35,7 +35,8 @@ table {
 
 a, table.table a {
   color: var(--global-theme-color);
-  background-color: var(--global-bg-color);
+
+
   &:hover {
     color: var(--global-theme-color);
     text-decoration: underline;
@@ -43,6 +44,8 @@ a, table.table a {
   &:hover:after :not(.nav-item.dropdown) {
     width: 100%;
   }
+
+
 }
 
 figure, img {
@@ -98,10 +101,12 @@ color: $grey-color-light;
     width: auto;
     margin-bottom: 10px;
 
+
     .row {
       display: flex;
 
     }
+
   }
 }
 
@@ -327,6 +332,8 @@ footer.sticky-bottom {
 // CV
 
 .cv {
+
+
   .card {
     background-color: var(--global-card-bg-color);
     border-top: 1px solid var(--global-divider-color);
@@ -340,8 +347,8 @@ footer.sticky-bottom {
     border-radius:10px;
     box-shadow:0px 0px 2px 1px;
 
+
     .list-group-item {
-      background-color: inherit;
       background-color: var(--global-card-bg-color);
       border-bottom: 1px solid var(--global-divider-color);
       padding-bottom:20px;
@@ -362,6 +369,9 @@ footer.sticky-bottom {
         max-width:100%;
         width:100%;
         height:100%;
+        .a { background-color: var(--global-card-bg-color)
+
+        }
         }
     }
   }
@@ -444,7 +454,7 @@ footer.sticky-bottom {
 
         abbr {
           display: inline-block;
-          background-color: var(--global-theme-color);
+          background-color: var(--global-card-bg-color);
           padding-left: 0.5rem;
           padding-right: 0.5rem;
           overflow-wrap: break-word;
@@ -591,12 +601,14 @@ footer.sticky-bottom {
     justify-content: center;
     display: flow-root;
 
+
     p,
     li {
       list-style: none;
       display: inline-block;
       padding: 1rem 0.5rem;
       color: var(--global-text-color-light);
+
 
 
     }
@@ -614,6 +626,7 @@ footer.sticky-bottom {
     padding-bottom: 0rem;
     margin-bottom:0rem;
 
+
     .post-meta {
       color: var(--global-text-color-light);
       font-size: 0.875rem;
@@ -629,6 +642,7 @@ footer.sticky-bottom {
     }
     a {
       color: var(--global-theme-color);
+      background-color: var(--global-card-bg-color);
       text-decoration: none;
       &:hover {
         color: var(--global-theme-color);
@@ -808,6 +822,7 @@ footer.sticky-bottom {
           overflow-wrap: break-word;
           a {
             color: white;
+            background-color: var(--global-card-bg-color);
             &:hover {
               text-decoration: none;
 
@@ -860,6 +875,7 @@ footer.sticky-bottom {
 
         a {
           border-bottom: 1px dashed var(--global-theme-color);
+          background-color: var(--global-card-bg-color);
           text-decoration: none;
 
           &:hover {
@@ -892,8 +908,10 @@ footer.sticky-bottom {
         position: relative;
         left: -5px;
         top:10px;
+        background-color: var(--global-card-bg-color);
         a.btn {
           color: var(--global-text-color);
+          background-color: var(--global-card-bg-color);
           border: 1px solid var(--global-text-color);
           padding-left: 1rem;
           padding-right: 1rem;
@@ -1387,3 +1405,5 @@ html.transition *:after {
             max-height: 100%;
             max-width: 100%;
         }
+
+
