@@ -3085,7 +3085,7 @@ d-citation-list .references .title {
   	'comment': /<!--[\s\S]*?-->/,
   	'prolog': /<\?[\s\S]+?\?>/,
   	'doctype': {
-  		pattern: /<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:(?!<!--)[^"'\]]|"[^"]*"|'[^']*'|<!--[\s\S]{1,1000}?-->)*\]\s*)?>/i,
+  		pattern: /<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:(?!<!--)[^"'\]]|"[^"]*"|'[^']*'|<!--[\s\S]{1,1000}-->)*\]\s*)?>/i,
   		greedy: true
   	},
   	'cdata': /<!\[CDATA\[[\s\S]*?]]>/i,
@@ -3170,7 +3170,7 @@ d-citation-list .references .title {
 
   		var def = {};
   		def[tagName] = {
-  			pattern: RegExp(/(<__[\s\S]*?>)(?:<!\[CDATA\[[\s\S]{0,1000}?\]\]>\s*|[\s\S])*?(?=<\/__>)/.source.replace(/__/g, function () { return tagName; }), 'i'),
+  			pattern: RegExp(/(<__[\s\S]*?>)(?:<!\[CDATA\[[\s\S]{0,1000}\]\]>\s*|[\s\S])*?(?=<\/__>)/.source.replace(/__/g, function () { return tagName; }), 'i'),
   			lookbehind: true,
   			greedy: true,
   			inside: inside
@@ -3323,7 +3323,7 @@ d-citation-list .references .title {
 
   Prism.languages.insertBefore('javascript', 'keyword', {
   	'regex': {
-  		pattern: /((?:^|[^$\w\xA0-\uFFFF."'\])\s])\s*)\/(?:\[(?:[^\]\\\r\n]|\\.)*]|\\.|[^/\\\[\r\n])+\/[gimyus]{0,6}(?=(?:\s|\/\*[\s\S]{1,1000}?\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/,
+  		pattern: /((?:^|[^$\w\xA0-\uFFFF."'\])\s])\s*)\/(?:\[(?:[^\]\\\r\n]|\\.)*]|\\.|[^/\\\[\r\n])+\/[gimyus]{0,6}(?=(?:\s|\/\*[\s\S]{1,1000}\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/,
   		lookbehind: true,
   		greedy: true
   	},
