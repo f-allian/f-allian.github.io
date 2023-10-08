@@ -90,9 +90,9 @@
                   {% if item.link %}
                     <div class="container-link-button">
                       {% if item.linkname %}
-                        <a href="{{ item.link }}" target="_blank" class="btncv z-depth-0">{{ item.linkname}}</a>
+                        <a href="{{ item.link }}" target="_blank" rel="noopener noreferrer" class="btncv z-depth-0">{{ item.linkname}}</a>
                       {% else %}
-                        <a href="{{ item.link }}" target="_blank" class="btncv z-depth-0">doc</a>
+                        <a href="{{ item.link }}" target="_blank" rel="noopener noreferrer" class="btncv z-depth-0">doc</a>
                       {% endif %}
                     </div>
                   {% endif %}
