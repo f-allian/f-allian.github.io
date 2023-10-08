@@ -32,7 +32,7 @@
           </td>
           {% endif %}
           {% if item.link %}
-          <td class="list-group-link"><a href="{{ item.link }}" target="_blank" class="btncv z-depth-0">{% if item.linkname %}{{ item.linkname }}{% else %}DOC{% endif %}</a></td>
+          <td class="list-group-link"><a href="{{ item.link }}" target="_blank" rel="noopener noreferrer" class="btncv z-depth-0">{% if item.linkname %}{{ item.linkname }}{% else %}DOC{% endif %}</a></td>
           {% endif %}
         </tr>
         {% endfor %}

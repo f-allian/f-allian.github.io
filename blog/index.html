@@ -2,7 +2,7 @@
 layout: default
 title: blog
 pagination:
-  enabled: false
+  enabled: true
   collection: posts
   permalink: /page/:num/
   per_page: 5
@@ -13,74 +13,67 @@ pagination:
     after: 3  # The number of links after the current page
 ---
 
-<script type="text/javascript">
-
-var TxtRotate = function(el, toRotate, period) {
-  this.toRotate = toRotate;
-  this.el = el;
-  this.loopNum = 0;
-  this.period = parseInt(period, 10) || 1000;
-  this.txt = '';
-  this.tick();
-  this.isDeleting = false;
-};
-
-TxtRotate.prototype.tick = function() {
-  var i = this.loopNum % this.toRotate.length;
-  var fullTxt = this.toRotate[i];
-
-  if (this.isDeleting) {
-    this.txt = fullTxt.substring(0, this.txt.length - 1);
-  } else {
-    this.txt = fullTxt.substring(0, this.txt.length + 1);
+<script>
+// JavaScript to rotate through words with delays
+function rotateText(element, words, rotationSpeed, typingSpeed, deletingSpeed, pauseBeforeStart, pauseBeforeDelete) {
+  if (!element || !Array.isArray(words) || words.length === 0 || !rotationSpeed || !typingSpeed || !deletingSpeed || !pauseBeforeStart || !pauseBeforeDelete) {
+    return;
   }
-
-  this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
-  var that = this;
-  var delta = 200 - Math.random() * 100;
-
-  if (this.isDeleting) { delta /= 1.5; }
-
-  if (!this.isDeleting && this.txt === fullTxt) {
-    delta = this.period;
-    this.isDeleting = true;
-  } else if (this.isDeleting && this.txt === '') {
-    this.isDeleting = false;
-    this.loopNum++;
-    delta = 1500;
-  }
-
-
-
 
   setTimeout(function() {
-    that.tick();
-  }, delta);
-};
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-window.onload = function() {
+    function updateText() {
+      const currentWord = words[wordIndex];
+      let text = currentWord.substring(0, charIndex);
 
+      if (isDeleting) {
+        text = currentWord.substring(0, charIndex);
+        charIndex--;
 
+        if (charIndex === -1) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(updateText, rotationSpeed);
+        } else {
+          setTimeout(updateText, deletingSpeed);
+        }
+      } else {
+        text = currentWord.substring(0, charIndex + 1);
+        charIndex++;
 
-  var elements = document.getElementsByClassName('txt-rotate');
-  for (var i=0; i<elements.length; i++) {
-    var toRotate = elements[i].getAttribute('data-rotate');
-    var period = elements[i].getAttribute('data-period');
-    if (toRotate) {
-      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+        if (charIndex === currentWord.length) {
+          isDeleting = true;
+          setTimeout(function() {
+            updateText();
+          }, pauseBeforeDelete); // Pause before deleting
+        } else {
+          setTimeout(updateText, typingSpeed);
+        }
+      }
+
+      element.textContent = text;
     }
-  }
 
+    updateText();
+  }, pauseBeforeStart);
+}
 
-  };
+// Initialize the rotation with a 1-second delay before starting and a 2-second delay before deleting
+document.addEventListener('DOMContentLoaded', function() {
+  const element = document.querySelector('.txt-rotate');
+  const wordsToRotate = ['Data Science', 'Machine Learning', 'Python Programming'];
+  const rotationSpeed = 1000;
+  const typingSpeed = 100;
+  const deletingSpeed = 150;
+  const pauseBeforeStart = 1000; // 1-second delay before starting
+  const pauseBeforeDelete = 2000; // 2-second delay before deleting
+  rotateText(element, wordsToRotate, rotationSpeed, typingSpeed, deletingSpeed, pauseBeforeStart, pauseBeforeDelete);
+});
 
-
-
-
-
-
-  </script>
+</script>
 
 
 <div class="post">
@@ -88,16 +81,14 @@ window.onload = function() {
 
   <div class="header-bar">
 
-    <h1>Check back soon!</h1>
+    <h1>Welcome to my blog</h1>
 
- <!--   <h3>
+    <h3>
       <span
-     class="txt-rotate"
-     data-period="2000"
-     data-rotate='[ "Data science", "Machine learning", "Mathematics", "Python" ]'></span> <u>refined</u>.
+     class="txt-rotate"></span> <u>refined</u>.
 
     </h3>
-   -->
+
   </div>
 
 
