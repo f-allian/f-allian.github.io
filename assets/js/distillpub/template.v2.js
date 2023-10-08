@@ -2685,9 +2685,13 @@ d-citation-list .references .title {
 
   	tokenize: function(text, grammar) {
   		var rest = grammar.rest;
+        const PREFIX = '__my_prefix__';
+
   		if (rest) {
   			for (var token in rest) {
-  				grammar[token] = rest[token];
+              if (rest.hasOwnProperty(token)) {
+                grammar[PREFIX + token] = rest[token];
+              }
   			}
 
   			delete grammar.rest;
