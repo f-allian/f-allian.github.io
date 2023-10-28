@@ -37,7 +37,9 @@ profile:
 
         // Set the image source and hyperlink URL
         spotifyImage.src = spotifyProfile.image_url;
+        spotifyImage.alt = "Spotify"; // Add a discernible alt attribute
         spotifyLink.href = spotifyProfile.hyperlink_url;
+        spotifyLink.textContent = ""; // Add descriptive text
 
         // Append the image to the link and the link to the container
         spotifyLink.appendChild(spotifyImage);

@@ -547,7 +547,7 @@ footer.sticky-bottom {
       }
       .hidden.open {
         max-height: 100em;
-        text-alignt:justify;
+        text-align:justify;
         transition-property: 0.15s ease;
         -moz-transition: 0.15s ease;
         -ms-transition: 0.15s ease;
@@ -1151,7 +1151,7 @@ footer.sticky-bottom {
         p {
           line-height: 1.4em;
           text-align:left;
-          margin-left: 0px;
+          margin-left: 0;
           margin-right:10px;
           margin-bottom:50px;
           margin-top:15px;
@@ -1405,5 +1405,42 @@ html.transition *:after {
             max-height: 100%;
             max-width: 100%;
         }
+
+
+.txt-rotate{
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid var(--global-theme-color); /* The typewriter cursor */
+  white-space: pre-line; /* Keeps the content on a single line */
+  margin: auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0; /* Adjust as needed */
+  text-align: center;
+  max-width:100%;
+  animation:
+    typing 1s steps(30, end) 5s,
+    blink-caret .75s /*step-end*/steps(100, end) infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--global-theme-color); }
+}
+
+/* For older browsers (Safari) */
+@-webkit-keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@-webkit-keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--global-theme-color); }
+}
 
 
