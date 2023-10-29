@@ -38,6 +38,7 @@ profile:
         // Set the image source and hyperlink URL
         spotifyImage.src = spotifyProfile.image_url;
         spotifyImage.alt = "Spotify"; // Add a discernible alt attribute
+        spotifyImage.preload = "auto"; // Preload the image
         spotifyLink.href = spotifyProfile.hyperlink_url;
         spotifyLink.textContent = ""; // Add descriptive text
 
@@ -47,8 +48,6 @@ profile:
     </script>
     </body>
     </html>
-
-    
 news: true # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
