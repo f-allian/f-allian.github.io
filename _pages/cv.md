@@ -4,7 +4,7 @@ permalink: /cv/
 title: Resume
 nav: true
 cv_pdf: 
----
+--- 
 
 <div class="cv">
 	{% for entry in site.data.cv %}
