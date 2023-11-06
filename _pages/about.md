@@ -20,7 +20,6 @@ profile:
     </head>
     <body>
     <div id="spotify-container">
-        <!-- The music emoji will be inserted here -->
         <div class="music-emoji">🎵 <em> Currently listening to </em>: </div>
     </div>
 

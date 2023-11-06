@@ -252,6 +252,8 @@ color: $grey-color-light;
     border-radius: 1px;
     margin-bottom: 4px;
     transition: all 0.2s;
+    position: relative;
+    left: 10px;
   }
   .top-bar {
     transform: rotate(45deg);
@@ -1399,7 +1401,8 @@ html.transition *:after {
             display: flex;
             flex-direction: column; /* Stack children vertically */
             align-items: center; /* Center horizontally */
-            margin-top: 15px;
+            margin-top: 10px;
+            margin-bottom:-30px;
             margin-right:10px;
             max-height: 100%;
             max-width: 100%;
@@ -1441,5 +1444,6 @@ html.transition *:after {
   from, to { border-color: transparent; }
   50% { border-color: var(--global-theme-color); }
 }
+
 
 
