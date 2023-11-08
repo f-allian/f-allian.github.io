@@ -13,8 +13,9 @@ profile:
     <style>
         /* Style for the music emoji */
         .music-emoji {
-            font-size: 12px; /* Adjust the font size as needed */
-            margin: 10 px; /* Adjust the spacing between emoji and image */
+            font-size: 10.5px; /* Adjust the font size as needed */
+            margin-bottom: 2px; /* Adjust the spacing between emoji and image */
+            margin-top:-5px;
         }
     </style>
     </head>
