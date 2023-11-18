@@ -37,7 +37,10 @@ profile:
 
         // Set the image source and hyperlink URL
         spotifyImage.src = spotifyProfile.image_url;
-        spotifyImage.alt = "Spotify"; // Add a discernible alt attribute
+        spotifyImage.alt = "Spotify";
+        spotifyImage.width = 120; 
+        spotifyImage.height = 60; 
+        spotifyImage.srcset = `${spotifyProfile.image_url} 1x`
         spotifyImage.preload = "auto"; // Preload the image
         spotifyLink.href = spotifyProfile.hyperlink_url;
         spotifyLink.textContent = ""; // Add descriptive text
