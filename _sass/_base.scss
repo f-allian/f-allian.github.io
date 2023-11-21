@@ -286,6 +286,7 @@ color: $grey-color-light;
   text-align: center;
   .contact-icons {
     font-size: 2rem;
+    vertical-align: middle; /* Center the emoji vertically */
     a {
       i::before {
         color: var(--global-text-color);
@@ -1468,3 +1469,16 @@ html.transition *:after {
 
 
 
+.emoji {
+  font-family: 'Noto Emoji', serif;
+  font-weight: 900;
+  text-decoration: none;
+  color: var(--global-text-color);
+  display: inline-block;
+  font-size: 1.95rem;
+  }
+
+.emoji:hover {
+  color: var(--global-theme-color);
+  text-decoration: none !important;
+}

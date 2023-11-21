@@ -1,3 +1,5 @@
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Emoji&display=swap">
+
             {%- if site.email -%}
             <a href="mailto:{{ site.email | encode_email }}" title="email"><i class="fas fa-envelope"></i></a>
             {% endif %}
@@ -36,6 +38,9 @@
             {% endif %}
             {%- if site.linkedin_username -%}
             <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            {% endif %}
+            {%- if site.huggingface_id -%}
+            <a href="https://huggingface.co/{{ site.huggingface_id }}" title="HuggingFace"><b class="emoji">🤗</b></a>
             {% endif %}
             {%- if site.twitter_username -%}
             <a href="https://twitter.com/{{ site.twitter_username }}" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
