@@ -9,19 +9,9 @@ profile:
   image: prof_pic.jpg
   address: >
     <html>
-    <head>
-    <style>
-        /* Style for the music emoji */
-        .music-emoji {
-            font-size: 10.5px; /* Adjust the font size as needed */
-            margin-bottom: 2px; /* Adjust the spacing between emoji and image */
-            margin-top:-5px;
-        }
-    </style>
-    </head>
     <body>
     <div id="spotify-container">
-        <div class="music-emoji">🎵 <em> Currently listening to </em>: </div>
+        <div class="music-emoji">🎵 <em> Currently listening to </em> </div>
     </div>
 
     <script>
@@ -38,8 +28,6 @@ profile:
         // Set the image source and hyperlink URL
         spotifyImage.src = spotifyProfile.image_url;
         spotifyImage.alt = "Spotify";
-        spotifyImage.width = 240; 
-        spotifyImage.height = 61; 
         spotifyImage.srcset = `${spotifyProfile.image_url} 1x`
         spotifyImage.preload = "auto"; // Preload the image
         spotifyLink.href = spotifyProfile.hyperlink_url;
