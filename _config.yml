@@ -109,8 +109,7 @@ zotero_username: # your zotero username
 wechat_qr: # filename of your wechat qr-code saved as an image (e.g., wechat-qr.png if saved to assets/img/wechat-qr.png)
 
 contact_note: >
-  Feel free to reach out by email or connect with me on LinkedIn. 
-
+  Feel free to reach out by email or connect with me on LinkedIn.
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
 # -----------------------------------------------------------------------------
