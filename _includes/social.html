@@ -1,7 +1,7 @@
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Emoji&display=swap">
 
             {%- if site.email -%}
-            <a href="mailto:{{ site.email | encode_email }}" title="Email"><i class="fas fa-envelope" onclick="location.href='mailto:{{ site.email | encode_email }}';"></i></a>
+            <a href="mailto:{{ site.email | encode_email }}" title="Email"><i class="fas fa-envelope"></i></a>
             {% endif %}
             {%- if site.telegram_username -%}
             <a href="https://telegram.me/{{ site.telegram_username }}" title="Telegram"><i class="fab fa-telegram"></i></a>
