@@ -76,6 +76,7 @@ gitlab_username: # your GitLab user name
 twitter_username: FarhadA01 # your Twitter handle
 mastodon_username:  # your mastodon instance+username in the format instance.tld/@username
 linkedin_username: farhad-allian # your LinkedIn user name
+strava_userid: 140414215
 telegram_username: # your Telegram user name
 scholar_userid: # your Google Scholar ID
 semanticscholar_id: # your Semantic Scholar ID
