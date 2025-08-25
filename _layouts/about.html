@@ -41,6 +41,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               class=profile_image_class
               alt=page.profile.image -%}
             {% endif -%}
+
+            {% include spotify-widget.html %}
+
             {%- if page.profile.address %}
             {{ page.profile.address }}
             {%- endif %}

@@ -1288,7 +1288,7 @@ html.transition *:after {
   animation-iteration-count: infinite;  /* Never stop waving :) */
   transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
   display: inline-block;
-  font-size:25px;
+  font-size:20px;
   position: relative;
   left:5px;
 
@@ -1398,35 +1398,72 @@ html.transition *:after {
 
 }
 
+
 #spotify-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10px;
-  max-height: 100%;
+  gap: 0.5rem;
+  margin: 1rem auto;
+  max-width: min(300px, 90%);
   width: 100%;
 
-
-  max-width: 300px;
-
-  margin: auto;
-
-
   .music-emoji {
-    font-size: 10.2px;
-    margin-bottom: 2px;
-    margin-top:-5px;
+    font-size: 0.7rem;
+    color: var(--global-text-color-light, #6c757d);
     white-space: nowrap;
-        }
-
-    @media (max-width: 500px) {
-    max-width: 72%;
-      .music-emoji {
-        font-size: 12px;
-      }
+    line-height: 1.2;
   }
 
+  img {
+    border-radius: 0.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    max-width: 100%;
+    height: auto;
 
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    &:focus {
+      outline: 2px solid var(--global-theme-color, #007bff);
+      outline-offset: 2px;
+    }
+  }
+
+  .spotify-error {
+    padding: 0.5rem;
+    background: var(--global-bg-color-light, #f8f9fa);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--global-text-color-light, #6c757d);
+  }
+
+  @media (max-width: 500px) {
+    margin: 0.75rem auto 1rem;
+
+    .music-emoji {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    img {
+      transition: none;
+
+      &:hover {
+        transform: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .spotify-error {
+      background: var(--global-bg-color-dark, #2d3748);
+    }
+  }
 }
 
 
