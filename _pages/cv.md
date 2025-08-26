@@ -26,6 +26,23 @@ cv_pdf:
 						</tr>
 					{% endfor %}
 				</table>
+			{% elsif entry.type == "skills_list" %}
+				   <ul class="card-text font-weight-light list-group list-group-flush">
+				   {% for content in entry.contents %}
+					  <li class="list-group-item">
+						 <div class="row align-items-center">
+							<div class="col-xs-2 cl-sm-2 col-md-auto text-right" style="width: 100px;">
+							   <span class="badge font-weight-normal danger-color-dark align-middle" style="width: 100px; margin-left:-15px; margin-top: 3px;">  
+								  {{ content.category }}
+							   </span>
+							</div>
+							<div class="col-xs-10 cl-sm-10 col-md">
+							   <span class="item" style="margin-left: 1.2rem; margin-top: 0.2rem; display: inline-block; padding-top: 3px;">{{ content.skills }}</span>  
+							</div>
+						 </div>
+					  </li>
+				   {% endfor %}
+				   </ul>
 			{% elsif entry.type == "nested_list" %}
 				<ul class="card-text font-weight-light list-group list-group-flush">
 				{% for content in entry.contents %}
@@ -47,8 +64,8 @@ cv_pdf:
 					<li class="list-group-item">
 						<div class="row">
 							{% if content.year %}
-								<div class="col-xs-2 cl-sm-2 col-md-auto text-right" style="width: 85px;">
-									<span class="badge font-weight-normal danger-color-dark align-middle" style="width: 85px;margin-top:-8px; margin-left:-15px;">
+								<div class="col-xs-2 cl-sm-2 col-md-auto text-right" style="width: 100px;">
+									<span class="badge font-weight-normal danger-color-dark align-middle" style="width: 100px;margin-top:-8px; margin-left:-15px;">
 										{{ content.year }}
 									</span>
 								</div>

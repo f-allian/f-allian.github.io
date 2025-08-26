@@ -339,10 +339,16 @@ footer.sticky-bottom {
       ul.items {
         list-style-type: circle;
         padding: 0;
-        margin: 0;
+        margin: 0.5rem auto;
         max-width: 100%;
         width: 100%;
         height: 100%;
+        li {
+          margin-left: 2.1rem;
+          padding-left: 1rem;
+          margin-bottom: 0.5rem;
+        }
+
         .a {
           background-color: var(--global-card-bg-color);
         }

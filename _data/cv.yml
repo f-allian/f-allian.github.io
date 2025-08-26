@@ -1,24 +1,20 @@
-- title: Experience 💼
+- title: Experience
   type: table
   contents:
     - title: Research Data Engineer, The University of Sheffield
-      year: 07/23 - Now
+      year: 07/23 - Present
       description:
 
         - "Collaborating with academics from various disciplines to develop their data and software products into research workflows."
         - "Delivering consultations and technical training to support researchers and students across the university."
 
-
     - title: Data Coach, Multiverse
       year: 06/21 - 07/23
       description:
-        - "Developed the next generation of data analysts and data scientists through one-to-one coaching and group delivery, enabling businesses to thrive through their digital transformations."
-        - "Created pedagogical solutions for the technical development of a team of +80 coaches on 
-          topics such as data mining using web scraping and natural language processing, time series forecasting, and clustering techniques for pattern recognition."
+        - "Mentored data analyst and data scientist apprentices through one-to-one coaching and group sessions."
+        - "Created and delivered technical training for 80+ coaches on web scraping, time series forecasting and machine learning."
 
-
-
-- title: Education 🎓
+- title: Education
   type: table
   contents:
     - title: "Ph.D. Applied Mathematics, The University of Sheffield"
@@ -26,7 +22,7 @@
       description:
         - Thesis - <a href="https://etheses.whiterose.ac.uk/30106/">An Analysis of Magnetohydrodynamic Waves and Oscillations in the Solar Corona</a>.
         - Published two, first-authored, peer-reviewed journal articles, and presented at multiple national and international conferences.
-        - Developed a novel technique for detecting signals in observations of the Sun's atmospheres.
+        - Developed a novel technique for detecting signals in observational data of the Sun's atmospheres.
 
     - title: "M.Sci. Physics with Astrophysics, University of Glasgow (1<sup>st</sup> Class)"
       year: 09/12 - 06/17
@@ -34,19 +30,22 @@
         - "Master's Thesis - A Statistical Analysis of Type III Solar Radio Bursts."
         - "Modules with over 85% GPA include: Relativistic quantum field theory, General relativity and gravitation, Astronomical data analysis, Dynamics, electrodynamics and relativity."
 
-- title: Skills 💻
-  type: nested_list
+- title: Skills
+  type: skills_list
   contents:
-    - title: "Programming"
-      items:
-        - "Python (8 years), Git, Linux/Bash, MATLAB (3 years), CSS, HTML, IDL (2 years), JavaScript (1 year). "
-    - title: "General"
-      items:
-        - "Coaching, mentoring, data science, mathematical and statistical modelling, technical writing."
+    - category: "Languages"
+      skills: "Python, MATLAB, SQL, HTML/CSS/JavaScript, Linux/Bash"
+    - category: "Frameworks"
+      skills: "PyTorch, HuggingFace, scikit-learn, Pandas, NumPy, SciPy, Django"
+    - category: "DevOps/MLOps"
+      skills: "HPC/Slurm, CI/CD, Docker/Apptainer, MLFlow, CUDA"
+    - category: "Databases"
+      skills: "PostgreSQL, MongoDB"
+    - category: "Tools"
+      skills: "Git/GitHub, Airflow, Snakemake"
 
-
-- title: Hobbies 🌱
+- title: Interests
   type: list
   contents:
-    - "In my spare time, I enjoy working out, playing chess and learning some song I'm obsessed with on the piano!"
-
+    - "Outside of my work, I’m a recreational athlete who loves running (~30–40 km/week), bouldering and weightlifting. 
+       I'm also an avid chess player (1300 Elo) and enjoy learning some random song I've been obsessed with on the piano."
