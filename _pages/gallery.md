@@ -2,7 +2,7 @@
 layout: page
 permalink: /gallery/
 title: Gallery
-description: A collection of moments captured through my lens.
+description: A collection of moments captured through my eyes.
 nav: true
 nav_order: 4
 ---
@@ -80,6 +80,7 @@ fetch('{{ "/assets/data/gallery.json" | relative_url }}')
   .then(data=>{
     if(!data.photos || !data.photos.length){ showError('No photos found'); return; }
     slides = data.photos.map(p=>({...p,url:dropboxRaw(p.url)}));
+    slides = slides.sort(()=>Math.random()-0.5);
     initializeGallery();
   })
   .catch(err=>{ console.error('Error loading gallery:',err); showError('Failed to load gallery'); });
