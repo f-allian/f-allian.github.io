@@ -1,0 +1,50 @@
+name: Update Gallery
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - master
+    paths:
+      - '_scripts/fetch_gallery.py'
+      - '.github/workflows/update-gallery.yml'
+
+jobs:
+  update-gallery:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install dropbox pillow python-dateutil geopy python-dotenv
+
+      - name: Fetch gallery photos from Dropbox
+        env:
+          DROPBOX_ACCESS_TOKEN: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
+          DROPBOX_FOLDER_PATH: ${{ secrets.DROPBOX_FOLDER_PATH || ' '}}
+        run: |
+          python _scripts/fetch_gallery.py
+
+      - name: Commit gallery data
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          git add assets/data/gallery.json
+          if git diff --staged --quiet; then
+            echo "No changes to gallery data"
+          else
+            git commit -m "update 📸: gallery data [skip ci]"
+            git push
+          fi

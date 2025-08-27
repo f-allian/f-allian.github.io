@@ -5,7 +5,7 @@ title: Publications
 description: 
 years: [2021, 2019]
 nav: true
-nav_order: 1
+nav_order: 3
 ---
 <!-- _pages/publications.md -->
 

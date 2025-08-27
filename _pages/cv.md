@@ -4,6 +4,7 @@ permalink: /resume/
 title: Resume
 nav: true
 cv_pdf: 
+nav_order: 2
 --- 
 
 <div class="cv">
