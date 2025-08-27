@@ -9,4 +9,7 @@ _site
 Gemfile.lock
 vendor
 .env
+.venv
+.idea
+
 
