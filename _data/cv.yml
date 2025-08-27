@@ -34,18 +34,18 @@
   type: skills_list
   contents:
     - category: "Languages"
-      skills: "Python, MATLAB, SQL, HTML/CSS/JavaScript, Linux/Bash"
+      skills: "Python, SQL, MATLAB, HTML/CSS/JavaScript, Linux/Bash"
     - category: "Frameworks"
       skills: "PyTorch, HuggingFace, scikit-learn, Pandas, NumPy, SciPy, Django"
-    - category: "DevOps/MLOps"
-      skills: "HPC/Slurm, CI/CD, Docker/Apptainer, MLFlow, CUDA"
+    - category: "Infrastructure & DevOps"
+      skills: "Docker/Apptainer, CI/CD, HPC/Slurm, MLFlow, CUDA"
+    - category: "Engineering"
+      skills: "Airflow, Snakemake, Git/GitHub"
     - category: "Databases"
-      skills: "PostgreSQL, MongoDB"
-    - category: "Tools"
-      skills: "Git/GitHub, Airflow, Snakemake"
+      skills: "PostgreSQL, MySQL, MongoDB"
 
 - title: Interests
   type: list
   contents:
     - "Outside of my work, I’m a recreational athlete who loves running (~30–40 km/week), bouldering and weightlifting. 
-       I'm also an avid chess player (1300 Elo) and enjoy learning some random song I've been obsessed with on the piano."
+       I'm also an avid chess player (1300 Elo) and enjoy learning some random song I've been obsessed with that week on the piano."
