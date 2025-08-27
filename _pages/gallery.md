@@ -25,6 +25,18 @@ nav_order: 4
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.carousel-container.fullscreen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  z-index: 9999;
+  border-radius: 0;
+  background: rgba(0,0,0,0.95);
 }
 
 .carousel-slide {
@@ -50,6 +62,7 @@ nav_order: 4
   display: block;
   opacity: 0;
   transition: opacity 1s ease-in-out;
+  cursor: zoom-in;
 }
 .carousel-slide.loaded img { opacity: 1; }
 
@@ -126,9 +139,9 @@ nav_order: 4
   background-color: rgba(0, 0, 0, 0.15);
   color: var(--global-text-color);
   border: none;
-  width: clamp(30px, 2vw, 36px);
-  height: clamp(30px, 2vw, 36px);
-  font-size: clamp(10px, 1vw, 14px);
+  width: clamp(25px, 2vw, 30px);
+  height: clamp(25px, 2vw, 30px);
+  font-size: clamp(10px, 1vw, 12px);
   font-weight: normal;
   border-radius: 50%;
   cursor: pointer;
@@ -243,6 +256,12 @@ function initializeGallery(){
   startAutoPlay();
   carousel.addEventListener('mouseenter',stopAutoPlay);
   carousel.addEventListener('mouseleave',startAutoPlay);
+
+  // Fullscreen toggle by clicking container, ignore arrows
+  carousel.addEventListener('click', (e) => {
+    if(e.target.closest('.carousel-btn')) return;
+    carousel.classList.toggle('fullscreen');
+  });
 }
 
 // Caption toggle
