@@ -37,7 +37,7 @@
       skills: "Python, SQL, MATLAB, HTML/CSS/JavaScript, Linux/Bash"
     - category: "Frameworks"
       skills: "PyTorch, HuggingFace, scikit-learn, Pandas, NumPy, SciPy, Django"
-    - category: "Infrastructure & DevOps"
+    - category: "DevOps/MLOps"
       skills: "Docker/Apptainer, CI/CD, HPC/Slurm, MLFlow, CUDA"
     - category: "Engineering"
       skills: "Airflow, Snakemake, Git/GitHub"
