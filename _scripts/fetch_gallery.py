@@ -19,7 +19,7 @@ load_dotenv()
 
 # Configuration
 DROPBOX_ACCESS_TOKEN = os.environ.get('DROPBOX_ACCESS_TOKEN')
-DROPBOX_FOLDER_PATH = os.environ.get('DROPBOX_FOLDER_PATH', '/Apps/Website-Gallery')
+DROPBOX_FOLDER_PATH = ''
 OUTPUT_FILE = 'assets/data/gallery.json'
 SUPPORTED_FORMATS = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
 
