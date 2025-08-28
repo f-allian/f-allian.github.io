@@ -2,7 +2,7 @@
 layout: page
 permalink: /publications/
 title: Publications
-description: 
+description: Where research meets discovery
 years: [2025, 2021, 2019]
 nav: true
 nav_order: 4

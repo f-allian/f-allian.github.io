@@ -2,7 +2,7 @@
 layout: page
 permalink: /projects/
 title: Projects
-description: A collection of my programming projects 
+description: From concept to code
 nav: true
 nav_order: 3
 ---
