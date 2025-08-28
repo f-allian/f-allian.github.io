@@ -66,6 +66,19 @@ nav_order: 4
 }
 .carousel-slide.loaded img { opacity: 1; }
 
+/* Fullscreen centering */
+.carousel-container.fullscreen .carousel-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-container.fullscreen .carousel-slide img {
+  max-width: 95%;
+  max-height: 95%;
+  margin: auto;
+  object-fit: contain;
+}
+
 /* Caption with semi-transparent container */
 .carousel-caption {
   background: rgba(0, 0, 0, 0.5);
@@ -91,28 +104,50 @@ nav_order: 4
 /* Navigation buttons */
 .carousel-controls {
   position: absolute;
-  top: 50%;
+  top: 0;
+  left: 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 10px;
+  height: 100%;
   pointer-events: none;
 }
+
 .carousel-btn {
   cursor: pointer;
-  background-color: rgba(0,0,0,0.4);
-  color: white;
+  background-color: rgba(0, 0, 0, 0.15);
+  color: var(--global-text-color);
   border: none;
-  width: 40px; height: 40px;
+  width: 30px; 
+  height: 30px;
   border-radius: 50%;
-  font-size: 18px;
+  font-size: 15px;
   pointer-events: all;
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 1;
+  text-align: center;
   transition: background-color 0.3s;
 }
 .carousel-btn:hover { background-color: var(--global-hover-color); }
+
+.carousel-btn.prev {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-indent: -2px; /* small horizontal nudge */
+  font-weight: 300;
+}
+
+.carousel-btn.next {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-indent: 2px; /* small horizontal nudge */
+  font-weight: lighter;
+}
+
 
 /* Dots */
 .dots-container {
@@ -257,11 +292,15 @@ function initializeGallery(){
   carousel.addEventListener('mouseenter',stopAutoPlay);
   carousel.addEventListener('mouseleave',startAutoPlay);
 
-  // Fullscreen toggle by clicking container, ignore arrows
   carousel.addEventListener('click', (e) => {
-    if(e.target.closest('.carousel-btn')) return;
-    carousel.classList.toggle('fullscreen');
-  });
+  if(e.target.closest('.carousel-btn')) return;
+  carousel.classList.toggle('fullscreen');
+
+  // Keep captions visible in fullscreen if toggled
+  if(captionsVisible) {
+    carousel.classList.add('carousel-captions-visible');
+  }
+    });
 }
 
 // Caption toggle
