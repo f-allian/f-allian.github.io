@@ -5,6 +5,7 @@ title: Resume
 nav: true
 cv_pdf: 
 nav_order: 2
+description: Enabling research and innovation
 --- 
 
 <div class="cv">
