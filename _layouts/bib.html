@@ -135,7 +135,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           {%- endif -%}
           {%- capture periodical -%}{{ entrytype }}{{ entrymonth }}{{ entryyear }}{%- endcapture -%}
           <div class="periodical">
-            {{ periodical | strip }}
+            {{ entrytype | strip }}
+            {%- if entrymonth or entryyear -%}
+              <div class="date">{{ entrymonth }}{{ entryyear }}</div>
+            {%- endif -%}
           </div>
         {%- endif %}
         
@@ -166,8 +169,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="altmetric-embed" {% if entry.doi %}data-doi="{{ entry.doi }}"{% else %}data-altmetric-id="{{ entry.altmetric }}"{% endif %} data-hide-no-mentions="false" data-hide-less-than="0"  data-badge-type="donut" data-badge-popover="right"></span>
           {%- endif %}
           {%- if site.badges.dimensions_badge or entry.dimensions %}
-            <span class="__dimensions_badge_embed__" {% if entry.doi %}data-doi="{{ entry.doi }}"{% else if entry.pmid %}data-pmid="{{ entry.pmid }}"{% else %}data-id="{{ entry.dimensions }}"{% endif %} data-hide-zero-citations="false" data-style="small_circle" data-legend="hover-right" style="margin-bottom: 2px;" ></span>
-          {%- endif %}
+          <span class="__dimensions_badge_embed__"
+                {% if entry.doi %}data-doi="{{ entry.doi }}"
+                {% else if entry.pmid %}data-pmid="{{ entry.pmid }}"
+                {% else %}data-id="{{ entry.dimensions }}"{% endif %}
+                data-hide-zero-citations="true"
+                data-style="small_circle"
+                data-legend="hover-right"
+                style="margin-bottom: 2px;" >
+          </span>
+        {%- endif %}
           </div>
           {%- endif %}
           {%- if entry.supp %}
