@@ -1,0 +1,10 @@
+github_users:
+  - f-allian
+
+repo_description_lines_max: 2
+
+github_repos:
+  - CITCOM-project/CausalTestingFramework
+  - RSE-Sheffield/SORT
+  - RSE-Sheffield/pytorch-transformers-wikitext2-benchmark
+  - FAIR2-for-research-software/FAIR4RS-Packaging

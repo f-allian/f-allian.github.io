@@ -1320,3 +1320,11 @@ html.transition *:after {
     display: unset;
   }
 }
+
+
+@media (min-width: 768px) {
+  .repo {
+    flex: 1 1 48%; // 2 per row
+    max-width: 48%;
+  }
+}
