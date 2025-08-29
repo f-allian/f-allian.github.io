@@ -82,7 +82,7 @@ contact_note: >
 # Analytics and search engine verification
 # -----------------------------------------------------------------------------
 
-ga4_analytics: ${{ secrets.GoogleID }} #This is your GA4 measurement ID
+ga4_analytics: G-NMBCR6J292 #This is your GA4 measurement ID
 cronitor_analytics:  # cronitor RUM analytics site ID (format: XXXXXXXXX)
 
 google_site_verification:  # your google-site-verification ID (Google Search Console)
