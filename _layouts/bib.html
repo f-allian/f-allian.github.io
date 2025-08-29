@@ -186,7 +186,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                    {% if site.badges %}
           <div class="badges">
           {%- if site.badges.altmetric_badge or entry.altmetric %}
-            <span class="altmetric-embed" {% if entry.doi %}data-doi="{{ entry.doi }}"{% else %}data-altmetric-id="{{ entry.altmetric }}"{% endif %} data-hide-no-mentions="false" data-hide-less-than="0"  data-badge-type="donut" data-badge-popover="right"></span>
+            <span class="altmetric-embed" {% if entry.doi %}data-doi="{{ entry.doi }}"{% else %}data-altmetric-id="{{ entry.altmetric }}"{% endif %} data-hide-no-mentions="false" data-hide-less-than="0"  data-badge-type="bar" data-badge-popover="right"></span>
           {%- endif %}
           {%- if site.badges.dimensions_badge or entry.dimensions %}
           <span class="__dimensions_badge_embed__"
@@ -196,7 +196,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 data-hide-zero-citations="true"
                 data-style="small_circle"
                 data-legend="hover-right"
-                style="margin-bottom: 2px;" >
+                style="margin-bottom: -15px;" >
           </span>
         {%- endif %}
           </div>
