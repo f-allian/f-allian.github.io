@@ -1328,3 +1328,17 @@ html.transition *:after {
     max-width: 48%;
   }
 }
+  /* Make the anchor element taller in the languages container */
+  .repo-languages a {
+    display: flex;
+    min-height: 162px; /* Match the height of the stats card */
+    align-items: center;
+    justify-content: center;
+  }
+
+
+.repo-img-light[alt*="top languages"],
+.repo-img-dark[alt*="top languages"] {
+  width: 100%;
+  max-width: 100%;
+}

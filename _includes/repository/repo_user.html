@@ -8,12 +8,12 @@
 </div>
 
 
-<div class="repo p-2 text-center">
+<div class="repo repo-languages p-2 text-center">
   <a href="https://github.com/{{ include.username }}">
-    <img class="repo-img-light w-100" alt="{{ include.username }} streak"
-         src="https://github-readme-streak-stats.herokuapp.com/?user={{ include.username }}&theme=default">
-    <img class="repo-img-dark w-100" alt="{{ include.username }} streak"
-         src="https://github-readme-streak-stats.herokuapp.com/?user={{ include.username }}&theme=dark">
+    <img class="repo-img-light w-100" alt="{{ include.username }} top languages"
+        src="https://github-readme-stats.vercel.app/api/top-langs/?username={{ include.username }}&theme={{ site.repo_theme_light }}&layout=normal&hide=html,css,jupyter%20notebook,scss,typescript,less,php,tex,ruby,javascript&langs_count=3&card_width=490">
+    <img class="repo-img-dark w-100" alt="{{ include.username }} top languages"
+         src="https://github-readme-stats.vercel.app/api/top-langs/?username={{ include.username }}&theme={{ site.repo_theme_dark }}&layout=normal&hide=html,css,jupyter%20notebook,scss,typescript,less,php,tex,ruby,javascript&langs_count=3&card_width=490">
   </a>
 </div>
 

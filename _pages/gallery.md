@@ -2,7 +2,7 @@
 layout: page
 permalink: /gallery/
 title: Gallery
-description: There is a time for timelessness
+description: A time for timelessness
 nav: true
 nav_order: 5
 ---
