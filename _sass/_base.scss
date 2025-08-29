@@ -297,7 +297,8 @@ footer.fixed-bottom {
     padding-bottom: 4px;
   }
   a {
-    color: var(--global-footer-link-color);
+    color: var(--global-theme-color);
+    font-weight: bolder;
     &:hover {
       color: var(--global-theme-color);
       text-decoration: none;
@@ -1199,9 +1200,9 @@ html.transition *:after {
 
   .music-emoji {
     font-size: 0.7rem;
-    color: var(--global-text-color-light, #6c757d);
+    color: var(--global-text-color, #6c757d);
     white-space: nowrap;
-    line-height: 1.2;
+    line-height: 1;
   }
 
   img {
