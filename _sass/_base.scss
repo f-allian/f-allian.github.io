@@ -1146,7 +1146,7 @@ html.transition *:after {
     float: center;
     position: block;
     width: 33%;
-    margin-right: 10px;
+    margin-right: 30px;
     margin-left: 0px;
     box-sizing: border-box;
     max-width: 100%;
@@ -1158,7 +1158,7 @@ html.transition *:after {
     float: left;
     position: block;
     width: 33%;
-    margin-right: 10px;
+    margin-right: 30px;
     margin-left: 0px;
     box-sizing: border-box;
     max-width: 100%;
@@ -1341,4 +1341,49 @@ html.transition *:after {
 .repo-img-dark[alt*="top languages"] {
   width: 100%;
   max-width: 100%;
+}
+/* Default: hide dark mode images, show light mode images */
+.dark-mode-only {
+  display: none;
+}
+
+.light-mode-only {
+  display: block;
+}
+
+/* System preference: Light mode */
+@media (prefers-color-scheme: light) {
+  .dark-mode-only {
+    display: none;
+  }
+  .light-mode-only {
+    display: block;
+  }
+}
+
+/* System preference: Dark mode */
+@media (prefers-color-scheme: dark) {
+  .light-mode-only {
+    display: none;
+  }
+  .dark-mode-only {
+    display: block;
+  }
+}
+
+/* If your site has a manual theme toggle with data attribute */
+[data-theme="dark"] .light-mode-only {
+  display: none;
+}
+
+[data-theme="dark"] .dark-mode-only {
+  display: block;
+}
+
+[data-theme="light"] .dark-mode-only {
+  display: none;
+}
+
+[data-theme="light"] .light-mode-only {
+  display: block;
 }

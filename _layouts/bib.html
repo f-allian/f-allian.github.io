@@ -31,10 +31,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div id="{{entry.key}}" class="col-sm-10  ">
 
           <div class="teaser">
-            {%- if entry.image -%}
-            {% include figure.html path=entry.image class="img-fluid rounded z-depth-10" zoomable=true %}
+            {%- if entry.image_light and entry.image_dark -%}
+              <!-- Light mode image -->
+              <div class="light-mode-only">
+                {% include figure.html path=entry.image_light class="img-fluid rounded z-depth-10" zoomable=true %}
+              </div>
+              <!-- Dark mode image -->
+              <div class="dark-mode-only">
+                {% include figure.html path=entry.image_dark class="img-fluid rounded z-depth-10" zoomable=true %}
+              </div>
+            {%- elsif entry.image -%}
+              <!-- Fallback to single image -->
+              {% include figure.html path=entry.image class="img-fluid rounded z-depth-10" zoomable=true %}
             {%- endif -%}
-         </div>
+          </div>
 
 
         {% if entry.type == "thesis" -%}
@@ -45,79 +55,89 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- Title -->  
         <div class="title">{{entry.title}}</div>  
 
-
           <!-- Author -->
-        <div class="author">
-        {% assign author_array_size = entry.author_array | size %}
-        {% assign author_array_limit = author_array_size %}
-        {%- if site.max_author_limit and author_array_size > site.max_author_limit %}
-          {% assign author_array_limit = site.max_author_limit %}
-        {% endif %}
-        {%- for author in entry.author_array limit: 1 -%}
-          {%- assign author_is_self = false -%}
-          {%- assign author_last_name = author.last | remove: "¶" | remove: "&" | remove: "*" | remove: "†" | remove: "^" -%}
-          {%- if site.scholar.last_name contains author_last_name -%}
-            {%- if site.scholar.first_name contains author.first -%}
-              {%- assign author_is_self = true -%}
-            {%- endif -%}
-          {%- endif -%}
-          {%- assign coauthor_url = nil -%}
-          {%- if site.data.coauthors[author_last_name] -%}
-            {%- for coauthor in site.data.coauthors[author_last_name] -%}
-              {%- if coauthor.firstname contains author.first -%}
-                {%- assign coauthor_url = coauthor.url -%}
+          <div class="author">
+            {% assign author_array_size = entry.author_array | size %}
+            {% assign farhad_index = nil %}
+            {% assign show_limit = author_array_size %}
+
+            {%- comment -%} Find the index of Farhad Allian {%- endcomment -%}
+            {%- for author in entry.author_array -%}
+              {%- assign author_last_name = author.last | remove: "¶" | remove: "&" | remove: "*" | remove: "†" | remove: "^" -%}
+              {%- if author.first contains "Farhad" and author_last_name contains "Allian" -%}
+                {%- assign farhad_index = forloop.index -%}
+                {%- assign show_limit = forloop.index -%}
                 {%- break -%}
               {%- endif -%}
             {%- endfor -%}
-          {%- endif -%}
-          {%- if forloop.length > 1 -%}
-            {%- if forloop.first == false -%},&nbsp;{%- endif -%}
-            {%- if forloop.last and 1 == author_array_size -%}and&nbsp;{%- endif -%}
-          {%- endif -%}
-          {%- if author_is_self -%}
-            <em>{{author.first}} {{author.last}}</em>
-          {%- else -%}
-            {%- if coauthor_url -%}
-              <a href="{{coauthor_url}}">{{author.first}} {{author.last}}</a>
-            {%- else -%}
-              {{author.first}} {{author.last}}
+
+            {%- comment -%} Display authors up to and including Farhad Allian {%- endcomment -%}
+            {%- for author in entry.author_array limit: show_limit -%}
+              {%- assign author_is_self = false -%}
+              {%- assign author_last_name = author.last | remove: "¶" | remove: "&" | remove: "*" | remove: "†" | remove: "^" -%}
+              {%- if site.scholar.last_name contains author_last_name -%}
+                {%- if site.scholar.first_name contains author.first -%}
+                  {%- assign author_is_self = true -%}
+                {%- endif -%}
+              {%- endif -%}
+              {%- assign coauthor_url = nil -%}
+              {%- if site.data.coauthors[author_last_name] -%}
+                {%- for coauthor in site.data.coauthors[author_last_name] -%}
+                  {%- if coauthor.firstname contains author.first -%}
+                    {%- assign coauthor_url = coauthor.url -%}
+                    {%- break -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endif -%}
+
+              {%- if forloop.index > 1 -%},{%- endif -%}
+              {%- if forloop.index > 1 -%}&nbsp;{%- endif -%}
+
+              {%- if author_is_self -%}
+                <em>{{author.first}} {{author.last}}</em>
+              {%- else -%}
+                {%- if coauthor_url -%}
+                  <a href="{{coauthor_url}}">{{author.first}} {{author.last}}</a>
+                {%- else -%}
+                  {{author.first}} {{author.last}}
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+
+            {%- comment -%} Handle "more authors" if there are authors after Farhad Allian {%- endcomment -%}
+            {%- if farhad_index and farhad_index < author_array_size -%}
+              {%- assign more_authors = author_array_size | minus: farhad_index -%}
+              {%- assign more_authors_hide = more_authors | append: " more author" -%}
+              {%- if more_authors > 1 -%}
+                {%- assign more_authors_hide = more_authors_hide | append: "s" -%}
+              {%- endif -%}
+
+              {%- assign more_authors_show = '' -%}
+              {%- for author in entry.author_array offset: farhad_index -%}
+                {%- assign more_authors_show = more_authors_show | append: author.first | append: " " | append: author.last -%}
+                {%- unless forloop.last -%}
+                  {%- assign more_authors_show = more_authors_show | append: ", " -%}
+                {%- endunless -%}
+              {%- endfor -%}
+              , and
+              <span
+                class="more-authors"
+                title="Click to view {{more_authors_hide}}"
+                onclick="
+                  var element = $(this);
+                  element.attr('title', '');
+                  var more_authors_text = element.text() == '{{more_authors_hide}}' ? '{{more_authors_show}}' : '{{more_authors_hide}}';
+                  var cursorPosition = 0;
+                  var textAdder = setInterval(function(){
+                    element.text(more_authors_text.substring(0, cursorPosition + 1));
+                    if (++cursorPosition == more_authors_text.length){
+                      clearInterval(textAdder);
+                    }
+                  }, '{{site.more_authors_animation_delay}}');
+                "
+              >{{more_authors_hide}}</span>
             {%- endif -%}
-          {%- endif -%}
-        {%- endfor -%}
-        {%- assign more_authors = author_array_size | minus: 1 -%}
-        {%- assign more_authors_hide = more_authors | append: " more author" -%}
-        {%- if more_authors > 0 -%}
-          {%- if more_authors > 1 -%}
-            {%- assign more_authors_hide = more_authors_hide | append: "s" -%}
-          {%- endif -%}
-          {%- assign more_authors_show = '' -%}
-          {%- for author in entry.author_array offset: 1 -%}
-            {%- assign more_authors_show = more_authors_show | append: author.first | append: " " | append: author.last -%}
-            {%- unless forloop.last -%}
-              {%- assign more_authors_show = more_authors_show | append: ", " -%}
-            {%- endunless -%}
-          {%- endfor -%}
-          , and
-          <span
-              class="more-authors"
-              title="Click to view {{more_authors_hide}}"
-              onclick="
-                var element = $(this);
-                element.attr('title', '');
-                var more_authors_text = element.text() == '{{more_authors_hide}}' ? '{{more_authors_show}}' : '{{more_authors_hide}}';
-                var cursorPosition = 0;
-                var textAdder = setInterval(function(){
-                  element.text(more_authors_text.substring(0, cursorPosition + 1));
-                  if (++cursorPosition == more_authors_text.length){
-                    clearInterval(textAdder);
-                  }
-              }, '{{site.more_authors_animation_delay}}');
-              "
-          >{{more_authors_hide}}</span>
-        {%- endif -%}
-
-
-        </div>
+          </div>
 
           <!-- Journal/Book title and date -->
           {% if entry.type == "article" -%}
