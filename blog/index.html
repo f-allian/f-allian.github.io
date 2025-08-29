@@ -12,157 +12,173 @@ pagination:
     before: 1 # The number of links before the current page
     after: 3  # The number of links after the current page
 ---
-
 <head>
 <meta name="robots" content="noindex">
-</head>
-
-<script>
-// JavaScript to rotate through words with delays
-function rotateText(element, words, rotationSpeed, typingSpeed, deletingSpeed, pauseBeforeStart, pauseBeforeDelete) {
-  if (!element || !Array.isArray(words) || words.length === 0 || !rotationSpeed || !typingSpeed || !deletingSpeed || !pauseBeforeStart || !pauseBeforeDelete) {
-    return;
+<style>
+  /* Particles background */
+  #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
   }
 
-  setTimeout(function() {
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
+  /* Optional: keep your content above particles */
+  .post {
+    position: relative;
+    z-index: 1;
+  }
 
-    function updateText() {
-      const currentWord = words[wordIndex];
-      let text = currentWord.substring(0, charIndex);
+  /* Center the "Coming soon" */
+  .post h5 {
+    text-align: center;
+    margin-top: 2rem;
+  }
+</style>
+</head>
 
-      if (isDeleting) {
-        text = currentWord.substring(0, charIndex);
-        charIndex--;
+<body>
+  <!-- Add the particles container -->
+  <div id="particles-js"></div>
 
-        if (charIndex === -1) {
+  <!-- Load particles.js library (you need this first) -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <!-- Initialize particles with your config -->
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  if (typeof particlesJS !== 'undefined') {
+
+    function loadParticlesConfig(isDark) {
+      const configFile = isDark
+        ? '{{ "/assets/particles-dark.json" | relative_url }}'
+        : '{{ "/assets/particles-light.json" | relative_url }}';
+
+      // Destroy existing instance
+      if (window.pJSDom && window.pJSDom.length > 0) {
+        window.pJSDom[0].pJS.fn.vendors.destroypJS();
+        window.pJSDom = [];
+      }
+
+      // Load new config
+      particlesJS.load('particles-js', configFile, function() {
+        console.log('Particles.js loaded with', isDark ? 'dark' : 'light', 'config');
+      });
+    }
+
+    // Initial load based on current theme
+    let isDark = document.body.classList.contains('dark'); // or however you store theme state
+    loadParticlesConfig(isDark);
+
+    // If you have a toggle button
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', function() {
+        isDark = !isDark; // toggle
+        loadParticlesConfig(isDark);
+      });
+    }
+
+    // Optional: also reload when OS-level theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      isDark = e.matches;
+      loadParticlesConfig(isDark);
+    });
+  }
+});
+</script>
+
+
+  <script>
+  // JavaScript to rotate through words with delays
+  function rotateText(element, words, rotationSpeed, typingSpeed, deletingSpeed, pauseBeforeStart, pauseBeforeDelete) {
+    if (!element || !Array.isArray(words) || words.length === 0) return;
+
+    setTimeout(function() {
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+
+      function updateText() {
+        const currentWord = words[wordIndex];
+        let text = isDeleting ? currentWord.substring(0, charIndex--) : currentWord.substring(0, ++charIndex);
+
+        element.textContent = text;
+
+        if (!isDeleting && charIndex === currentWord.length) {
+          isDeleting = true;
+          setTimeout(updateText, pauseBeforeDelete);
+        } else if (isDeleting && charIndex === -1) {
           isDeleting = false;
           wordIndex = (wordIndex + 1) % words.length;
           setTimeout(updateText, rotationSpeed);
         } else {
-          setTimeout(updateText, deletingSpeed);
-        }
-      } else {
-        text = currentWord.substring(0, charIndex + 1);
-        charIndex++;
-
-        if (charIndex === currentWord.length) {
-          isDeleting = true;
-          setTimeout(function() {
-            updateText();
-          }, pauseBeforeDelete); // Pause before deleting
-        } else {
-          setTimeout(updateText, typingSpeed);
+          setTimeout(updateText, isDeleting ? deletingSpeed : typingSpeed);
         }
       }
 
-      element.textContent = text;
-    }
+      updateText();
+    }, pauseBeforeStart);
+  }
 
-    updateText();
-  }, pauseBeforeStart);
-}
+  document.addEventListener('DOMContentLoaded', function() {
+    const element = document.querySelector('.txt-rotate');
+    const wordsToRotate = ['Data science', 'Machine learning', 'Software engineering'];
+    rotateText(element, wordsToRotate, 1000, 50, 35, 1000, 3000);
+  });
+  </script>
 
-// Initialize the rotation with a 1-second delay before starting and a 2-second delay before deleting
-document.addEventListener('DOMContentLoaded', function() {
-  const element = document.querySelector('.txt-rotate');
-  const wordsToRotate = ['Data Science', 'Machine Learning', 'Python Programming'];
-  const rotationSpeed = 1000;
-  const typingSpeed = 100;
-  const deletingSpeed = 150;
-  const pauseBeforeStart = 1000; // 1-second delay before starting
-  const pauseBeforeDelete = 2000; // 2-second delay before deleting
-  rotateText(element, wordsToRotate, rotationSpeed, typingSpeed, deletingSpeed, pauseBeforeStart, pauseBeforeDelete);
-});
+  <div class="post">
+    <div class="header-bar">
+      <h3><span class="txt-rotate"></span> <u><b>refined</b></u>.</h3>
+    </div>
 
-</script>
+    <h5>Coming soon...</h5>
 
-
-<div class="post">
-
-
-  <div class="header-bar">
-
-    <h1>Check back soon!</h1>
-
-<!--    <h3>
-      <span
-     class="txt-rotate"></span> <u>refined</u>.
-    </h3>-->
-
-  </div>
-
-
-  {% if site.display_tags %}
-  <div class="tag-list">
-    <ul class="p-0 m-0">
-      {% for tag in site.display_tags %}
-        <li>
-          <i class="fas fa-tag fa-sm"></i> <a href="{{ tag | slugify | prepend: '/blog/category/' | prepend: site.baseurl }}">{{ tag }}</a>
-        </li>
-        {% unless forloop.last %}
-          <p>&bull;</p>
-        {% endunless %}
-      {% endfor %}
-    </ul>
-  </div>
-  {% endif %}
-
-  <ul class="post-list">
-    {% for post in paginator.posts %}
-
-    {% if post.external_source == blank %}
-      {% assign read_time = post.content | number_of_words | divided_by: 180 | plus: 1 %}
-    {% else %}
-      {% assign read_time = post.feed_content | strip_html | number_of_words | divided_by: 180 | plus: 1 %}
+    {% if site.display_tags %}
+    <div class="tag-list">
+      <ul class="p-0 m-0">
+        {% for tag in site.display_tags %}
+          <li>
+            <i class="fas fa-tag fa-sm"></i> <a href="{{ tag | slugify | prepend: '/blog/category/' | prepend: site.baseurl }}">{{ tag }}</a>
+          </li>
+          {% unless forloop.last %}<p>&bull;</p>{% endunless %}
+        {% endfor %}
+      </ul>
+    </div>
     {% endif %}
-    {% assign year = post.date | date: "%Y" %}
-    {% assign tags = post.tags | join: "" %}
-    {% assign categories = post.categories | join: "" %}
 
-    <li class="blog-publications">
-
-      <h3>
-        {% if post.redirect == blank %}
-          <a class="post-title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        {% else %}
-          {% if post.redirect contains '://' %}
-            <a class="post-title" href="{{ post.redirect }}" rel="noopener noreferrer" target="_blank">{{ post.title }}</a>
-            <svg width="2rem" height="2rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
+    <ul class="post-list">
+      {% for post in paginator.posts %}
+      {% assign read_time = post.external_source == blank ? post.content | number_of_words | divided_by: 180 | plus: 1 : post.feed_content | strip_html | number_of_words | divided_by: 180 | plus: 1 %}
+      <li class="blog-publications">
+        <h3>
+          {% if post.redirect == blank %}
+            <a class="post-title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
           {% else %}
-            <a class="post-title" href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
+            {% if post.redirect contains '://' %}
+              <a class="post-title" href="{{ post.redirect }}" rel="noopener noreferrer" target="_blank">{{ post.title }}</a>
+            {% else %}
+              <a class="post-title" href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
+            {% endif %}
           {% endif %}
-        {% endif %}
-      </h3>
-
-
-      <p>{{ post.description }}</p>
-      <p class="post-meta">
-        {{ read_time }} min read &nbsp; &middot; &nbsp;
-        {{ post.date | date: '%B %-d, %Y' }}
-        {%- if post.external_source %}
-        &nbsp; &middot; &nbsp; {{ post.external_source }}
-        {%- endif %}
-      </p>
-
-
-      <p class="post-tags">
-          {% if tags != "" %}
+        </h3>
+        <p>{{ post.description }}</p>
+        <p class="post-meta">{{ read_time }} min read &nbsp; &middot; &nbsp; {{ post.date | date: '%B %-d, %Y' }}{% if post.external_source %} &nbsp; &middot; &nbsp; {{ post.external_source }}{% endif %}</p>
+        <p class="post-tags">
+          {% if post.tags %}
             {% for tag in post.tags %}
             <a href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}">
               <i class="fas fa-hashtag fa-sm"></i> {{ tag }}</a> &nbsp;
-              {% endfor %}
+            {% endfor %}
           {% endif %}
-      </p>
-    </li>
+        </p>
+      </li>
+      {% endfor %}
+    </ul>
 
-    {% endfor %}
-  </ul>
-
-  {% include pagination.html %}
-
-</div>
+    {% include pagination.html %}
+  </div>
+</body>
