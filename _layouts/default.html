@@ -15,7 +15,6 @@ layout: parse
    <meta name="description" content="{{ page.description | default: site.description }}">
    <link rel="canonical" href="{{ site.url }}">
   </head>
-
   <!-- Body -->
   <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
 
@@ -39,5 +38,6 @@ layout: parse
     {% include scripts/analytics.html %}
     {% include scripts/badges.html %}
     {% include scripts/progressBar.html %}
+    {% include scripts/additional_analytics.html %}
   </body>
 </html>

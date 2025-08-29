@@ -1,0 +1,516 @@
+<!-- Save this as _includes/complete-tracking.html -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Only run if Google Analytics is loaded
+    if (typeof gtag === 'undefined') return;
+
+    // ============================================
+    // SOCIAL & EXTERNAL LINK TRACKING
+    // ============================================
+
+    // GitHub clicks
+    document.querySelectorAll('a[href*="github.com"]').forEach(link => {
+        link.addEventListener('click', function() {
+            gtag('event', 'social_click', {
+                'platform': 'github',
+                'link_url': this.href,
+                'link_text': this.textContent.trim()
+            });
+        });
+    });
+
+    // LinkedIn clicks
+    document.querySelectorAll('a[href*="linkedin.com"]').forEach(link => {
+        link.addEventListener('click', function() {
+            gtag('event', 'social_click', {
+                'platform': 'linkedin',
+                'link_url': this.href
+            });
+        });
+    });
+
+    // Strava clicks
+    document.querySelectorAll('a[href*="strava.com"]').forEach(link => {
+        link.addEventListener('click', function() {
+            gtag('event', 'social_click', {
+                'platform': 'strava',
+                'link_url': this.href
+            });
+        });
+    });
+
+    // Email clicks
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            gtag('event', 'contact_click', {
+                'method': 'email',
+                'email': this.href.replace('mailto:', '')
+            });
+        });
+    });
+
+    // ============================================
+    // FILE DOWNLOADS
+    // ============================================
+
+    // PDF downloads (CV, papers, etc)
+    document.querySelectorAll('a[href$=".pdf"]').forEach(link => {
+        link.addEventListener('click', function() {
+            var filename = this.href.split('/').pop();
+            var isCV = filename.toLowerCase().includes('cv') || filename.toLowerCase().includes('resume');
+            var isPaper = this.href.includes('/papers/') || this.href.includes('/publications/');
+
+            gtag('event', 'file_download', {
+                'file_name': filename,
+                'file_type': 'pdf',
+                'file_category': isCV ? 'cv' : (isPaper ? 'publication' : 'other'),
+                'link_url': this.href
+            });
+        });
+    });
+
+    // ============================================
+    // ACADEMIC TRACKING
+    // ============================================
+
+    // Abstract expansions
+    document.querySelectorAll('.abstract').forEach(abstract => {
+        abstract.addEventListener('click', function() {
+            var paperTitle = this.closest('.publication')?.querySelector('.title')?.textContent || 'Unknown';
+            gtag('event', 'abstract_view', {
+                'paper_title': paperTitle.trim(),
+                'action': 'expand'
+            });
+        });
+    });
+
+    // BibTeX clicks
+    document.querySelectorAll('.bibtex').forEach(bib => {
+        bib.addEventListener('click', function() {
+            var paperTitle = this.closest('.publication')?.querySelector('.title')?.textContent || 'Unknown';
+            gtag('event', 'bibtex_copy', {
+                'paper_title': paperTitle.trim()
+            });
+        });
+    });
+
+    // ArXiv/external paper links
+    document.querySelectorAll('a[href*="arxiv.org"], a[href*="doi.org"], a[href*="scholar.google"]').forEach(link => {
+        link.addEventListener('click', function() {
+            gtag('event', 'external_paper_click', {
+                'destination': new URL(this.href).hostname,
+                'url': this.href
+            });
+        });
+    });
+
+    // ============================================
+    // CONTENT ENGAGEMENT
+    // ============================================
+
+    // Track time on page with engagement
+    let startTime = Date.now();
+    let isEngaged = true;
+    let engagementTime = 0;
+    let lastActiveTime = Date.now();
+
+    // Track if user is actually engaged
+    function trackEngagement() {
+        if (document.hidden) {
+            isEngaged = false;
+        } else {
+            isEngaged = true;
+            lastActiveTime = Date.now();
+        }
+    }
+
+    document.addEventListener('visibilitychange', trackEngagement);
+    document.addEventListener('mousemove', () => { lastActiveTime = Date.now(); });
+    document.addEventListener('scroll', () => { lastActiveTime = Date.now(); });
+    document.addEventListener('keypress', () => { lastActiveTime = Date.now(); });
+
+    // Send engagement time when leaving
+    window.addEventListener('beforeunload', function() {
+        let totalTime = Math.round((Date.now() - startTime) / 1000);
+        let currentPage = window.location.pathname;
+
+        gtag('event', 'page_engagement', {
+            'page_path': currentPage,
+            'total_time_seconds': totalTime,
+            'page_title': document.title
+        });
+
+        // Special tracking for specific pages
+        if (currentPage.includes('/cv') || currentPage.includes('/resume')) {
+            gtag('event', 'cv_view_time', {
+                'seconds_spent': totalTime
+            });
+        }
+
+        if (currentPage === '/' || currentPage.includes('/about')) {
+            gtag('event', 'about_page_time', {
+                'seconds_spent': totalTime
+            });
+        }
+    });
+
+    // ============================================
+    // SCROLL TRACKING
+    // ============================================
+
+    let scrollDepths = [10, 25, 50, 75, 90, 100];
+    let scrollsRecorded = [];
+
+    function getScrollPercent() {
+        return Math.round((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100);
+    }
+
+    window.addEventListener('scroll', function() {
+        let scrollPercent = getScrollPercent();
+
+        scrollDepths.forEach(depth => {
+            if (scrollPercent >= depth && !scrollsRecorded.includes(depth)) {
+                scrollsRecorded.push(depth);
+                gtag('event', 'scroll_depth', {
+                    'percent': depth,
+                    'page_path': window.location.pathname,
+                    'page_title': document.title
+                });
+            }
+        });
+    });
+
+    // ============================================
+    // BLOG TRACKING
+    // ============================================
+
+    if (window.location.pathname.includes('/blog/')) {
+        // Calculate reading time
+        let content = document.querySelector('.post-content, article');
+        if (content) {
+            let text = content.innerText;
+            let wordCount = text.trim().split(/\s+/).length;
+            let estimatedReadTime = Math.ceil(wordCount / 250); // 250 words per minute
+
+            let readingStartTime = Date.now();
+
+            window.addEventListener('beforeunload', function() {
+                let actualReadTime = Math.round((Date.now() - readingStartTime) / 60000); // in minutes
+                let scrollPercent = getScrollPercent();
+
+                gtag('event', 'blog_engagement', {
+                    'article_title': document.title,
+                    'estimated_read_time_min': estimatedReadTime,
+                    'actual_read_time_min': actualReadTime,
+                    'completion_percent': scrollPercent,
+                    'word_count': wordCount,
+                    'read_completion': actualReadTime >= estimatedReadTime * 0.8 ? 'complete' : 'partial'
+                });
+            });
+        }
+
+        // Track blog tag clicks
+        document.querySelectorAll('a[href*="/blog/tag/"]').forEach(tag => {
+            tag.addEventListener('click', function() {
+                let tagName = this.textContent.trim().replace('#', '');
+                gtag('event', 'blog_tag_click', {
+                    'tag_name': tagName
+                });
+            });
+        });
+    }
+
+    // ============================================
+    // NAVIGATION TRACKING
+    // ============================================
+
+    // Track navigation menu clicks
+    document.querySelectorAll('nav a, .navbar a').forEach(link => {
+        link.addEventListener('click', function() {
+            gtag('event', 'navigation_click', {
+                'menu_item': this.textContent.trim(),
+                'destination': this.href
+            });
+        });
+    });
+
+    // Track internal link clicks
+    document.querySelectorAll('a[href^="/"], a[href^="' + window.location.origin + '"]').forEach(link => {
+        // Skip if already tracked elsewhere
+        if (link.href.includes('.pdf') || link.href.includes('mailto:')) return;
+
+        link.addEventListener('click', function() {
+            gtag('event', 'internal_link_click', {
+                'from_page': window.location.pathname,
+                'to_page': new URL(this.href).pathname,
+                'link_text': this.textContent.trim().substring(0, 50)
+            });
+        });
+    });
+
+    // ============================================
+    // PROJECT TRACKING
+    // ============================================
+
+    // Track project card clicks
+    document.querySelectorAll('.project, .project-card, [class*="project"]').forEach(project => {
+        project.addEventListener('click', function(e) {
+            let projectTitle = this.querySelector('h2, h3, h4, .title')?.textContent || 'Unknown Project';
+            gtag('event', 'project_view', {
+                'project_name': projectTitle.trim(),
+                'action': 'card_click'
+            });
+        });
+    });
+
+    // Track project links
+    document.querySelectorAll('a[href*="/projects/"]').forEach(link => {
+        link.addEventListener('click', function() {
+            gtag('event', 'project_click', {
+                'project_url': this.href,
+                'project_name': this.textContent.trim()
+            });
+        });
+    });
+
+    // ============================================
+    // USER PREFERENCES
+    // ============================================
+
+    // Track dark mode toggle
+    let darkModeToggle = document.querySelector('[class*="dark"], [id*="dark"], [data-toggle*="dark"]');
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', function() {
+            let isDark = document.body.classList.contains('dark') ||
+                         document.documentElement.classList.contains('dark');
+            gtag('event', 'preference_change', {
+                'preference': 'theme',
+                'value': isDark ? 'light' : 'dark' // It's opposite because click hasn't applied yet
+            });
+        });
+    }
+
+    // ============================================
+    // ERROR TRACKING
+    // ============================================
+
+    // Track 404 errors
+    if (document.title.includes('404') || window.location.pathname.includes('404')) {
+        gtag('event', 'error_404', {
+            'page_location': window.location.href,
+            'referrer': document.referrer
+        });
+    }
+
+    // Track JavaScript errors
+    window.addEventListener('error', function(e) {
+        gtag('event', 'javascript_error', {
+            'error_message': e.message,
+            'error_source': e.filename,
+            'error_line': e.lineno,
+            'page_url': window.location.href
+        });
+    });
+
+    // ============================================
+    // INTERACTION PATTERNS
+    // ============================================
+
+    // Track rage clicks (multiple clicks in same area)
+    let clickCount = 0;
+    let lastClickTime = 0;
+    let lastClickTarget = null;
+
+    document.addEventListener('click', function(e) {
+        let now = Date.now();
+        if (e.target === lastClickTarget && (now - lastClickTime) < 500) {
+            clickCount++;
+            if (clickCount >= 3) {
+                gtag('event', 'rage_click', {
+                    'element': e.target.tagName,
+                    'element_text': e.target.textContent?.substring(0, 30),
+                    'page_path': window.location.pathname
+                });
+                clickCount = 0;
+            }
+        } else {
+            clickCount = 1;
+        }
+        lastClickTime = now;
+        lastClickTarget = e.target;
+    });
+
+    // Track dead clicks (clicks on non-interactive elements)
+    document.addEventListener('click', function(e) {
+        let element = e.target;
+        let isInteractive = element.tagName === 'A' ||
+                          element.tagName === 'BUTTON' ||
+                          element.tagName === 'INPUT' ||
+                          element.onclick !== null ||
+                          element.closest('a, button, input');
+
+        if (!isInteractive) {
+            gtag('event', 'dead_click', {
+                'element': element.tagName,
+                'element_class': element.className,
+                'page_path': window.location.pathname
+            });
+        }
+    });
+
+    // ============================================
+    // IMAGE & MEDIA TRACKING
+    // ============================================
+
+    // Track image clicks/enlargements
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('click', function() {
+            gtag('event', 'image_click', {
+                'image_src': this.src,
+                'image_alt': this.alt || 'No alt text',
+                'page_path': window.location.pathname
+            });
+        });
+    });
+
+    // ============================================
+    // FORM TRACKING (if you have forms)
+    // ============================================
+
+    document.querySelectorAll('form').forEach(form => {
+        let formStartTime = null;
+        let formName = form.id || form.name || 'unnamed_form';
+
+        // Track form starts
+        form.addEventListener('focusin', function() {
+            if (!formStartTime) {
+                formStartTime = Date.now();
+                gtag('event', 'form_start', {
+                    'form_name': formName
+                });
+            }
+        });
+
+        // Track form submissions
+        form.addEventListener('submit', function() {
+            let timeToComplete = formStartTime ? Math.round((Date.now() - formStartTime) / 1000) : 0;
+            gtag('event', 'form_submit', {
+                'form_name': formName,
+                'completion_time_seconds': timeToComplete
+            });
+        });
+    });
+
+    // ============================================
+    // COPY EVENT TRACKING
+    // ============================================
+
+    document.addEventListener('copy', function(e) {
+        let copiedText = window.getSelection().toString();
+        if (copiedText.length > 0) {
+            gtag('event', 'content_copy', {
+                'copied_length': copiedText.length,
+                'copied_preview': copiedText.substring(0, 50),
+                'page_path': window.location.pathname
+            });
+        }
+    });
+
+    // ============================================
+    // PRINT TRACKING
+    // ============================================
+
+    window.addEventListener('beforeprint', function() {
+        gtag('event', 'print_page', {
+            'page_path': window.location.pathname,
+            'page_title': document.title
+        });
+    });
+
+    // ============================================
+    // EXTERNAL LINK TRACKING
+    // ============================================
+
+    // Track ALL external links
+    document.querySelectorAll('a[href^="http"]:not([href*="' + window.location.hostname + '"])').forEach(link => {
+        link.addEventListener('click', function() {
+            let domain = new URL(this.href).hostname;
+            gtag('event', 'outbound_click', {
+                'destination_domain': domain,
+                'destination_url': this.href,
+                'link_text': this.textContent.trim().substring(0, 50)
+            });
+        });
+    });
+
+    // ============================================
+    // SESSION QUALITY SIGNALS
+    // ============================================
+
+    // Track bounce likelihood
+    setTimeout(function() {
+        gtag('event', 'adjusted_bounce', {
+            'page_path': window.location.pathname,
+            'seconds_on_page': 15
+        });
+    }, 15000); // User stayed at least 15 seconds
+
+    // Track micro-conversions at different time thresholds
+    [30, 60, 120, 300].forEach(seconds => {
+        setTimeout(function() {
+            gtag('event', 'engagement_milestone', {
+                'seconds': seconds,
+                'page_path': window.location.pathname
+            });
+        }, seconds * 1000);
+    });
+
+    // ============================================
+    // DEVICE & BROWSER FEATURES
+    // ============================================
+
+    // Track viewport size
+    gtag('event', 'viewport_size', {
+        'width': window.innerWidth,
+        'height': window.innerHeight,
+        'screen_width': screen.width,
+        'screen_height': screen.height,
+        'device_category': window.innerWidth < 768 ? 'mobile' : (window.innerWidth < 1024 ? 'tablet' : 'desktop')
+    });
+
+    // Track connection speed (if available)
+    if (navigator.connection) {
+        gtag('event', 'connection_info', {
+            'effective_type': navigator.connection.effectiveType,
+            'downlink': navigator.connection.downlink,
+            'rtt': navigator.connection.rtt
+        });
+    }
+
+});
+
+// ============================================
+// PERFORMANCE TRACKING
+// ============================================
+
+window.addEventListener('load', function() {
+    // Only run if Performance API is available
+    if (window.performance && window.performance.timing) {
+        setTimeout(function() {
+            const perfData = window.performance.timing;
+            const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+            const connectTime = perfData.responseEnd - perfData.requestStart;
+            const renderTime = perfData.domComplete - perfData.domLoading;
+
+            if (pageLoadTime > 0) {
+                gtag('event', 'page_performance', {
+                    'page_load_time_ms': pageLoadTime,
+                    'connect_time_ms': connectTime,
+                    'render_time_ms': renderTime,
+                    'page_path': window.location.pathname
+                });
+            }
+        }, 0);
+    }
+});
+</script>
