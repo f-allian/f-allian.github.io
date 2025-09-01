@@ -36,3 +36,17 @@
     <script src="{{ '/assets/js/theme.js' | relative_url | bust_file_cache }}"></script>
     <script src="{{ '/assets/js/dark_mode.js' | relative_url | bust_file_cache }}"></script>
     {% endif %}
+
+    {% if page.tikz %}
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    {% endif %}
+
+    <!-- Always preload, conditionally activate -->
+    <link rel="preload" href="https://tikzjax.com/v1/tikzjax.js" as="script">
+    <link rel="preload" href="https://tikzjax.com/v1/fonts.css" as="style">
+
+    {% if page.tikz %}
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js" defer></script>
+    {% endif %}
