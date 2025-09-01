@@ -298,7 +298,7 @@ footer.fixed-bottom {
   }
   a {
     color: var(--global-theme-color);
-    font-weight: bolder;
+    font-weight: bold;
     &:hover {
       color: var(--global-theme-color);
       text-decoration: none;
@@ -394,6 +394,35 @@ footer.sticky-bottom {
     margin-bottom: 1rem;
     max-width: 100%;
     width: 95%;
+    color: var(--global-text-color);
+        // Override ALL link styles inside h3
+    a.post-title,
+    .post-title,
+    a {
+      color: var(--global-text-color) !important;  // Force text color
+      text-decoration: none !important;            // Remove underline
+      font-weight: 500;                            // Normal-ish weight
+      font-size: inherit;                          // Use h3's font size
+      display: inline-block;
+      width: 100%;
+
+      // Hover state
+      &:hover {
+        color: var(--global-theme-color) !important;  // Different color on hover
+        text-decoration: none !important;             // Still no underline
+      }
+
+      // Visited state
+      &:visited {
+        color: var(--global-text-color) !important;   // Same color after visiting
+      }
+
+      // Focus state
+      &:focus {
+        outline: none;
+        color: var(--global-theme-color) !important;
+      }
+    }
   }
 
   p {
@@ -1343,48 +1372,19 @@ html.transition *:after {
   width: 100%;
   max-width: 100%;
 }
-/* Default: hide dark mode images, show light mode images */
-.dark-mode-only {
-  display: none;
-}
 
-.light-mode-only {
-  display: block;
-}
+/* default */
+.light-mode-only { display: block; }
+.dark-mode-only  { display: none; }
 
-/* System preference: Light mode */
-@media (prefers-color-scheme: light) {
-  .dark-mode-only {
-    display: none;
-  }
-  .light-mode-only {
-    display: block;
-  }
-}
-
-/* System preference: Dark mode */
+/* system preference */
 @media (prefers-color-scheme: dark) {
-  .light-mode-only {
-    display: none;
-  }
-  .dark-mode-only {
-    display: block;
-  }
+  .light-mode-only { display: none; }
+  .dark-mode-only  { display: block; }
 }
 
-/* If your site has a manual theme toggle with data attribute */
-[data-theme="dark"] .light-mode-only {
-  display: none;
-}
-
-[data-theme="dark"] .dark-mode-only {
-  display: block;
-}
-
-[data-theme="light"] .dark-mode-only {
-  display: none;
-}
-
-[data-theme="light"] .light-mode-only {
-  display: block;
-}
+/* manual override via [data-theme] */
+[data-theme="light"] .light-mode-only { display: block; }
+[data-theme="light"] .dark-mode-only  { display: none; }
+[data-theme="dark"]  .light-mode-only { display: none; }
+[data-theme="dark"]  .dark-mode-only  { display: block; }
