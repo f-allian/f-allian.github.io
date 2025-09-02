@@ -169,12 +169,10 @@ document.addEventListener('DOMContentLoaded', function() {
     <h3><span class="txt-rotate"></span> <u><b>refined</b></u>.</h3>
   </div>
 
-  <!-- Remove or comment out this "Coming soon" section if you want to show posts -->
-  <!--
+<!--   Remove or comment out this "Coming soon" section to show posts -->
   <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top:20px;">
     <h5>Coming soon...</h5>
   </div>
-  -->
 
   {% if site.display_tags %}
   <div class="tag-list">
@@ -238,27 +236,6 @@ document.addEventListener('DOMContentLoaded', function() {
     </li>
     {% endfor %}
   </ul>
-
-  <!-- Debug section - remove this after testing -->
-  {% if paginator.posts.size == 0 %}
-  <div style="padding: 20px; background: #f0f0f0; border-radius: 5px; margin: 20px 0;">
-    <h4>No posts found. Debug info:</h4>
-    <p>Total site posts: {{ site.posts.size }}</p>
-    <p>Paginator posts: {{ paginator.posts.size }}</p>
-
-    {% if site.posts.size > 0 %}
-      <h5>All posts in site:</h5>
-      <ul>
-        {% for post in site.posts %}
-          <li>{{ post.title }} - {{ post.date | date: '%Y-%m-%d' }} - Layout: {{ post.layout }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-
-    <p>Note: Posts with future dates won't show unless you run Jekyll with --future flag</p>
-  </div>
-  {% endif %}
-
   {% include pagination.html %}
 </div>
 </body>
