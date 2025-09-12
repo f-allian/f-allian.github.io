@@ -1,25 +1,38 @@
+<div class="news">
+  <h5>News</h5>
+  {% if site.news != blank -%}
+  <div class="table-responsive">
+    <table class="table table-sm table">
+    {%- assign news = site.news | reverse -%}
+    {% for item in news limit: site.news_limit %}
+      <tr>
+        {% comment %} Abbreviated month logic {% endcomment %}
+        {% assign month_full = item.date | date: "%B" %}
+        {% assign month = month_full %}
+        {% if month_full == "January" %}{% assign month = "Jan" %}
+        {% elsif month_full == "February" %}{% assign month = "Feb" %}
+        {% elsif month_full == "March" %}{% assign month = "Mar" %}
+        {% elsif month_full == "April" %}{% assign month = "Apr" %}
+        {% elsif month_full == "August" %}{% assign month = "Aug" %}
+        {% elsif month_full == "September" %}{% assign month = "Sept" %}
+        {% elsif month_full == "October" %}{% assign month = "Oct" %}
+        {% elsif month_full == "November" %}{% assign month = "Nov" %}
+        {% elsif month_full == "December" %}{% assign month = "Dec" %}
+        {% endif %}
 
-          <div class="news">
-            <h5>News</h5>
-            {% if site.news != blank -%}
-            <div class="table-responsive">
-              <table class="table table-sm table">
-              {%- assign news = site.news | reverse -%}
-              {% for item in news limit: site.news_limit %}
-                <tr>
-                  <th scope="row">{{ item.date | date: "%B %y" }}</th>
-                  <td>
-                    {% if item.inline -%}
-                      {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
-                    {%- else -%}
-                      <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
-                    {%- endif %}
-                  </td>
-                </tr>
-              {%- endfor %}
-              </table>
-            </div>
+        <th scope="row">{{ month }} {{ item.date | date: "%y" }}</th>
+        <td>
+          {% if item.inline -%}
+            {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
           {%- else -%}
-            <p>No news so far...</p>
+            <a class="news-title" href="{{ item.url | relative_url }}">{{ item.list_title | default: item.title }}</a>
           {%- endif %}
-          </div>
+        </td>
+      </tr>
+    {%- endfor %}
+    </table>
+  </div>
+{%- else -%}
+  <p>No news so far...</p>
+{%- endif %}
+</div>
