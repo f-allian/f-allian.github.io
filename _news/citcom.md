@@ -11,17 +11,24 @@ tags: [Software, Engineering, Paper]
 
 ---
 
-As part of my project work, I'm a research software engineer on the CITCOM project led by [Dr. Neil Walkinshaw](https://neilwalkinshaw.github.io/) where
+As part of my project work, I'm a research software engineer on the CITCOM project, led by [Dr. Neil Walkinshaw](https://neilwalkinshaw.github.io/) where
 I support the development and maintenance of the Causal Testing Framework; a causal inference-driven framework for functional black-box testing of complex software written in Python.
 
-In a nutshell, computational models can be challenging to test. This can be due to several reasons, including the lack of ground truth makes it difficult to know the “correct” answer,
-large parameter spaces means testing at scale can be computational costly, and the stochasticity of simulations can cause different outputs for the same input, making robust and reliable testing difficult to achieve. 
-The causal testing framework utilises the power of causal inference that draws upon the testers subject-matter knowledge to better model the relationship between inputs and outputs compared to traditional methods. 
-For more details on the theory of the causal testing framework, check out the following papers: [Metamorphic Testing with Causal Graphs](https://eprints.whiterose.ac.uk/id/eprint/195317/1/CITCOM_2022_ICST%20%284%29.pdf),
-[Testing Causality in Scientific Modelling Software](https://dl.acm.org/doi/abs/10.1145/3607184) and [Causal Test Adequacy](https://eprints.whiterose.ac.uk/id/eprint/208652/1/main.pdf).
+In simple terms, we're solving the problem of how to reliably test complex computational models. Testing such models presents several key challenges, including:
 
-For more practical information of the framework, we recently published a [software paper](https://joss.theoj.org/papers/10.21105/joss.07739) in the Journal of Open Source Software, led by [Dr. Michael Foster](https://jmafoster1.github.io/), that outlines the concept of causal testing
-at a high level. You can find our codebase including examples and documentation on our [GitHub repository](https://github.com/CITCOM-project/CausalTestingFramework).
+- **Lack of ground truth** makes it difficult to know the "correct" answer.
+- **Large parameter spaces** mean testing at scale can be computationally costly.
+- **Stochasticity of simulations** can cause different outputs for the same input, making robust and reliable testing difficult to achieve.
+
+To address these challenges, our framework employs the power of causal inference, drawing upon the tester's subject-matter knowledge to better model the relationship between inputs and outputs compared to traditional methods.
+For more details on the theory behind the causal testing framework, check out the following papers:
+
+1. [Metamorphic Testing with Causal Graphs](https://eprints.whiterose.ac.uk/id/eprint/195317/1/CITCOM_2022_ICST%20%284%29.pdf)
+2. [Testing Causality in Scientific Modelling Software](https://dl.acm.org/doi/abs/10.1145/3607184)
+3. [Causal Test Adequacy](https://eprints.whiterose.ac.uk/id/eprint/208652/1/main.pdf)
+
+For more practical information on our tool, we recently published a [software paper](https://joss.theoj.org/papers/10.21105/joss.07739) in the Journal of Open Source Software, led by [Dr. Michael Foster](https://jmafoster1.github.io/), that outlines the concept of causal testing
+at a high level. You can also find our codebase including examples and documentation on our [GitHub repository](https://github.com/CITCOM-project/CausalTestingFramework).
 
 ---
 <style>
