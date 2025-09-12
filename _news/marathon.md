@@ -21,9 +21,8 @@ of having all four seasons in a single day, the conditions were so perfect that 
 
 I met a fair few nice folks along the way and was pleasantly surprised at how kind people can be, even when you're both climbing a hill so steep 
 that your quads feel more uncomfortable than being on the Central line in peak British summer. To be honest, the downhills also had their bumps in the road
-(literally, I almost twisted my ankles about 10 times on the rocky terrains) because of the terrain but also because of the outright lag between my brain and
-legs and my acceleration that meant I was running faster than I should have been (thanks, Isaac Newton). 26.2 miles of undulating trail paths later, I finished my first marathon with a
-time of 5:35:10.
+(literally, I almost twisted my ankles about 10 times on the rocky terrains) because of the terrain but also because my legs couldn’t keep up with my acceleration 
+(thanks, Isaac Newton). 26.2 miles of undulating trail paths later, I finished my first marathon with a time of 5:35:10.
 
 All in all, I think I prepared and managed everything pretty well for this. If I were to do this again, I wouldn't - kidding, but I'd probably consider
 take some hiking poles to make the climbs a bit easier. Alternatively, I'd rock up with the biggest quads that even Usain Bolt would be asking
