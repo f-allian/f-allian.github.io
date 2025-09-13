@@ -11,7 +11,7 @@ tags: [Software, Engineering, Paper]
 
 ---
 
-As part of my project work, I'm a research software engineer on the CITCOM project, led by [Dr. Neil Walkinshaw](https://neilwalkinshaw.github.io/) where
+As part of my project work, I'm a research software engineer on the CITCOM project, led by [Dr. Neil Walkinshaw](https://neilwalkinshaw.github.io/), where
 I support the development and maintenance of the Causal Testing Framework; a causal inference-driven framework for functional black-box testing of complex software written in Python.
 
 In simple terms, we're solving the problem of how to reliably test complex computational models. Testing such models presents several key challenges, including:
