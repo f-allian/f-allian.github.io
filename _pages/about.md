@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: <b>Research Data Engineer</b>  @ <a href="https://www.sheffield.ac.uk/" target="_blank" rel="noopener">The University of Sheffield</a>
+subtitle: <b>Research Engineer</b>  @ <a href="https://www.sheffield.ac.uk/" target="_blank" rel="noopener">The University of Sheffield</a>
 profile:
   align: center
   image: prof_pic.jpg
