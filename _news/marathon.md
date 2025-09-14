@@ -15,17 +15,16 @@ Even though I'd still consider myself relatively new to the running scene, it wa
 Don't get me wrong; a trail marathon with over 1000 metres elevation gain is exactly as painful as it sounds, 
 but I had been training well, slowly ramping up my weekly distances, staying on top of my nutrition and giving myself the time to recover properly.
 
-On the morning of, I arrived at Staughton Park for an 8 am start. There were probably about a few hundred people there, with 
-participants either taking on a hike or run, with options for a 25 km or the full marathon. Even though Scotland has a reputation
-of having all four seasons in a single day, the conditions were so perfect that even the Met Office were shocked (for legal reasons, this is a joke).
+On the morning of the race, I arrived at Staughton Park for an 8 am start. There were a few hundred people there, with 
+participants either taking on a hike or a run, with options for a 25 km or the full marathon. Even though Scotland has a reputation
+for having all four seasons on a given day, the conditions were so perfect that the Met Office were so shocked that they had to issue a public apology for getting the forecast wrong (for legal reasons, this is a joke).
 
-I met a fair few nice folks along the way and was pleasantly surprised at how kind people can be, even when you're both climbing a hill so steep 
-that your quads feel more uncomfortable than being on the Central line in peak British summer. To be honest, the downhills also had their bumps in the road
-(literally, I almost twisted my ankles about 10 times on the rocky terrains) because of the terrain but also because my legs couldn’t keep up with my acceleration 
-(thanks, Isaac Newton). 26.2 miles of undulating trail paths later, I finished my first marathon with a time of 5:35:10.
+I met a fair few nice folks along the way and was pleasantly surprised at how good-natured people can be, even when you're both climbing a hill so steep 
+that your quads feel more uncomfortable than being on the Central line in the zenith of British summer. To be honest, the downhills also had their bumps in the road---literally, I almost twisted my ankle about 10 times on the rocky surfaces---
+because of the terrain but also because my legs couldn’t keep up with my acceleration (cheers, Isaac Newton). 26.2 miles of undulating trail paths later, I finished my first marathon with a time of 5:35:10.
 
-All in all, I think I prepared and managed everything pretty well for this. If I were to do this again, I wouldn't - kidding, but I'd probably consider
-take some hiking poles to make the climbs a bit easier. Alternatively, I'd rock up with the biggest quads that even Usain Bolt would be asking
+All in all, I think I prepared and managed everything pretty well for this. If I were to do this again, I wouldn't --- kidding, but I'd probably consider
+taking some hiking poles to make the climbs a bit easier. Alternatively, I'll rock up with the biggest quads that even Usain Bolt would be asking
 for my leg day training plan.
 
 Now to continue training for the Sheffield 10k, and the Glasgow half-marathon (spaced 7 days apart) in just a few weeks. Smart, I know...
