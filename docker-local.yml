@@ -1,10 +1,11 @@
-version: "3"
+version: "3.9"
 
 services:
   jekyll_custom:
     build: .
     image: al-folio-local-docker
     ports:
-      - 8080:8080
+      - "8080:8080"
     volumes:
       - .:/srv/jekyll
+    command: jekyll serve --incremental --watch --port=8080 --host=0.0.0.0 --livereload
