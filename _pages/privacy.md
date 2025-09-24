@@ -6,9 +6,7 @@ description: How this website collects and uses data
 nav: false
 ---
 
-## Privacy Policy
-
-**Last updated: August 2025**
+**Last updated: September 2025**
 
 ### What information is collected?
 
