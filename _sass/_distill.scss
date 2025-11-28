@@ -1,47 +1,54 @@
 /*******************************************************************************
  * Style overrides for distill blog posts.
  ******************************************************************************/
-
 d-byline {
   border-top-color: var(--global-divider-color) !important;
 }
-
 d-byline h3 {
   color: var(--global-text-color) !important;
 }
-
 d-byline a, d-article d-byline a {
   color: var(--global-text-color) !important;
-  text-decoration: none;
+  text-decoration: none !important;
   &:hover {
     color: var(--global-hover-color) !important;
-    text-decoration: none;
+    text-decoration: none !important;
   }
 }
-
-
 d-article {
   border-top-color: var(--global-divider-color) !important;
-  a, p, h1, h2, h3, h4, h5, h6, li, table {
+  /* General text styling */
+  p, h1, h2, h3, h4, h5, h6, li {
     color: var(--global-text-color) !important;
   }
-  a, hr, table, table th, table td {
-    border-bottom: none !important;
+  /* Links styled separately */
+  a {
     color: var(--global-theme-color) !important;
+    text-decoration: none !important
   }
 
-
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+  table th, table td {
+    padding: 1.5em !important; /* Increased row height spacing (50% larger) */
+    text-align: left !important;
+    vertical-align: middle !important;
+    border-bottom: 1px solid var(--global-divider-color) !important;
+    color: var(--global-text-color) !important; /* Table text only */
+  }
+  /* Links inside tables keep theme color */
+  table a {
+    color: var(--global-theme-color) !important;
+  }
   a:hover {
     border-bottom: none !important;
     text-decoration: none !important;
-
   }
   b i {
     display: inline;
   }
-
-
-
   d-contents {
     align-self: start;
     grid-column: 1 / 4;
@@ -53,13 +60,12 @@ d-article {
     border-right: 1px solid var(--global-divider-color);
     width: calc(max(70%, 300px));
     margin-right: 0px;
-    margin-top:  0em;
+    margin-top: 0em;
     display: grid;
     grid-template-columns:
       minmax(8px, 1fr) [toc] auto
       minmax(8px, 1fr) [toc-line] 1px
       minmax(32px, 2fr);
-
     nav {
       grid-column: toc;
       a {
@@ -72,8 +78,6 @@ d-article {
         margin-top: 0;
         margin-bottom: 1em;
       }
-
-
       div {
         display: block;
         outline: none;
@@ -99,37 +103,33 @@ d-article {
       grid-column: toc-line;
     }
   }
-
   d-footnote {
     scroll-margin-top: 66px;
+    sup {
+      margin-left: 0 !important;
+      padding-left: 0 !important;
+    }
   }
 }
-
 d-appendix {
   border-top-color: var(--global-divider-color) !important;
-  color: var(--global-distill-app-color) !important;
+  color: var(--global-text-color-light) !important;
   h3, li, span {
-    color: var(--global-distill-app-color) !important;
+    color: var(--global-text-color) !important;
   }
   a, a.footnote-backlink {
-    color: var(--global-distill-app-color) !important;
+    color: var(--global-theme-color) !important;
     &:hover {
       color: var(--global-hover-color) !important;
     }
   }
 }
-
-p {
-
-  a {
-      text-decoration:none;
-    }
+p a {
+  text-decoration: none !important;
 }
-
 @media (max-width: 1024px) {
   d-article {
-  font-weight: lighter;
-
+    font-weight: lighter;
     d-contents {
       display: inline-block;
       grid-column-start: 2;
@@ -139,14 +139,32 @@ p {
       padding-top: 0.5em;
       width: 100%;
       border: 1px solid var(--global-divider-color);
-
       nav {
         grid-column: none;
       }
     }
   }
-}
 
+  sup {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  /* Wrap table in scrollable container */
+  d-article table {
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    font-size: 0.875rem !important;
+  }
+}
+@media (max-width: 768px) {
+  d-article table {
+    font-size: 0.75rem !important;
+  }
+  d-article table th, d-article table td {
+    padding: 1em !important; /* Reduce padding on smaller screens */
+  }
+}
 d-article table tbody > :first-child td {
-    padding-top: 1rem;
+  padding-top: 1.5rem;
 }

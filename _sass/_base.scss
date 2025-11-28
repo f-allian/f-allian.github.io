@@ -149,7 +149,7 @@ hr {
     color: inherit;
     &:hover {
       color: var(--global-theme-color);
-      text-decoration: none;
+      text-decoration: underline;
     }
   }
 }
@@ -317,17 +317,17 @@ footer.sticky-bottom {
 
 .cv {
   .card {
-    background-color: var(--global-card-bg-color);
-    border: 1px solid var(--global-divider-color);
+    background-color: var(--global-bg-color);
+    border: 1px solid rgba(200, 200, 200, 1);
     color: var(--global-divider-color);
     padding-top: 0.5rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    border-radius: 10px;
-    box-shadow: 0px 0px 2px 1px;
+    border-radius: 5px;
+    box-shadow: none;
 
     .list-group-item {
-      background-color: var(--global-card-bg-color);
+      background-color: var(--global-bg-color);
       border-bottom: 1px solid var(--global-divider-color);
       padding-bottom: 20px;
       padding-top: 20px;
@@ -361,16 +361,16 @@ footer.sticky-bottom {
 // Blog
 
 .blog-publications {
-  background-color: var(--global-card-bg-color);
-  border: 1px solid var(--global-divider-color);
-  color: var(--global-divider-color);
+  background-color: var(--global-bg-color);
+  border: 1px solid rgba(200, 200, 200, 1);
+  color: var(--global-bg-color);
   padding-top: 1.5rem;
   padding-left: 1rem;
   padding-bottom: 0rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
   border-radius: 5px;
-  box-shadow: 0px 0px 2px 1px;
+  box-shadow: none;
 
   h1 {
     color: var(--global-theme-color);
@@ -395,13 +395,15 @@ footer.sticky-bottom {
     max-width: 100%;
     width: 95%;
     color: var(--global-text-color);
-        // Override ALL link styles inside h3
+
     a.post-title,
+
     .post-title,
     a {
       color: var(--global-text-color) !important;  // Force text color
+      background-color: var(--global-bg-color) !important;
       text-decoration: none !important;            // Remove underline
-      font-weight: 500;                            // Normal-ish weight
+      font-weight: 300;                            // Normal-ish weight
       font-size: inherit;                          // Use h3's font size
       display: inline-block;
       width: 100%;
@@ -612,7 +614,7 @@ footer.sticky-bottom {
     margin-bottom: 0rem;
 
     .post-meta {
-      color: var(--global-text-color-light);
+      color: var(--global-text-color);
       font-size: 0.875rem;
       margin-bottom: 0;
       margin-right: 0rem;
@@ -714,14 +716,14 @@ footer.sticky-bottom {
 // Publications
 
 .publications {
-  background-color: var(--global-card-bg-color);
-  border: 1px solid var(--global-divider-color);
+  background-color: var(--global-bg-color);
+  border: 1px solid rgba(200, 200, 200, 1);
   color: var(--global-divider-color);
-  padding: 0;
-  margin-top: 0rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
   margin-bottom: 2rem;
-  border-radius: 10px;
-  box-shadow: 0px 0px 2px 1px;
+  border-radius: 5px;
+  box-shadow: none;
   max-width: 100%;
 
   h1 {
@@ -1084,8 +1086,16 @@ html.transition *:after {
   transition-delay: 0 !important;
 }
 
-// Extra Markdown style (post Customization)
 .post {
+    a {
+    color: var(--global-theme-color);
+
+    &:hover {
+      color: var(--global-hover-color);
+      text-decoration: underline !important;
+    }
+  }
+
   .post-meta {
     color: var(--global-text-color-light);
     font-size: 0.875rem;
@@ -1098,7 +1108,6 @@ html.transition *:after {
     padding-bottom: 1rem;
     a {
       color: var(--global-text-color-light);
-      text-decoration: none;
       &:hover {
         color: var(--global-theme-color);
       }
