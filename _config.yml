@@ -138,6 +138,7 @@ collections:
       layout: post
     output: true
     permalink: /news/:path/
+
   projects:
     output: true
     permalink: /projects/:path/
@@ -391,3 +392,15 @@ jsonresume:
   - languages
   - interests
   - references
+
+# -----------------------------------------------------------------------------
+# Distill Template Settings
+# -----------------------------------------------------------------------------
+
+journal:
+  title: "Distill"
+
+author: Farhad Allian
+
+github:
+  repository_ur: https://github.com/f-allian/f-allian.github.io/issues
