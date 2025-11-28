@@ -1,53 +1,57 @@
-FROM bitnami/minideb:latest
+FROM ruby:slim
 
-LABEL maintainer="Amir Pourmand"
+ENV DEBIAN_FRONTEND noninteractive
 
-# Update and install system dependencies
+LABEL authors="Amir Pourmand,George Araújo" \
+      description="Docker image for al-folio academic template" \
+      maintainer="Amir Pourmand"
+
 RUN apt-get update -y && \
-    apt-get install -y \
-        locales \
-        ruby-full \
+    apt-get install -y --no-install-recommends \
         build-essential \
-        zlib1g-dev \
-        imagemagick \
-        python3-pip \
-        libv8-dev \
-        libjemalloc-dev \
-        nodejs \
         curl \
-        git
+        git \
+        imagemagick \
+        inotify-tools \
+        locales \
+        nodejs \
+        procps \
+        python3-pip \
+        zlib1g-dev && \
+    pip --no-cache-dir install --upgrade --break-system-packages nbconvert
 
-# Set the locale
+# clean up
+RUN apt-get clean && \
+    apt-get autoremove && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*  /tmp/*
+
+# set the locale
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
     locale-gen
 
-ENV LANG=en_US.UTF-8 \
+# set environment variables
+ENV EXECJS_RUNTIME=Node \
+    JEKYLL_ENV=production \
+    LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
 
-# Install Jupyter
-RUN python3 -m pip install jupyter --break-system-packages
-
-# Install Jekyll and Bundler
-RUN gem install jekyll bundler
-
-# Set up Jekyll working directory
+# create a directory for the jekyll site
 RUN mkdir /srv/jekyll
+
+# copy the Gemfile and Gemfile.lock to the image
+#ADD Gemfile.lock /srv/jekyll
+ADD Gemfile /srv/jekyll
+
+# set the working directory
 WORKDIR /srv/jekyll
 
-# Copy Gemfile and Gemfile.lock separately to leverage Docker cache
-COPY Gemfile Gemfile.lock /srv/jekyll/
-
-# Install gem dependencies
-RUN bundle install
-
-# Copy the rest of the site files
-COPY . /srv/jekyll/
-
-# Set Jekyll environment
-ENV JEKYLL_ENV=production
+# install jekyll and dependencies
+RUN gem install --no-document jekyll bundler
+RUN bundle install --no-cache
 
 EXPOSE 8080
 
-# Start Jekyll server
-CMD ["/bin/bash", "-c", "rm -rf Gemfile.lock && bundle install && echo 'Jekyll will be available at http://localhost:8080' && exec jekyll serve --watch --port=8080 --host=0.0.0.0 --livereload --verbose"]
+COPY bin/entry_point.sh /tmp/entry_point.sh
+
+CMD ["/tmp/entry_point.sh"]
