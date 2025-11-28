@@ -1,25 +1,43 @@
-# Contributing to al-folio
-Thank you for considering to contribute to al-folio!
+# Contributing to farhadallian.co.uk
 
+Thank you for your interest in contributing to my personal website.
 
-## Pull Requests
-We welcome your pull requests (PRs).
-For minor fixes (e.g., documentation improvements), feel free to submit a PR directly.
-If you would like to implement a new feature or a bug, please make sure you (or someone else) has opened an appropriate issue first; in your PR, please mention the issue it addresses.
+## About This Site
 
+This is my personal academic website built with Jekyll using the [al-folio](https://github.com/alshedivat/al-folio) theme. 
+While I appreciate your interest, please note that this repository primarily serves as my personal portfolio, 
+and may not accept external contributions in the same way open-source projects do.
 
-## Issues
-We use GitHub issues to track bugs and feature requests.
-Before submitting an issue, please make sure:
+## Reporting Issues
 
-1. You have read [the FAQ section](https://github.com/alshedivat/al-folio#faq) of the README and your question is NOT addressed there.
-2. You have done your best to ensure that your issue is NOT a duplicate of one of [the previous issues](https://github.com/alshedivat/al-folio/issues).
-3. Your issue is either a bug (unexpected/undesirable behavior) or a feature request.
-If it is just a question, please ask it in the [Discussions](https://github.com/alshedivat/al-folio/discussions) forum.
+If you notice any issues with the website (broken links, display problems, typos, etc.), I'd appreciate you letting me know:
 
-When submitting an issue, please make sure to use the appropriate template.
+1. Check if the issue has already been reported in the [Issues](https://github.com/YOUR_USERNAME/YOUR_REPO/issues) section
+2. If not, feel free to open a new issue with:
+   - A clear description of the problem
+   - Steps to reproduce (if applicable)
+   - Screenshots (if relevant)
+   - Your browser and device information
 
+## Suggestions
+
+If you have suggestions for improvements, feel free to:
+- Open an issue with the "enhancement" or "suggestion" label
+- Reach out to me directly through the contact information on my website
+
+## Forking
+
+If you'd like to use this specific version of the website as a template for your own:
+1. Feel free to fork this repository
+2. Please maintain appropriate attribution
+3. Customise it for your own use
+4. Note that this site is based on the [al-folio](https://github.com/alshedivat/al-folio) theme
 
 ## License
-By contributing to al-folio, you agree that your contributions will be licensed
-under the LICENSE file in the root directory of the source tree.
+
+By contributing to this repository, you agree that your contributions will be 
+licensed under the same license as specified in the LICENSE file in the root directory of the original al-folio repository.
+
+## Contact
+
+For questions or discussions, feel free to reach out through the contact methods listed on [my website](https://www.farhadallian.co.uk).
