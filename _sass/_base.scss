@@ -46,11 +46,6 @@ blockquote {
   font-size: 1.2rem;
 }
 
-hr {
-  border-color: $grey-color-light;
-  background-color: $grey-color-light;
-  color: $grey-color-light;
-}
 
 // Math
 
@@ -1097,17 +1092,17 @@ html.transition *:after {
   }
 
   .post-meta {
-    color: var(--global-text-color-light);
+    color: var(--global-text-color);
     font-size: 0.875rem;
     margin-bottom: 0;
   }
   .post-tags {
-    color: var(--global-text-color-light);
+    color: var(--global-text-color);
     font-size: 0.875rem;
     padding-top: 0.25rem;
     padding-bottom: 1rem;
     a {
-      color: var(--global-text-color-light);
+      color: var(--global-text-color);
       &:hover {
         color: var(--global-theme-color);
       }
