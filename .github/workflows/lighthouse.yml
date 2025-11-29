@@ -60,4 +60,3 @@ jobs:
           urls: ${{ env.URLS }}
           mobile_lighthouse_params: ${{ env.MOBILE_LIGHTHOUSE_PARAMS }}
           desktop_lighthouse_params: ${{ env.DESKTOP_LIGHTHOUSE_PARAMS }}
-          badges_args: '-b performance,accessibility,best-practices,seo -o lighthouse_results -r'
