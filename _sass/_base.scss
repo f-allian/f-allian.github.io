@@ -295,11 +295,11 @@ footer.fixed-bottom {
     padding-bottom: 4px;
   }
   a {
-    color: var(--global-theme-color);
-    font-weight: bold;
+    color: var(--global-footer-link-color);
+    font-weight: normal;
     &:hover {
-      color: var(--global-theme-color);
-      text-decoration: none;
+      color: var(--global-footer-link-color);
+      text-decoration: underline;
     }
   }
 }
@@ -382,7 +382,7 @@ footer.sticky-bottom {
     margin-bottom: 1rem;
     margin-left: 1rem;
     span {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
   }
 
@@ -1397,3 +1397,8 @@ html.transition *:after {
 [data-theme="light"] .dark-mode-only  { display: none; }
 [data-theme="dark"]  .light-mode-only { display: none; }
 [data-theme="dark"]  .dark-mode-only  { display: block; }
+
+.news-heading {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
