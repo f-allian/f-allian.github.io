@@ -1,0 +1,29 @@
+name: Lighthouse Badge
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly update
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Run Lighthouse
+        uses: MyActionWay/lighthouse-badger-action@v2.2
+        with:
+          urls: 'https://www.farhadallian.co.uk'
+          audit_type: 'desktop'
+          badges_args: '-b pagespeed -o lighthouse_results -r'
+          
+      - name: Commit Badge
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add lighthouse_results
+          git commit -m "Update Lighthouse badge" || echo "No changes"
+          git push
