@@ -5,3 +5,8 @@
 [![CodeQL](https://github.com/f-allian/f-allian.github.io/actions/workflows/github-code-scanning/codeql/badge.svg?branch=master)](https://github.com/f-allian/f-allian.github.io/actions/workflows/github-code-scanning/codeql)
 
 This repo contains the contents of my [personal website](https://www.farhadallian.co.uk), originally created by [Al-folio](https://github.com/alshedivat/al-folio) - a responsive [Jekyll](https://jekyllrb.com/) theme.
+
+
+## Lighthouse Pagespeed Insights ⚡
+
+![Lighthouse Performance](lighthouse_results/desktop/pagespeed.svg)
