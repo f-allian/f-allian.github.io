@@ -34,10 +34,13 @@ layout: parse
     {% include scripts/bootstrap.html %}
     {% include scripts/masonry.html %}
     {% include scripts/misc.html %}
-    {% include scripts/mathjax.html %}
-    {% include scripts/analytics.html %}
+    {%- if site.enable_math -%}
+      {% include scripts/mathjax.html %}
+    {%- endif -%}
     {% include scripts/badges.html %}
     {% include scripts/progressBar.html %}
+    <!-- Analytics last -->
+    {% include scripts/analytics.html %}
     {% include scripts/additional_analytics.html %}
   </body>
 </html>

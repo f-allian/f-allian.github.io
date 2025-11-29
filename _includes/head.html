@@ -29,6 +29,9 @@
     {% endif %}
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url | bust_css_cache }}">
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+    {% if page.url == "/" or page.title == "About" %}
+    <link rel="preload" as="image" href="{{ '/assets/img/prof_pic-480.webp' | relative_url }}" imagesrcset="{{ '/assets/img/prof_pic-480.webp' | relative_url }} 480w, {{ '/assets/img/prof_pic-800.webp' | relative_url }} 800w, {{ '/assets/img/prof_pic-1400.webp' | relative_url }} 1400w" imagesizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1400px" type="image/webp" fetchpriority="high">
+    {% endif %}
 
     <!-- Dark Mode -->
     {% if site.enable_darkmode %}
@@ -40,13 +43,4 @@
     {% if page.tikz %}
     <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
     <script src="https://tikzjax.com/v1/tikzjax.js"></script>
-    {% endif %}
-
-    <!-- Always preload, conditionally activate -->
-    <link rel="preload" href="https://tikzjax.com/v1/tikzjax.js" as="script">
-    <link rel="preload" href="https://tikzjax.com/v1/fonts.css" as="style">
-
-    {% if page.tikz %}
-    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
-    <script src="https://tikzjax.com/v1/tikzjax.js" defer></script>
     {% endif %}
