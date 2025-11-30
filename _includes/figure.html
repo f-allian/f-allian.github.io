@@ -4,43 +4,31 @@
 
   <picture>
     {% if site.imagemagick.enabled %}
-      {% for i in site.imagemagick.widths -%}
-          {% comment %}Calculate height based on actual image dimensions{% endcomment %}
-          {% if i == 480 %}
-            {% assign img_height = 468 %}
-          {% elsif i == 800 %}
-            {% assign img_height = 780 %}
-          {% elsif i == 1400 %}
-            {% assign img_height = 1364 %}
-          {% else %}
-            {% assign img_height = i | times: 0.975 | round %}
-          {% endif %}
-          <source
-            class="responsive-img-srcset"
-            media="(max-width: {{ i }}px)"
-            srcset="{{ img_path | relative_url }}-{{ i }}.webp"
-            width="{{ i }}"
-            height="{{ img_height }}"
-          />
-      {% endfor -%}
+      {% comment %}WebP versions{% endcomment %}
+      <source
+        type="image/webp"
+        srcset="{{ img_path | relative_url }}-200-v1.webp 200w,
+                {{ img_path | relative_url }}-480-v1.webp 480w,
+                {{ img_path | relative_url }}-800-v1.webp 800w,
+                {{ img_path | relative_url }}-1400-v1.webp 1400w"
+        sizes="(max-width: 500px) 90vw,
+               (max-width: 768px) 50vw,
+               25vw"
+      />
     {% endif %}
 
-    <!-- Fallback to the original file -->
+    <!-- Fallback -->
     <img
-        src="{% if include.cache_bust %}{{ include.path | relative_url | bust_file_cache }}{% else %}{{ include.path | relative_url }}{% endif %}"
+        src="{{ img_path | relative_url }}-v1.jpg"
         {% if include.class %}class="{{ include.class }}"{% endif %}
         {% if include.width %}width="{{ include.width }}"{% else %}width="480"{% endif %}
         {% if include.height %}height="{{ include.height }}"{% else %}height="468"{% endif %}
-        {% if include.min-width %}style="min-width: {{ include.min-width }};"{% endif %}
-        {% if include.min-height %}style="min-height: {{ include.min-height }};"{% endif %}
-        {% if include.max-width %}style="max-width: {{ include.max-width }};"{% endif %}
-        {% if include.max-height %}style="max-height: {{ include.max-height }};"{% endif %}
         {% if include.alt %}alt="{{ include.alt }}"{% endif %}
         {% if include.title %}title="{{ include.title }}"{% endif %}
         {% if include.zoomable %}data-zoomable{% endif %}
         fetchpriority="high"
         loading="eager"
-        onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(el => el.remove());"
+        onerror="this.onerror=null; this.srcset='';"
       />
   </picture>
 

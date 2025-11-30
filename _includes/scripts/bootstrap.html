@@ -1,4 +1,7 @@
-{% if page.url contains '/publications/' or page.url contains '/cv/' or page.url contains '/projects/' %}
+<!-- Bootstrap JS - needed for navbar toggle -->
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@{{ site.bootstrap.version }}/dist/js/bootstrap.bundle.min.js" integrity="{{ site.bootstrap.integrity.js }}" crossorigin="anonymous"></script>
+
+  <!-- MDB JS - only on specific pages -->
+  {% if page.url contains '/publications/' or page.url contains '/cv/' or page.url contains '/projects/' %}
   <script defer src="https://cdn.jsdelivr.net/npm/mdbootstrap@{{ site.mdb.version }}/js/mdb.min.js" integrity="{{ site.mdb.integrity.js }}" crossorigin="anonymous"></script>
-{% endif %}
+  {% endif %}
