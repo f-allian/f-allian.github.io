@@ -9,4 +9,4 @@ This repo contains the contents of my [personal website](https://www.farhadallia
 
 ## Pagespeed Insights ⚡
 
-![Lighthouse Performance](lighthouse_results/desktop/pagespeed.svg)
+![Lighthouse Performance](lighthouse_results/desktop/pagespeed.svg?v=1)
