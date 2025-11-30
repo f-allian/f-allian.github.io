@@ -1,4 +1,6 @@
 name: Update Gallery
+permissions:
+  contents: read
 
 on:
   workflow_dispatch:
