@@ -1,38 +1,34 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: Report an issue for farhadallian.co.uk
 title: ''
 labels: bug
 assignees: ''
 
 ---
 
-**Acknowledge the following**
-- [ ] I carefully read and followed the [Getting Started](https://github.com/alshedivat/al-folio#getting-started) guide.
-- [ ] I read through [FAQ](https://github.com/alshedivat/al-folio#faq) and searched through the [past issues](https://github.com/alshedivat/al-folio/issues), none of which addressed my issue.
-- [ ] The issue I am raising is a potential bug in al-folio and not just a usage question. <br> [For usage questions, please post in the [Discussions](https://github.com/alshedivat/al-folio/discussions) instead of raising an issue.]
+**Describe the issue**
+A clear and concise description of what's wrong.
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**Where did you see this?**
+- URL: [e.g., https://www.farhadallian.co.uk/projects/]
+- Page/section: [e.g., Publications page, About section]
 
-**To Reproduce**
-Steps to reproduce the behavior:
+**Steps to reproduce**
 1. Go to '...'
 2. Click on '....'
-3. Scroll down to '....'
-4. See error
+3. See error/issue
 
 **Expected behavior**
-A clear and concise description of what you expected to happen.
+What you expected to happen instead.
 
 **Screenshots**
-If applicable, add screenshots to help explain your problem.
+If applicable, add screenshots to help explain the problem.
 
-**System (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser (and its version) [e.g. chrome, safari]
- - Jekyll version [e.g. 3.8.7]
-- Ruby version [e.g. 2.6.5]
+**Your setup (if relevant):**
+ - Device: [e.g., Desktop, Mobile]
+ - Browser: [e.g., Chrome 120, Safari 17]
+ - OS: [e.g., Windows 11, macOS, iOS]
 
 **Additional context**
-Add any other context about the problem here.
+Any other relevant information.

@@ -1,20 +1,17 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: Feature suggestion
+about: Suggest an improvement for farhadallian.co.uk
 title: ''
 labels: enhancement
 assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+**What would you like to see on farhadallian.co.uk?**
+A clear description of the feature or improvement you're suggesting.
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
-
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+**Why would this be useful?**
+Explain how this would improve the website or your experience visiting it.
 
 **Additional context**
-Add any other context or screenshots about the feature request here.
+Any examples, screenshots, or other details that might help.
