@@ -1,6 +1,7 @@
-<!-- Save this as _includes/complete-tracking.html -->
 <script>
 document.addEventListener('load', function() {
+    setTimeout(function() {
+
     // Only run if Google Analytics is loaded
     if (typeof gtag === 'undefined') return;
 
@@ -486,7 +487,7 @@ document.addEventListener('load', function() {
             'rtt': navigator.connection.rtt
         });
     }
-
+    }, 3000); // Wait 3s after page load
 });
 
 // ============================================

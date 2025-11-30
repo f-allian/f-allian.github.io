@@ -16,8 +16,17 @@
   <script defer src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
 {% endif %}
 
-  <!-- Bootstrap Table -->
-  <script defer src="https://unpkg.com/bootstrap-table@{{ site.bootstrap-table.version }}/dist/bootstrap-table.min.js"></script>
+  <!-- Bootstrap Table - Only on pages that need it -->
+  {% if page.url contains '/publications/' or page.url contains '/cv/' %}
+  <script>
+    window.addEventListener('load', function() {
+      var btScript = document.createElement('script');
+      btScript.src = 'https://unpkg.com/bootstrap-table@{{ site.bootstrap-table.version }}/dist/bootstrap-table.min.js';
+      btScript.defer = true;
+      document.head.appendChild(btScript);
+    });
+  </script>
+  {% endif %}
 
   <!-- Load Common JS -->
   <script src="{{ '/assets/js/no_defer.js' | relative_url | bust_file_cache }}"></script>

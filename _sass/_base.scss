@@ -4,6 +4,18 @@
 
 // Typography
 
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-display: swap;
+  src: local('Font Awesome 5 Free');
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Brands';
+  font-display: swap;
+  src: local('Font Awesome 5 Brands');
+}
+
 p, h1, h2, h3, h4, h5, h6, em, div, li, span, strong {
   color: var(--global-text-color);
 }
@@ -11,6 +23,8 @@ p, h1, h2, h3, h4, h5, h6, em, div, li, span, strong {
 hr {
   border-top: 1px solid var(--global-divider-color);
 }
+
+
 
 table {
   background-color: var(--global-bg-color);
@@ -1224,7 +1238,7 @@ html.transition *:after {
   gap: 0.5rem;
   max-width: min(300px, 100%);
   width: 100%;
-  min-height: 100px;
+  min-height: 80px;
 
   &:empty::before {
     content: "Loading music...";
