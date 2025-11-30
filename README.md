@@ -7,6 +7,6 @@
 This repo contains the contents of my [personal website](https://www.farhadallian.co.uk), originally created by [Al-folio](https://github.com/alshedivat/al-folio) - a responsive [Jekyll](https://jekyllrb.com/) theme.
 
 
-## Lighthouse Pagespeed Insights ⚡
+## Pagespeed Insights ⚡
 
 ![Lighthouse Performance](lighthouse_results/desktop/pagespeed.svg)
