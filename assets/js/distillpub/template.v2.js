@@ -4631,13 +4631,28 @@ d-references {
   <h2>Table of contents</h2>
   <ul>`;
 
+    // Utility for escaping HTML special characters
+    function escapeHTML(str) {
+      return str.replace(/[&<>"'\/]/g, function (s) {
+        const entityMap = {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;',
+          '/': '&#x2F;'
+        };
+        return entityMap[s];
+      });
+    }
+
     for (const el of headings) {
       // should element be included in TOC?
       const isInTitle = el.parentElement.tagName == 'D-TITLE';
       const isException = el.getAttribute('no-toc');
       if (isInTitle || isException) continue;
       // create TOC entry
-      const title = el.textContent;
+      const title = escapeHTML(el.textContent);
       const link = '#' + el.getAttribute('id');
 
       let newLine = '<li>' + '<a href="' + link + '">' + title + '</a>' + '</li>';
