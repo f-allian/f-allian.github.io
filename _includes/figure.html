@@ -1,10 +1,10 @@
-{%- assign img_path = include.path | remove: ".jpg" | remove: ".jpeg" | remove: ".png" | remove: ".tiff" -%}
+{%- assign img_path = include.path | remove: ".jpg" | remove: ".jpeg" | remove: ".png" | remove: ".tiff" | remove: ".webp" -%}
 
 <figure>
 
   <picture>
-    {% if site.imagemagick.enabled %}
-      {% comment %}WebP versions{% endcomment %}
+    {% if site.imagemagick.enabled and include.path contains "prof_pic" %}
+      {% comment %}Responsive WebP for profile pic only{% endcomment %}
       <source
         type="image/webp"
         srcset="{{ img_path | relative_url }}-200-v1.webp 200w,
@@ -19,15 +19,14 @@
 
     <!-- Fallback -->
     <img
-        src="{{ img_path | relative_url }}-v1.jpg"
+        src="{% if include.path contains 'prof_pic' %}{{ img_path | relative_url }}-v1.jpg{% else %}{{ include.path | relative_url }}{% endif %}"
         {% if include.class %}class="{{ include.class }}"{% endif %}
-        {% if include.width %}width="{{ include.width }}"{% else %}width="480"{% endif %}
-        {% if include.height %}height="{{ include.height }}"{% else %}height="468"{% endif %}
+        {% if include.width %}width="{{ include.width }}"{% endif %}
+        {% if include.height %}height="{{ include.height }}"{% endif %}
         {% if include.alt %}alt="{{ include.alt }}"{% endif %}
         {% if include.title %}title="{{ include.title }}"{% endif %}
         {% if include.zoomable %}data-zoomable{% endif %}
-        fetchpriority="high"
-        loading="eager"
+        {% if include.path contains "prof_pic" %}fetchpriority="high" loading="eager"{% else %}loading="lazy"{% endif %}
         onerror="this.onerror=null; this.srcset='';"
       />
   </picture>
