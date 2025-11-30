@@ -19,7 +19,7 @@ If you discover a security vulnerability in this repository, please follow these
 
 1. **Do not open a public issue.** Security vulnerabilities should not be disclosed publicly until they are addressed.
 
-2. **Contact me directly** via email at [your.email@example.com] with the subject line: "Security Vulnerability Report"
+2. **Contact me directly** (my contact details can be found on my page).
 
 3. **Include the following information:**
    - Description of the vulnerability
