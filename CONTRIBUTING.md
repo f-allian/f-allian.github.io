@@ -12,7 +12,7 @@ and may not accept external contributions in the same way open-source projects d
 
 If you notice any issues with the website (broken links, display problems, typos, etc.), I'd appreciate you letting me know:
 
-1. Check if the issue has already been reported in the [Issues](https://github.com/YOUR_USERNAME/YOUR_REPO/issues) section
+1. Check if the issue has already been reported in the [Issues](https://github.com/f-allian/f-allian.github.io/issues) section
 2. If not, feel free to open a new issue with:
    - A clear description of the problem
    - Steps to reproduce (if applicable)
