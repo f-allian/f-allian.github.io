@@ -1,4 +1,4 @@
-# Personal website 🧑🏻‍💻
+# farhadallian.co.uk 🧑🏻‍💻
 
 [![deploy](https://github.com/f-allian/f-allian.github.io/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/f-allian/f-allian.github.io/actions/workflows/deploy.yml)
 [![pages-build-deployment](https://github.com/f-allian/f-allian.github.io/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages)](https://github.com/f-allian/f-allian.github.io/actions/workflows/pages/pages-build-deployment)
