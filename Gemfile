@@ -17,6 +17,7 @@ group :jekyll_plugins do
     gem 'jekyll-toc'
     gem 'jekyll-twitter-plugin'
     gem 'jemoji'
+    gem 'jekyll-terser', '~> 1.0'
 #    gem 'mini_racer'
     gem 'unicode_utils'
     gem 'webrick'
