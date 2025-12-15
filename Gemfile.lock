@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/RobertoJBeltran/jekyll-terser.git
+  revision: 1085bf66d692799af09fe39f8162a1e6e42a3cc4
+  specs:
+    jekyll-terser (0.2.3)
+      jekyll (>= 0.10.0)
+      terser (>= 1.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -50,6 +58,8 @@ GEM
       time (< 1.0)
     csl-styles (2.0.2)
       csl (~> 2.0)
+    css_parser (1.21.1)
+      addressable
     cssminify2 (2.1.0)
     csv (3.3.5)
     date (3.5.1)
@@ -127,10 +137,9 @@ GEM
       safe_yaml (~> 1.0)
       terminal-table (>= 1.8, < 4.0)
       webrick (~> 1.7)
-    jekyll-archives (2.3.0)
+    jekyll-archives-v2 (0.0.6)
+      activesupport
       jekyll (>= 3.6, < 5.0)
-    jekyll-diagrams (0.10.0)
-      jekyll (>= 3.8, < 5.0)
     jekyll-email-protect (1.1.0)
     jekyll-feed (0.17.0)
       jekyll (>= 3.7, < 5.0)
@@ -150,6 +159,7 @@ GEM
       terser (~> 1.2.3)
     jekyll-paginate-v2 (3.0.0)
       jekyll (>= 3.0, < 5.0)
+    jekyll-regex-replace (1.1.0)
     jekyll-sass-converter (3.1.0)
       sass-embedded (~> 1.75)
     jekyll-scholar (7.2.3)
@@ -159,9 +169,8 @@ GEM
       jekyll (~> 4.0)
     jekyll-sitemap (1.4.0)
       jekyll (>= 3.7, < 5.0)
-    jekyll-terser (1.0.0)
-      jekyll (~> 4.4)
-      terser (~> 1.2)
+    jekyll-tabs (1.2.1)
+      jekyll (>= 3.0, < 5.0)
     jekyll-toc (0.19.0)
       jekyll (>= 3.9)
       nokogiri (~> 1.12)
@@ -217,6 +226,7 @@ GEM
       stringio
       time
       uri
+    ostruct (0.6.3)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (7.0.0)
@@ -258,7 +268,6 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
-    unicode_utils (1.4.0)
     uri (1.1.1)
     webrick (1.9.2)
 
@@ -276,11 +285,11 @@ PLATFORMS
 
 DEPENDENCIES
   classifier-reborn
+  css_parser
   feedjira
   httparty
   jekyll
-  jekyll-archives
-  jekyll-diagrams
+  jekyll-archives-v2
   jekyll-email-protect
   jekyll-feed
   jekyll-get-json
@@ -289,14 +298,16 @@ DEPENDENCIES
   jekyll-link-attributes
   jekyll-minifier
   jekyll-paginate-v2
+  jekyll-regex-replace
   jekyll-scholar
   jekyll-sitemap
-  jekyll-terser (~> 1.0)
+  jekyll-tabs
+  jekyll-terser!
   jekyll-toc
   jekyll-twitter-plugin
   jemoji
-  unicode_utils
-  webrick
+  observer
+  ostruct
 
 CHECKSUMS
   activesupport (8.1.1) sha256=5e92534e8d0c8b8b5e6b16789c69dbea65c1d7b752269f71a39422e9546cea67
@@ -313,6 +324,7 @@ CHECKSUMS
   crass (1.0.6) sha256=dc516022a56e7b3b156099abc81b6d2b08ea1ed12676ac7a5657617f012bd45d
   csl (2.2.1) sha256=624352f1f6f51f1e0b155bd2501ce423f03264495ec259e65c26e00872a195a2
   csl-styles (2.0.2) sha256=a48007d8a60307825de140dc2adaacc0b7186f2d1042f7e839eb47fce051de98
+  css_parser (1.21.1) sha256=6cfd3ffc0a97333b39d2b1b49c95397b05e0e3b684d68f77ec471ba4ec2ef7c7
   cssminify2 (2.1.0) sha256=406a0b95fdaab60132c6f1fbb47b4a30f9572d2ef523f806fb94a530d78c2bb1
   csv (3.3.5) sha256=6e5134ac3383ef728b7f02725d9872934f523cb40b961479f69cf3afa6c8e73f
   date (3.5.1) sha256=750d06384d7b9c15d562c76291407d89e368dda4d4fff957eb94962d325a0dc0
@@ -347,8 +359,7 @@ CHECKSUMS
   httparty (0.23.2) sha256=72d52830ab5862115a3c9a4b16738dd67d9a691ffd796cf86bad8abaa8f1febb
   i18n (1.14.7) sha256=ceba573f8138ff2c0915427f1fc5bdf4aa3ab8ae88c8ce255eb3ecf0a11a5d0f
   jekyll (4.4.1) sha256=4c1144d857a5b2b80d45b8cf5138289579a9f8136aadfa6dd684b31fe2bc18c1
-  jekyll-archives (2.3.0) sha256=2dbd8ce22212fbace81fe2c9aa4152a6e21c748bcc626f135af5acfd813375f6
-  jekyll-diagrams (0.10.0) sha256=616e9baf32cc5c05d30fd6354d4e6014e501d1a23cf862e0788569854fb32189
+  jekyll-archives-v2 (0.0.6) sha256=207aad14a5c09cbb673744e9e012318da66be9163f1abe1e450820d600a94904
   jekyll-email-protect (1.1.0) sha256=00d620939c710788ae3f71188ef913e0aa7ff0a5a39f48249213ea6215558c8d
   jekyll-feed (0.17.0) sha256=689aab16c877949bb9e7a5c436de6278318a51ecb974792232fd94d8b3acfcc3
   jekyll-get-json (1.0.0) sha256=f6b076a93de9cace89a88617b494bea10e6dbb86331c293d663d37d9b9ae7522
@@ -357,10 +368,12 @@ CHECKSUMS
   jekyll-link-attributes (1.0.1) sha256=c88e6742ea1ee0442a49ac183f89ad68b194bf9bffe1b05e0cc308dbaebd3e23
   jekyll-minifier (0.2.2) sha256=f0a182b98b369492b9d93f1dd064223cf04a10ba31c49e1535f28fe35764ee19
   jekyll-paginate-v2 (3.0.0) sha256=001be6c1963caa41fed9c2f43b0d47201defa0395381eb8830487c1c2fc4f4e3
+  jekyll-regex-replace (1.1.0) sha256=3738e6a0aa07dd3f9b7369e6e38e5d245c623bbd70c31b21e7838c654377a00c
   jekyll-sass-converter (3.1.0) sha256=83925d84f1d134410c11d0c6643b0093e82e3a3cf127e90757a85294a3862443
   jekyll-scholar (7.2.3) sha256=0440e39acf705c770b64d744b2560c1d10a986c51728bf2604029a4186a62a57
   jekyll-sitemap (1.4.0) sha256=0de08c5debc185ea5a8f980e1025c7cd3f8e0c35c8b6ef592f15c46235cf4218
-  jekyll-terser (1.0.0) sha256=2f5ab4dcf3a9df82f543f659511fb479f78bc9fa9382d03faa9c7eb0a1c44345
+  jekyll-tabs (1.2.1) sha256=e7e0f05d1180c9651318fb5834a0c745a613b4253e9699a662b63cc3d39cbc4d
+  jekyll-terser (0.2.3)
   jekyll-toc (0.19.0) sha256=8a8270f7e8e3d849e2035710b1713d0af5e2185a4bfaca70f9192ecf5ac50668
   jekyll-twitter-plugin (2.1.0) sha256=d25ee86813705244dcec3163d9a110a1c0216e157dcf6cf88ab57cf389887acd
   jekyll-watch (2.2.1) sha256=bc44ed43f5e0a552836245a54dbff3ea7421ecc2856707e8a1ee203a8387a7e1
@@ -390,6 +403,7 @@ CHECKSUMS
   nokogiri (1.18.10-x86_64-linux-musl) sha256=0651fccf8c2ebbc2475c8b1dfd7ccac3a0a6d09f8a41b72db8c21808cb483385
   observer (0.1.2) sha256=d8a3107131ba661138d748e7be3dbafc0d82e732fffba9fccb3d7829880950ac
   open-uri (0.5.0) sha256=7b4f06fdac39e6946aed15a8da82531580882fbbec80438adcb7c30d388887ca
+  ostruct (0.6.3) sha256=95a2ed4a4bd1d190784e666b47b2d3f078e4a9efda2fccf18f84ddc6538ed912
   pathutil (0.16.2) sha256=e43b74365631cab4f6d5e4228f812927efc9cb2c71e62976edcb252ee948d589
   public_suffix (7.0.0) sha256=f7090b5beb0e56f9f10d79eed4d5fbe551b3b425da65877e075dad47a6a1b095
   racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
@@ -417,7 +431,6 @@ CHECKSUMS
   time (0.4.1) sha256=035f360508a4a4dbabcbbcd3886566b9abd432de89136795d2ff7aec5bcdea61
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
   unicode-display_width (2.6.0) sha256=12279874bba6d5e4d2728cef814b19197dbb10d7a7837a869bab65da943b7f5a
-  unicode_utils (1.4.0) sha256=b922d0cf2313b6b7136ada6645ce7154ffc86418ca07d53b058efe9eb72f2a40
   uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
   webrick (1.9.2) sha256=beb4a15fc474defed24a3bda4ffd88a490d517c9e4e6118c3edce59e45864131
 
