@@ -1,11 +1,10 @@
 services:
   jekyll:
-    image: amirpourmand/al-folio:v0.14.7
     build: .
     ports:
-      - 8080:8080
-      - 35729:35729
+      - "8080:8080"
+      - "35729:35729"
     volumes:
-      - .:/srv/jekyll
+      - .:/srv/jekyll:cached  # mount source files, keep gems in container
     environment:
       - JEKYLL_ENV=development

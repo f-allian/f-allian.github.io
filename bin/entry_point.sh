@@ -5,20 +5,21 @@ echo "Entry point script running"
 
 CONFIG_FILE=_config.yml
 
-# No Gemfile.lock management
-manage_gemfile_lock() {
-    echo "Skipping Gemfile.lock"
-}
-
 start_jekyll() {
-    manage_gemfile_lock
-    bundle exec jekyll serve --watch --port=8080 --host=0.0.0.0 --livereload --verbose --trace --force_polling &
+    bundle exec jekyll serve \
+        --watch \
+        --port=8080 \
+        --host=0.0.0.0 \
+        --livereload \
+        --verbose \
+        --trace \
+        --force_polling &
 }
 
 start_jekyll
 
 while true; do
-    inotifywait -q -e modify,move,create,delete $CONFIG_FILE
+    inotifywait -q -e modify,move,create,delete "$CONFIG_FILE"
     if [ $? -eq 0 ]; then
         echo "Change detected to $CONFIG_FILE, restarting Jekyll"
         jekyll_pid=$(pgrep -f jekyll)
