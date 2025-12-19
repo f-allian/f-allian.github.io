@@ -1,11 +1,14 @@
-FROM ruby:slim
+FROM ruby:3.4.2-slim
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive \
+    LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8 \
+    EXECJS_RUNTIME=Node \
+    JEKYLL_ENV=production \
+    BUNDLE_PATH=/usr/local/bundle
 
-LABEL authors="Amir Pourmand,George Araújo" \
-      description="Docker image for al-folio academic template" \
-      maintainer="Amir Pourmand"
-
+# Install system dependencies
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
         build-essential \
@@ -17,41 +20,28 @@ RUN apt-get update -y && \
         nodejs \
         procps \
         python3-pip \
-        zlib1g-dev && \
-    pip --no-cache-dir install --upgrade --break-system-packages nbconvert
+        zlib1g-dev \
+        graphviz && \
+    pip install --no-cache-dir --upgrade --break-system-packages nbconvert && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/* /tmp/*
 
-# clean up
-RUN apt-get clean && \
-    apt-get autoremove && \
-    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*  /tmp/*
+# Set locale
+RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
 
-# set the locale
-RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
-    locale-gen
-
-# set environment variables
-ENV EXECJS_RUNTIME=Node \
-    JEKYLL_ENV=production \
-    LANG=en_US.UTF-8 \
-    LANGUAGE=en_US:en \
-    LC_ALL=en_US.UTF-8
-
-# create a directory for the jekyll site
-RUN mkdir /srv/jekyll
-
-# copy the Gemfile and Gemfile.lock to the image
-#ADD Gemfile.lock /srv/jekyll
-ADD Gemfile /srv/jekyll
-
-# set the working directory
+# Working directory
 WORKDIR /srv/jekyll
 
-# install jekyll and dependencies
-RUN gem install --no-document jekyll bundler
-RUN bundle install --no-cache
+# Copy Gemfile and Gemfile.lock
+COPY Gemfile Gemfile.lock /srv/jekyll/
+
+# Install bundler and gems
+RUN gem install --no-document bundler jekyll && \
+    bundle install --jobs 4 --retry 3
+
+# Copy entrypoint
+COPY bin/entry_point.sh /tmp/entry_point.sh
+RUN chmod +x /tmp/entry_point.sh
 
 EXPOSE 8080
-
-COPY bin/entry_point.sh /tmp/entry_point.sh
-
 CMD ["/tmp/entry_point.sh"]
