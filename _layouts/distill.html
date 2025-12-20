@@ -60,12 +60,14 @@
 
       <d-bibliography src="{{ page.bibliography | prepend: '/assets/bibliography/' | relative_url }}"></d-bibliography>
 
-      {%- if site.disqus_shortname and page.disqus_comments -%}
-        {% include disqus.html %}
-      {%- endif %}
-      {%- if site.giscus.repo and page.giscus_comments -%}
-        {% include giscus.html %}
-      {%- endif -%}
+      <div class="container">
+        {%- if site.disqus_shortname and page.disqus_comments -%}
+          {% include disqus.html %}
+        {%- endif %}
+        {%- if site.giscus.repo and page.giscus_comments -%}
+          {% include giscus.html %}
+        {%- endif -%}
+      </div>
 
     </div>
 
