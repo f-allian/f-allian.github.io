@@ -1421,3 +1421,27 @@ html.transition *:after {
   font-size: 1.25rem;
   margin-bottom: 1rem;
 }
+/* Copy button */
+div.highlight {
+  position: relative !important;
+}
+
+div.highlight .copy {
+  position: absolute !important;
+  right: 0.5rem !important;
+  top: 0.5rem !important;
+  background: var(--global-card-bg-color);
+  border-radius: 0.3rem;
+  border: none;
+  color: var(--global-text-color);
+  font-size: medium;
+  opacity: 0;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+div.highlight:hover .copy {
+  opacity: 1;
+  color: var(--global-hover-color);
+}
