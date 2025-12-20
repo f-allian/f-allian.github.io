@@ -6,14 +6,12 @@
 // Dimensions
 $max-content-width: {{ site.max_width }};
 
-@import
-  "variables",
-  "themes",
-  "layout",
-  "base",
-  "distill",
-  "cv"
-;
+@import "variables";
+@import "themes";
+@import "layout";
+@import "base";
+@import "distill";
+@import "cv";
 
 .github_anchors {
   display: inline-block;
