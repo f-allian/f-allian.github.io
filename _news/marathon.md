@@ -5,7 +5,6 @@ list_title: I ran my first marathon 🏃🏻‍♂️
 date: 2025-09-12
 inline: false
 related_posts: false
-meta: Personal
 tags: [Running, Milestone, Marathon]
 ---
 

@@ -169,17 +169,12 @@ document.addEventListener('DOMContentLoaded', function() {
     <h3><span class="txt-rotate"></span> <u><b>refined</b></u>.</h3>
   </div>
 
-<!--   Remove or comment out this "Coming soon" section to show posts -->
-  <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top:20px;">
-    <h5>Coming soon...</h5>
-  </div>
-
   {% if site.display_tags %}
   <div class="tag-list">
     <ul class="p-0 m-0">
       {% for tag in site.display_tags %}
         <li>
-          <i class="fas fa-tag fa-sm"></i> <a href="{{ tag | slugify | prepend: '/blog/category/' | prepend: site.baseurl }}">{{ tag }}</a>
+          <i class="fa-solid fa-hashtag fa-sm"></i> <a href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl }}">{{ tag }}</a>
         </li>
         {% unless forloop.last %}<p>&bull;</p>{% endunless %}
       {% endfor %}
@@ -189,8 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <ul class="post-list">
     {% for post in paginator.posts %}
-
-    <!-- Fixed: Properly calculate read time with correct Liquid syntax -->
     {% if post.external_source == blank %}
       {% if post.content %}
         {% assign read_time = post.content | strip_html | number_of_words | divided_by: 180 | plus: 1 %}
