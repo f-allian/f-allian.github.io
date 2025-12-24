@@ -33,18 +33,22 @@ body.sticky-bottom-footer {
   }
 }
 
-// TODO: redefine content layout.
+/* Ensure navbar is always fixed at top */
+#navbar.fixed-top {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1030;
+}
 
+/* Body padding to avoid content hidden behind navbar */
+body.fixed-top-nav {
+  padding-top: 70px; // match navbar height
+}
 
-/******************************************************************************
- * Publications
- ******************************************************************************/
-
-// TODO: redefine publications layout.
-
-
-/*****************************************************************************
-* Projects
-*****************************************************************************/
-
-// TODO: redefine projects layout.
+/* Ensure container doesn’t block fixed positioning */
+.container {
+  max-width: $max-content-width;
+  position: static; // remove any relative positioning
+}
