@@ -9,9 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to open the search modal
   const openSearchModal = () => {
-    const $navbarNav = $("#navbarNav");
-    if ($navbarNav.hasClass("show")) {
-      $navbarNav.collapse("hide");
+    // Collapse mobile navbar if open (vanilla JS — no jQuery dependency)
+    const navbarNav = document.getElementById("navbarNav");
+    if (navbarNav && navbarNav.classList.contains("show")) {
+      const toggler = document.querySelector(".navbar-toggler");
+      if (toggler) toggler.click();
     }
 
     customElements.whenDefined("ninja-keys").then(() => {
