@@ -2,16 +2,6 @@ customElements.whenDefined("ninja-keys").then(() => {
   const ninja = document.querySelector("ninja-keys");
 
   const allData = [{
-    id: "post-setting-up-this-site",
-    title: "Setting Up This Site",
-    description: "Creating and hosting a Jekyll-based website on GitHub",
-    section: "Posts",
-    handler: () => {
-      
-        window.location.href = "/blog/2025/website/";
-      
-    },
-  },{
     id: "page-resume",
     title: "Resume",
     description: "Enabling research and innovation",
