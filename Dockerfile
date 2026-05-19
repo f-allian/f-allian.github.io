@@ -1,4 +1,4 @@
-FROM ruby:4.0.2-slim
+FROM ruby:4.0.4-slim
 
 ENV DEBIAN_FRONTEND=noninteractive \
     LANG=en_US.UTF-8 \
