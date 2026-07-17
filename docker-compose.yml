@@ -5,6 +5,10 @@ services:
       - "8080:8080"
       - "35729:35729"
     volumes:
-      - .:/srv/jekyll:cached  # mount source files, keep gems in container
+      - .:/srv/jekyll:cached
+      - jekyll_site:/srv/jekyll/_site
     environment:
       - JEKYLL_ENV=development
+
+volumes:
+  jekyll_site:

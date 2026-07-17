@@ -3,6 +3,8 @@ set -euo pipefail
 
 echo "Entry point script running"
 
+bundle install --quiet
+
 CONFIG_FILE=_config.yml
 
 start_jekyll() {
