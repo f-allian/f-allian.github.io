@@ -5,6 +5,10 @@
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://unpkg.com">
 
+{% unless page.url == "/" %}
+<meta name="robots" content="noindex">
+{% endunless %}
+
 {% if page.url == "/" or page.title == "About" %}
 <link rel="preload" as="image" href="{{ '/assets/img/prof_pic-480-v1.webp' | relative_url }}" imagesrcset="{{ '/assets/img/prof_pic-480-v1.webp' | relative_url }} 480w, {{ '/assets/img/prof_pic-800-v1.webp' | relative_url }} 800w, {{ '/assets/img/prof_pic-1400-v1.webp' | relative_url }} 1400w" imagesizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1400px" type="image/webp" fetchpriority="high">
 {% endif %}
@@ -34,6 +38,10 @@
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/academicons@{{ site.academicons.version }}/css/academicons.min.css" as="style" onload="this.rel='stylesheet'" integrity="{{ site.academicons.integrity }}" crossorigin="anonymous">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@{{ site.academicons.version }}/css/academicons.min.css" integrity="{{ site.academicons.integrity }}" crossorigin="anonymous"></noscript>
 
+<!-- Tabler Icons -->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.20.0/dist/tabler-icons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.20.0/dist/tabler-icons.min.css" crossorigin="anonymous"></noscript>
+
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@100;300;400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@100;300;400;500;700&display=swap"></noscript>
 
@@ -43,7 +51,7 @@
 
 {% if page.toc and page.toc.sidebar %}
 <!-- Sidebar Table of Contents -->
-<link href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css" rel="stylesheet" />
+<link href="{{ '/assets/css/bootstrap-toc.min.css' | relative_url }}" rel="stylesheet">
 {% endif %}
 
 <!-- Styles -->
