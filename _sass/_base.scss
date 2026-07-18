@@ -1069,6 +1069,117 @@ footer.sticky-bottom {
   }
 }
 
+// Bookshelf
+
+.bookshelf {
+  background-color: var(--global-bg-color);
+  border: 1px solid rgba(200, 200, 200, 1);
+  padding: 0.5rem 1.5rem 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+
+  h2.year {
+    color: var(--global-divider-color);
+    border-top: 1px solid var(--global-divider-color);
+    padding-top: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 0.25rem;
+    text-align: right;
+    font-size: 1.5rem;
+
+    &:first-child {
+      border-top: none;
+      margin-top: 1rem;
+    }
+  }
+
+  .book-entry {
+    border-bottom: 1px solid var(--global-divider-color);
+    padding: 0.75rem 0;
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+
+  .book-title-row {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .book-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--global-text-color);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+  }
+
+  .book-author {
+    color: var(--global-text-color-light);
+    font-size: 0.9rem;
+  }
+
+  .book-released {
+    color: var(--global-text-color-light);
+    font-size: 0.85rem;
+  }
+
+  .book-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    color: var(--global-text-color-light);
+  }
+
+  .book-stars {
+    color: var(--global-theme-color);
+    white-space: nowrap;
+  }
+
+  .book-status {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.2em 0.55em;
+    border-radius: 3px;
+    text-transform: uppercase;
+    color: white;
+
+    &.finished  { background-color: var(--global-theme-color); }
+    &.reading   { background-color: $green-color; }
+    &.reread    { background-color: $purple-color; }
+    &.paused    { background-color: $orange-color; }
+    &.abandoned { background-color: $red-color; }
+    &.queued,
+    &.interested { background-color: var(--global-text-color-light); }
+  }
+
+  .book-dates {
+    white-space: nowrap;
+
+    i { opacity: 0.65; }
+  }
+
+  .book-empty {
+    color: var(--global-text-color-light);
+    font-style: italic;
+    padding: 1rem 0;
+    text-align: center;
+  }
+}
+
 // Rouge Color Customization
 figure.highlight {
   margin: 0 0 1rem;
