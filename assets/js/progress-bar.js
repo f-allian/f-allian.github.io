@@ -15,9 +15,9 @@ const progressBar = $("#progress");
  * To account for this, a minimal delay was introduced before computing the
  * values.
  */
-window.onload = function () {
+window.addEventListener("load", function () {
   setTimeout(progressBarSetup, 50);
-};
+});
 /*
  * We set up the bar according to the browser.
  * If the browser supports the progress element we use that.

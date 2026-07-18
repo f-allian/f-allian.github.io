@@ -4,7 +4,7 @@ layout: page
 {{ content }}
 
 <div class="bookshelf">
-  {% assign collection = site.books %}
+  {% assign collection = site.books | sort: "date" %}
   {% if collection and collection.size > 0 %}
     {% assign current_year = "" %}
     {% for item in collection reversed %}
