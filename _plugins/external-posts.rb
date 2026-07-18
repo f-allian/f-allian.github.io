@@ -20,12 +20,12 @@ module ExternalPosts
           raise "Invalid RSS URL scheme for external source '#{name}': #{url}"
         end
 
-        p "Fetching external posts from #{name}:"
-        xml = HTTParty.get(uri.to_s).body
+        Jekyll.logger.info "ExternalPosts:", "Fetching from #{name}"
+        xml = HTTParty.get(uri.to_s, timeout: 10).body
         feed = Feedjira.parse(xml)
 
         feed.entries.each do |e|
-          p "...fetching #{e.url}"
+          Jekyll.logger.info "ExternalPosts:", "Fetching #{e.url}"
 
           slug = e.title
                   .downcase

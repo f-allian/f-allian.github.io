@@ -56,7 +56,7 @@ let setHighlight = (theme) => {
 
 let setGiscusTheme = (theme) => {
   const iframe = document.querySelector("iframe.giscus-frame");
-  if (!iframe) return;
+  if (!iframe || !iframe.contentWindow) return;
   iframe.contentWindow.postMessage(
     { giscus: { setConfig: { theme: theme } } },
     "https://giscus.app"

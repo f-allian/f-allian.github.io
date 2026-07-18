@@ -7,13 +7,9 @@ layout: parse
   <!-- Head -->
   <head>
     {%- if page.redirect -%}
-      <meta rel="canonical" http-equiv="refresh" content="3; url={{ site.baseurl }}/" />
+      <meta http-equiv="refresh" content="3; url={{ site.baseurl }}/" />
     {%- endif -%}
     {% include head.html %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ page.description | default: site.description }}">
-    <link rel="canonical" href="{{ site.url }}">
   </head>
 
   <!-- Body -->
@@ -26,9 +22,9 @@ layout: parse
     {%- include header.html %}
 
     <!-- Content -->
-    <div class="container mt-5">
+    <main class="container mt-5">
       {{ content }}
-    </div>
+    </main>
 
     <!-- Footer -->
     {%- include footer.html %}
