@@ -1,4 +1,4 @@
-{%- if site.enable_google_analytics -%}
+{%- if site.enable_google_analytics and jekyll.environment == "production" -%}
 <!-- Google Analytics - Delayed load -->
 <script>
   window.addEventListener('load', function() {
