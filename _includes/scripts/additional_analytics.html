@@ -501,12 +501,14 @@ window.addEventListener('load', function() {
     if (!ninjaKeys) return;
 
     ninjaKeys.addEventListener('open', function() {
+        if (typeof gtag === 'undefined') return;
         gtag('event', 'site_search_open', {
             'page_path': window.location.pathname
         });
     });
 
     ninjaKeys.addEventListener('selected', function(e) {
+        if (typeof gtag === 'undefined') return;
         var term = e.detail && e.detail.search ? e.detail.search : '';
         var title = e.detail && e.detail.action && e.detail.action.title ? e.detail.action.title : '';
         gtag('event', 'search', {

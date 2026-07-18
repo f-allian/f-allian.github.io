@@ -83,7 +83,7 @@ const getTextNodesInElementContainingText = (element, text) => {
   const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
   let node;
   while ((node = walker.nextNode())) {
-    if (node.textContent && node.textContent.toLowerCase().includes(text)) {
+    if (node.textContent && node.textContent.toLowerCase().includes(text.toLowerCase())) {
       nodes.push(node);
     }
   }
@@ -97,7 +97,7 @@ const getRangesForSearchTermInNode = (node, search) => {
 
   let start = 0;
   let index;
-  while ((index = text.indexOf(search, start)) >= 0) {
+  while ((index = text.indexOf(search.toLowerCase(), start)) >= 0) {
     const range = new Range();
     range.setStart(node, index);
     range.setEnd(node, index + search.length);

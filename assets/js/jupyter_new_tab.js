@@ -2,7 +2,14 @@ $(document).ready(function () {
   // Let external links in jupyter notebooks open in new tab
   let jupyterNotebooks = $(".jupyter-notebook-iframe-container");
   jupyterNotebooks.each(function () {
-    let iframeBody = $(this).find("iframe").get(0).contentWindow.document.body;
+    const iframe = $(this).find("iframe").get(0);
+    if (!iframe) return;
+    let iframeBody;
+    try {
+      iframeBody = iframe.contentWindow.document.body;
+    } catch (e) {
+      return; // cross-origin iframe
+    }
     // Get all <a> elements in the bodyElement
     let links = $(iframeBody).find("a");
 

@@ -944,7 +944,6 @@ glyphs[">"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
   }
   arrow.setAttribute("transform", `translate(${reach} 9)`);
   result.appendChild(arrow);
-  return result;
   const center = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
   center.setAttribute("points", "-3,0 6,0 6,6 -3,6");
   center.setAttribute("transform", "translate(15 24)");
@@ -974,7 +973,6 @@ glyphs["<"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
   }
   arrow.setAttribute("transform", `translate(${reach} 9) translate(0 36) rotate(180)`);
   result.appendChild(arrow);
-  return result;
   //const center = document.createElementNS(
   //  "http://www.w3.org/2000/svg", "polygon");
   //center.setAttribute("points", "0,0 9,0 9,6 0,6");
@@ -1252,7 +1250,7 @@ function create(source, zoom, debug) {
   for (let y = 0; y < diagram.length; y++) {
     for (let x = 0; x < diagram[y].length; x++) {
       if (diagram[y].length > width) {
-        width = diagram[x].length;
+        width = diagram[y].length;
       }
     }
   }

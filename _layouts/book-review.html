@@ -144,8 +144,8 @@ layout: default
       </figure>
       <br class="mobile-break" clear="right">
       <h4>
-        {% if page.start %} Start Date: {{ page.start | date: '%-d %B %Y' }}. {% endif %}
-        {% if page.end %} End Date: {{ page.end | date: '%-d %B %Y' }}. {% endif %}
+        {% if page.started %} Start Date: {{ page.started | date: '%-d %B %Y' }}. {% endif %}
+        {% if page.finished %} End Date: {{ page.finished | date: '%-d %B %Y' }}. {% endif %}
       </h4>
       {{ content }}
     {% endif %}
