@@ -7,7 +7,7 @@ first_name: Farhad
 middle_name:
 last_name: Allian
 email: allianfarhad@gmail.com
-description: Farhad Allian's personal website. > # the ">" symbol means to ignore newlines until "footer_text:"
+description: Farhad Allian's personal website.
 
 footer_text: >
 #  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
@@ -62,9 +62,9 @@ max_width: 790px
 # Open Graph & Schema.org
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
 serve_schema_org: false # Include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+og_image: https://www.farhadallian.co.uk/assets/img/favicon_io/android-chrome-512x512.png
 
 # -----------------------------------------------------------------------------
 # Social integration
@@ -199,7 +199,6 @@ plugins:
   - jekyll-archives-v2
   - jekyll-email-protect
   - jekyll-feed
-  - jekyll-get-json
   - jekyll-imagemagick
   - jekyll-jupyter-notebook
   - jekyll-link-attributes

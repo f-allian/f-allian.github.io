@@ -23,10 +23,11 @@ layout: default
                 {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
               {% endif %}
 
+              {%- capture profile_image_alt %}Profile photo of {{ site.first_name }} {{ site.last_name }}{% endcapture -%}
               {% include figure.html
               path=profile_image_path
               class=profile_image_class
-              alt=page.profile.image
+              alt=profile_image_alt
               width="480"
               height="468" -%}
             {% endif -%}

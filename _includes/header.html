@@ -80,8 +80,8 @@
 
           {% if site.search_enabled %}
           <li class="nav-item">
-            <a class="nav-link" href="#" id="search-link" title="Search">
-              <i class="fas fa-search"></i>
+            <a class="nav-link" href="#" id="search-link" aria-label="Open search">
+              <i class="fas fa-search" aria-hidden="true"></i>
             </a>
           </li>
           {% endif %}
@@ -90,9 +90,9 @@
           <!-- Toggle theme mode -->
           <li class="nav-item">
             <div class="toggle-container">
-              <a id="light-toggle">
-                <i class="fas fa-moon"></i>
-                <i class="fas fa-sun"></i>
+              <a id="light-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+                <i class="fas fa-sun" aria-hidden="true"></i>
               </a>
             </div>
           </li>

@@ -4,4 +4,4 @@ permalink: /robots.txt
 User-agent: *
 Disallow:
 
-Sitemap: https://farhadallian.co.uk/sitemap.xml
+Sitemap: https://www.farhadallian.co.uk/sitemap.xml
