@@ -144,6 +144,10 @@ collections:
     output: true
     permalink: /projects/:path/
 
+  # books:
+  #   output: true
+  #   permalink: /books/:path/
+
 announcements:
   enabled: true
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
@@ -266,8 +270,8 @@ jekyll-archives:
 
 scholar:
 
-  last_name: [Einstein]
-  first_name: [Albert, A.]
+  last_name: [Allian]
+  first_name: [Farhad, F.]
 
   style: apa
   locale: en
@@ -400,27 +404,6 @@ d3:
   version: "7.8.5"
 
 # -----------------------------------------------------------------------------
-# Get external JSON data
-# -----------------------------------------------------------------------------
-
-jekyll_get_json:
-  - data: resume
-    json: assets/json/resume.json # it can also be an url
-jsonresume:
-  - basics
-  - work
-  - education
-  - publications
-  - projects
-  - volunteer
-  - awards
-  - certificates
-  - skills
-  - languages
-  - interests
-  - references
-
-# -----------------------------------------------------------------------------
 # Distill Template Settings
 # -----------------------------------------------------------------------------
 
@@ -430,4 +413,4 @@ journal:
 author: Farhad Allian
 
 github:
-  repository_ur: https://github.com/f-allian/f-allian.github.io/issues
+  repository_url: https://github.com/f-allian/f-allian.github.io/issues
