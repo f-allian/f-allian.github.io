@@ -1,5 +1,6 @@
+{%- if site.enable_google_analytics and jekyll.environment == "production" -%}
 <script>
-document.addEventListener('load', function() {
+window.addEventListener('load', function() {
     setTimeout(function() {
 
     // Only run if Google Analytics is loaded
@@ -411,7 +412,6 @@ document.addEventListener('load', function() {
         if (copiedText.length > 0) {
             gtag('event', 'content_copy', {
                 'copied_length': copiedText.length,
-                'copied_preview': copiedText.substring(0, 50),
                 'page_path': window.location.pathname
             });
         }
@@ -491,6 +491,35 @@ document.addEventListener('load', function() {
 });
 
 // ============================================
+// SITE SEARCH TRACKING
+// ============================================
+
+// ninja-keys dispatches 'selected' when the user picks a result, and
+// 'open'/'close' for panel visibility. Both fire without a load delay.
+(function() {
+    var ninjaKeys = document.getElementById('global-ninja-keys');
+    if (!ninjaKeys) return;
+
+    ninjaKeys.addEventListener('open', function() {
+        if (typeof gtag === 'undefined') return;
+        gtag('event', 'site_search_open', {
+            'page_path': window.location.pathname
+        });
+    });
+
+    ninjaKeys.addEventListener('selected', function(e) {
+        if (typeof gtag === 'undefined') return;
+        var term = e.detail && e.detail.search ? e.detail.search : '';
+        var title = e.detail && e.detail.action && e.detail.action.title ? e.detail.action.title : '';
+        gtag('event', 'search', {
+            'search_term': term,
+            'result_selected': title,
+            'page_path': window.location.pathname
+        });
+    });
+})();
+
+// ============================================
 // PERFORMANCE TRACKING
 // ============================================
 
@@ -515,3 +544,4 @@ window.addEventListener('load', function() {
     }
 });
 </script>
+{%- endif -%}

@@ -11,4 +11,12 @@ vendor
 .venv
 .idea
 
+# Draft blog posts and their assets — move to _posts/ and remove
+# these entries when ready to publish
+_drafts/
+assets/img/blogs/
+assets/img/svg/
+assets/posts/
 
+
+CLAUDE.md

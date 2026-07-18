@@ -9,10 +9,6 @@ nav_order: 4
 ---
 <!-- _pages/publications.md -->
 
-<head>
-<meta name="robots" content="noindex">
-</head>
-
 <div class="publications">
   
   {%- for y in page.years %}
