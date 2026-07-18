@@ -1,0 +1,1 @@
+function updateShortcutKey(){const t=(navigator.platform||"").toUpperCase().includes("MAC"),e=document.querySelector("#search-toggle .nav-link");e&&t&&(e.innerHTML='&#x2318; k <i class="ti ti-search"></i>')}"loading"===document.readyState?document.addEventListener("DOMContentLoaded",updateShortcutKey):updateShortcutKey();

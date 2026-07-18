@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".jupyter-notebook-iframe-container").each(function(){const t=$(this).find("iframe").get(0);if(!t)return;let n;try{n=t.contentWindow.document.body}catch(t){return}$(n).find("a").each(function(){$(this).attr("href")&&$(this).attr("target","_blank")})})});
