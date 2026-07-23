@@ -75,6 +75,7 @@ gitlab_username: # your GitLab user name
 mastodon_username:  # your mastodon instance+username in the format instance.tld/@username
 linkedin_username: farhad-allian # your LinkedIn user name
 strava_userid: 140414215
+orcid_id: 0000-0002-4569-0370
 
 
 contact_note: >
