@@ -17,13 +17,12 @@ layout: default
             {%- if page.profile.image %}
               {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
 
-              {% if page.profile.image_circular %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
-              {% else %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
-              {% endif %}
-
+              {%- assign profile_image_class = "img-fluid z-depth-1" -%}
               {%- capture profile_image_alt %}Profile photo of {{ site.first_name }} {{ site.last_name }}{% endcapture -%}
+
+              {% if page.profile.image_circular %}
+                <div class="profile-circle-wrapper">
+              {% endif %}
               {% include figure.html
               path=profile_image_path
               class=profile_image_class
@@ -31,6 +30,9 @@ layout: default
               width="480"
               height="854"
               zoomable=true -%}
+              {% if page.profile.image_circular %}
+                </div>
+              {% endif %}
             {% endif -%}
 
             {% include spotify-widget.html %}

@@ -138,6 +138,26 @@ blockquote {
   height: auto;
   display: block;
   margin: 0 auto;
+  border-radius: 5%;
+
+  &.medium-zoom-image--opened {
+    border-radius: 0;
+  }
+}
+
+.profile-circle-wrapper {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 10%;
+  }
 }
 
 // Desktop Profile Styles
@@ -1302,6 +1322,10 @@ html.transition *:after {
   width: 100%;
   max-width: 100%;
   hyphens: auto;
+
+  p {
+    margin-bottom: 1.8rem;
+  }
 }
 
 .clearfix::after {

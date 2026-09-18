@@ -10,6 +10,7 @@ vendor
 .env
 .venv
 .idea
+_config.local.yml
 
 # Draft blog posts and their assets — move to _posts/ and remove
 # these entries when ready to publish
