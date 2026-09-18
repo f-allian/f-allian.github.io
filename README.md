@@ -17,11 +17,22 @@ This repository contains the source code for my [personal website](https://www.f
 
 ## Local Development
 
+**Option 1 — Docker (preferred for production parity):**
 ```bash
 docker compose up --build
 ```
 
-Then visit `http://localhost:8080`. Live reload is available on port `35729`.
+**Option 2 — Native Ruby (recommended on Windows for faster iteration):**
+```bash
+bundle install
+bundle exec jekyll serve --port=8080 --config _config.yml,_config.local.yml
+```
+
+Then visit `http://localhost:8080`.
+
+> **Notes:**
+> - `--livereload` is not supported on Windows due to an incompatibility between the `eventmachine` native extension and Ruby 3.4. Refresh the browser manually after changes rebuild.
+> - `_config.local.yml` (gitignored) disables the imagemagick WebP plugin, which fails on Windows due to a path format issue. WebP variants for the profile picture were manually generated.
 
 ## Deployment
 
