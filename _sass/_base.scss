@@ -134,7 +134,7 @@ blockquote {
 
 .profile img {
   width: 100%;
-  max-width: 480px;
+  max-width: 230px;
   height: auto;
   display: block;
   margin: 0 auto;
@@ -143,7 +143,7 @@ blockquote {
 // Desktop Profile Styles
 @media screen and (min-width: 500px) {
   .profile {
-    margin: 3rem;
+    margin: 0 3rem 0 3rem;
     width: 25%;
     left: 0px;
 
@@ -348,6 +348,10 @@ footer.sticky-bottom {
       border-bottom: 1px solid var(--global-divider-color);
       padding-bottom: 20px;
       padding-top: 20px;
+
+      &:last-child {
+        border-bottom: none;
+      }
 
       .badge {
         background-color: var(--global-theme-color) !important;
@@ -1352,7 +1356,7 @@ html.transition *:after {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  max-width: min(300px, 100%);
+  max-width: min(345px, 100%);
   width: 100%;
   min-height: 80px;
 
@@ -1397,6 +1401,7 @@ html.transition *:after {
 
   @media (max-width: 500px) {
     margin: 0.1rem auto 1rem;
+    max-width: min(255px, 100%);
 
     .music-emoji {
       font-size: 0.8rem;
@@ -1530,6 +1535,7 @@ html.transition *:after {
 
 .news-heading {
   font-size: 1.25rem;
+  margin-top: 0;
   margin-bottom: 1rem;
 }
 /* Copy button */
