@@ -5,7 +5,7 @@ services:
       - "8080:8080"
       - "35729:35729"
     volumes:
-      - .:/srv/jekyll:cached
+      - .:/srv/jekyll
       - jekyll_site:/srv/jekyll/_site
     environment:
       - JEKYLL_ENV=development
