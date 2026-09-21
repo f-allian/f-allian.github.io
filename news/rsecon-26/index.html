@@ -42,10 +42,13 @@
 
   let pdfDoc = null;
   let currentPage = 1;
+  let lastWidth = 0;
 
   function renderPage(num) {
     pdfDoc.getPage(num).then(page => {
       const containerWidth = canvas.parentElement.clientWidth;
+      lastWidth = containerWidth;
+
       const unscaledViewport = page.getViewport({ scale: 1 });
       const cssScale = containerWidth / unscaledViewport.width;
 
@@ -79,7 +82,16 @@
     if (currentPage < pdfDoc.numPages) { currentPage++; renderPage(currentPage); }
   });
 
-  window.addEventListener("resize", () => renderPage(currentPage));
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const newWidth = canvas.parentElement.clientWidth;
+      if (Math.abs(newWidth - lastWidth) > 5) {
+        renderPage(currentPage);
+      }
+    }, 250);
+  });
 </script> <p><small>Allian, F. (2026) <em>Causal AI: Evaluating AI Workflows on HPC Environments Using Causal Testing</em>. Research Software Engineering Conference 2026 (RSECon26), RSECon26. Available at: <a href="https://doi.org/10.5281/zenodo.22262635" rel="external nofollow noopener" target="_blank">https://doi.org/10.5281/zenodo.22262635</a>.</small></p> </div> </article> </div> </main> <footer class="fixed-bottom"> <div class="container mt-0"> © Farhad Allian 2026. Last updated: 21 September 2026. <a href="/privacy/"> Privacy Policy</a>. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script> <script defer src="/assets/js/masonry.js" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js"></script> <script src="/assets/js/no_defer.js?d633890033921b33e0ceb13d22340a9c"></script> <script defer src="/assets/js/common.js?acdb9690d7641b2f8d40529018c71a01"></script> <script defer src="/assets/js/copy_code.js?b92fdc921e07c6d8a510d7b981bd1f55" type="text/javascript"></script> <script type="text/javascript">
   /*
    * This JavaScript code has been adapted from the article 
