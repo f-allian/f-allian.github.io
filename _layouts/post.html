@@ -23,7 +23,11 @@ layout: default
       {% if page.meta %}| {{ page.meta }}{% endif %}
       {% if page.tags %}|
         {% for tag in page.tags %}
-          <a href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl }}">
+          {% if url_beginning == '/blog/' %}
+            <a href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl }}">
+          {% else %}
+            <a href="{{ tag | slugify | prepend: '/news/tag/' | prepend: site.baseurl }}">
+          {% endif %}
             <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}</a>{% unless forloop.last %} {% endunless %}
         {% endfor %}
       {% endif %}

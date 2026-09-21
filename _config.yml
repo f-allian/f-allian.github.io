@@ -265,7 +265,7 @@ jekyll-archives:
       year: "/news/:year/"
       tags: "/news/tag/:name/"
 
-#display_tags: ['Code', 'Tutorial']
+# display_tags: ['Code', 'Tutorial']
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
