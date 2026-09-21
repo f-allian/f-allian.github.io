@@ -33,7 +33,7 @@ My contribution to this project was developing a tool, called `causal-ai`, that 
 With these problems in mind, I created the tool as a proof of concept and alternative approach to make testing AI systems more accessible, interpretable and transparent for researchers. 
 
 My poster also makes a broader argument about the future of research software. Although the purpose of the poster is to highlight the features of the tool, my claim in reference to the conference's two themes is that the necessity and advocacy of software testing, especially for AI systems, needs to be driven by RSEs.
-If we as a community care about research integrity, transparency, validity and fidelity, then it's beyond doubt that we are the ones best equipped to lower the barrier to entry for software testing more accessible for researchers - not just enabling research, but enabling verifiable research.
+If we as a community care about research integrity, transparency, validity and fidelity, then it's beyond doubt that we are the ones best equipped to lower the barrier to entry for software testing - not just enabling research, but enabling verifiable research.
 
 `causal-ai` is open-source under the MIT License, built on top of the [Causal Testing Framework](https://github.com/CITCOM-project/CausalTestingFramework), and available on [GitHub](https://github.com/RSE-Sheffield/causal-ai). The poster is archived on [Zenodo](https://zenodo.org/records/22262635) (DOI: 10.5281/zenodo.22262635), with a PDF copy below.
 
