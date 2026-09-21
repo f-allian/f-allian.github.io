@@ -38,22 +38,62 @@ If we as a community care about research integrity, transparency, validity and f
 `causal-ai` is open-source under the MIT License, built on top of the [Causal Testing Framework](https://github.com/CITCOM-project/CausalTestingFramework), and available on [GitHub](https://github.com/RSE-Sheffield/causal-ai). The poster is archived on [Zenodo](https://zenodo.org/records/22262635) (DOI: 10.5281/zenodo.22262635), with a PDF copy below.
 
 ---
-<div class="image-gallery" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; margin: 2rem 0;">
+<div class="image-gallery" style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin: 2rem 0;">
   <div style="width: 100%; max-width: 800px;">
-    <div id="pdf-container" style="position: relative; width: 100%; padding-top: 129.4%; border-radius: 5px; overflow: hidden; background: #f5f5f5;"></div>
+    <canvas id="pdf-canvas" style="width: 100%; border-radius: 5px; display: block;"></canvas>
+  </div>
+  <div id="pdf-controls" style="display: flex; align-items: center; gap: 1rem;">
+    <button id="pdf-prev" style="padding: 0.3rem 0.8rem;">◀</button>
+    <span id="pdf-page-info"></span>
+    <button id="pdf-next" style="padding: 0.3rem 0.8rem;">▶</button>
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.0/pdfobject.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
 <script>
-  PDFObject.embed(
-    "/assets/img/news/announcement_rsecon/Allian_Causal_Testing.pdf",
-    "#pdf-container",
-    {
-      fallbackLink: '<p style="text-align:center; padding:2rem;"><a href="[url]" target="_blank" rel="noopener">View PDF</a></p>',
-      pdfOpenParams: { view: "FitH" }
+  pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js";
+
+  const url = "{{ '/assets/img/news/announcement_rsecon/Allian_Causal_Testing.pdf' | relative_url }}";
+  const canvas = document.getElementById("pdf-canvas");
+  const ctx = canvas.getContext("2d");
+  const pageInfo = document.getElementById("pdf-page-info");
+  const prevBtn = document.getElementById("pdf-prev");
+  const nextBtn = document.getElementById("pdf-next");
+
+  let pdfDoc = null;
+  let currentPage = 1;
+
+  function renderPage(num) {
+    pdfDoc.getPage(num).then(page => {
+      const containerWidth = canvas.parentElement.clientWidth;
+      const unscaledViewport = page.getViewport({ scale: 1 });
+      const scale = containerWidth / unscaledViewport.width;
+      const viewport = page.getViewport({ scale });
+
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+
+      page.render({ canvasContext: ctx, viewport });
+      pageInfo.textContent = num + " / " + pdfDoc.numPages;
+      prevBtn.disabled = num <= 1;
+      nextBtn.disabled = num >= pdfDoc.numPages;
+    });
+  }
+
+  pdfjsLib.getDocument(url).promise.then(pdf => {
+    pdfDoc = pdf;
+    if (pdf.numPages <= 1) {
+      document.getElementById("pdf-controls").style.display = "none";
     }
-  );
+    renderPage(currentPage);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentPage > 1) { currentPage--; renderPage(currentPage); }
+  });
+  nextBtn.addEventListener("click", () => {
+    if (currentPage < pdfDoc.numPages) { currentPage++; renderPage(currentPage); }
+  });
 </script>
 
 <small>Allian, F. (2026) <em>Causal AI: Evaluating AI Workflows on HPC Environments Using Causal Testing</em>. Research Software Engineering Conference 2026 (RSECon26), RSECon26. Available at: <a href="https://doi.org/10.5281/zenodo.22262635">https://doi.org/10.5281/zenodo.22262635</a>.</small>
