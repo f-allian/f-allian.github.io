@@ -38,7 +38,6 @@ If we as a community care about research integrity, transparency, validity and f
 `causal-ai` is open-source under the MIT License, built on top of the [Causal Testing Framework](https://github.com/CITCOM-project/CausalTestingFramework), and available on [GitHub](https://github.com/RSE-Sheffield/causal-ai). The poster is archived on [Zenodo](https://zenodo.org/records/22262635) (DOI: 10.5281/zenodo.22262635), with a PDF copy below.
 
 ---
-
 <div class="image-gallery" style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin: 2rem 0;">
   <div style="width: 100%; max-width: 800px;">
     <canvas id="pdf-canvas" style="width: 100%; border-radius: 5px; display: block;"></canvas>
@@ -67,10 +66,13 @@ If we as a community care about research integrity, transparency, validity and f
 
   let pdfDoc = null;
   let currentPage = 1;
+  let lastWidth = 0;
 
   function renderPage(num) {
     pdfDoc.getPage(num).then(page => {
       const containerWidth = canvas.parentElement.clientWidth;
+      lastWidth = containerWidth;
+
       const unscaledViewport = page.getViewport({ scale: 1 });
       const cssScale = containerWidth / unscaledViewport.width;
 
@@ -104,7 +106,16 @@ If we as a community care about research integrity, transparency, validity and f
     if (currentPage < pdfDoc.numPages) { currentPage++; renderPage(currentPage); }
   });
 
-  window.addEventListener("resize", () => renderPage(currentPage));
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const newWidth = canvas.parentElement.clientWidth;
+      if (Math.abs(newWidth - lastWidth) > 5) {
+        renderPage(currentPage);
+      }
+    }, 250);
+  });
 </script>
 
 <small>Allian, F. (2026) <em>Causal AI: Evaluating AI Workflows on HPC Environments Using Causal Testing</em>. Research Software Engineering Conference 2026 (RSECon26), RSECon26. Available at: <a href="https://doi.org/10.5281/zenodo.22262635">https://doi.org/10.5281/zenodo.22262635</a>.</small>
