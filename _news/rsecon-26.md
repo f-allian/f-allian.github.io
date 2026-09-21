@@ -38,6 +38,7 @@ If we as a community care about research integrity, transparency, validity and f
 `causal-ai` is open-source under the MIT License, built on top of the [Causal Testing Framework](https://github.com/CITCOM-project/CausalTestingFramework), and available on [GitHub](https://github.com/RSE-Sheffield/causal-ai). The poster is archived on [Zenodo](https://zenodo.org/records/22262635) (DOI: 10.5281/zenodo.22262635), with a PDF copy below.
 
 ---
+
 <div class="image-gallery" style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin: 2rem 0;">
   <div style="width: 100%; max-width: 800px;">
     <canvas id="pdf-canvas" style="width: 100%; border-radius: 5px; display: block;"></canvas>
@@ -46,6 +47,7 @@ If we as a community care about research integrity, transparency, validity and f
     <button id="pdf-prev" style="padding: 0.3rem 0.8rem;">◀</button>
     <span id="pdf-page-info"></span>
     <button id="pdf-next" style="padding: 0.3rem 0.8rem;">▶</button>
+    <a id="pdf-download" download style="padding: 0.3rem 0.8rem; text-decoration: none;">⬇ Download</a>
   </div>
 </div>
 
@@ -59,6 +61,9 @@ If we as a community care about research integrity, transparency, validity and f
   const pageInfo = document.getElementById("pdf-page-info");
   const prevBtn = document.getElementById("pdf-prev");
   const nextBtn = document.getElementById("pdf-next");
+  const downloadLink = document.getElementById("pdf-download");
+
+  downloadLink.href = url;
 
   let pdfDoc = null;
   let currentPage = 1;
@@ -67,13 +72,17 @@ If we as a community care about research integrity, transparency, validity and f
     pdfDoc.getPage(num).then(page => {
       const containerWidth = canvas.parentElement.clientWidth;
       const unscaledViewport = page.getViewport({ scale: 1 });
-      const scale = containerWidth / unscaledViewport.width;
-      const viewport = page.getViewport({ scale });
+      const cssScale = containerWidth / unscaledViewport.width;
 
-      canvas.width = viewport.width;
-      canvas.height = viewport.height;
+      const outputScale = Math.max(window.devicePixelRatio || 1, 2);
+      const renderViewport = page.getViewport({ scale: cssScale * outputScale });
 
-      page.render({ canvasContext: ctx, viewport });
+      canvas.width = Math.floor(renderViewport.width);
+      canvas.height = Math.floor(renderViewport.height);
+      canvas.style.width = containerWidth + "px";
+      canvas.style.height = Math.floor(renderViewport.height / outputScale) + "px";
+
+      page.render({ canvasContext: ctx, viewport: renderViewport });
       pageInfo.textContent = num + " / " + pdfDoc.numPages;
       prevBtn.disabled = num <= 1;
       nextBtn.disabled = num >= pdfDoc.numPages;
@@ -83,7 +92,7 @@ If we as a community care about research integrity, transparency, validity and f
   pdfjsLib.getDocument(url).promise.then(pdf => {
     pdfDoc = pdf;
     if (pdf.numPages <= 1) {
-      document.getElementById("pdf-controls").style.display = "none";
+      document.getElementById("pdf-controls").querySelectorAll("#pdf-prev, #pdf-next, #pdf-page-info").forEach(el => el.style.display = "none");
     }
     renderPage(currentPage);
   });
@@ -94,6 +103,8 @@ If we as a community care about research integrity, transparency, validity and f
   nextBtn.addEventListener("click", () => {
     if (currentPage < pdfDoc.numPages) { currentPage++; renderPage(currentPage); }
   });
+
+  window.addEventListener("resize", () => renderPage(currentPage));
 </script>
 
 <small>Allian, F. (2026) <em>Causal AI: Evaluating AI Workflows on HPC Environments Using Causal Testing</em>. Research Software Engineering Conference 2026 (RSECon26), RSECon26. Available at: <a href="https://doi.org/10.5281/zenodo.22262635">https://doi.org/10.5281/zenodo.22262635</a>.</small>
