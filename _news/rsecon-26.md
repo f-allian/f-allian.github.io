@@ -38,15 +38,23 @@ If we as a community care about research integrity, transparency, validity and f
 `causal-ai` is open-source under the MIT License, built on top of the [Causal Testing Framework](https://github.com/CITCOM-project/CausalTestingFramework), and available on [GitHub](https://github.com/RSE-Sheffield/causal-ai). The poster is archived on [Zenodo](https://zenodo.org/records/22262635) (DOI: 10.5281/zenodo.22262635), with a PDF copy below.
 
 ---
-<div class="image-gallery" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; margin: 2rem 0;">  
-  <div style="width: 100%; max-width: 800px;">  
-    <div style="position: relative; width: 100%; padding-top: 129.4%;">  
-      <iframe src="/assets/img/news/announcement_rsecon/Allian_Causal_Testing.pdf"  
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 5px; border: none;">  
-      </iframe>  
-    </div>  
-  </div>  
+<div class="image-gallery" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; margin: 2rem 0;">
+  <div style="width: 100%; max-width: 800px;">
+    <div id="pdf-container" style="position: relative; width: 100%; padding-top: 129.4%; border-radius: 5px; overflow: hidden; background: #f5f5f5;"></div>
+  </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.0/pdfobject.min.js"></script>
+<script>
+  PDFObject.embed(
+    "/assets/img/news/announcement_rsecon/Allian_Causal_Testing.pdf",
+    "#pdf-container",
+    {
+      fallbackLink: '<p style="text-align:center; padding:2rem;"><a href="[url]" target="_blank" rel="noopener">View PDF</a></p>',
+      pdfOpenParams: { view: "FitH" }
+    }
+  );
+</script>
 
 <small>Allian, F. (2026) <em>Causal AI: Evaluating AI Workflows on HPC Environments Using Causal Testing</em>. Research Software Engineering Conference 2026 (RSECon26), RSECon26. Available at: <a href="https://doi.org/10.5281/zenodo.22262635">https://doi.org/10.5281/zenodo.22262635</a>.</small>
 
