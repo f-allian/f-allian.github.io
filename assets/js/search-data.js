@@ -81,6 +81,14 @@ customElements.whenDefined("ninja-keys").then(() => {
     handler: () => {
       window.location.href = "/news/marathon/";
     },
+  },{
+    id: "news-reflections-on-rsecon-2026",
+    title: "Reflections on RSECon 2026 📝",
+    description: "  Testing software is hard; Testing AI is harder.This year’s annual research software engineering...",
+    section: "News",
+    handler: () => {
+      window.location.href = "/news/rsecon-26/";
+    },
   },];
 
   // Start empty so no suggestions appear on open
