@@ -20,11 +20,191 @@ pagination:
     top: 0;
     left: 0;
     z-index: -1;
+    opacity: 0.9;
   }
 
   .post {
     position: relative;
     z-index: 1;
+  }
+
+  .post-thumb-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Tight card around the thumbnail: no extra padding around the image */
+  .blog-publications:has(.post-thumb-row) {
+    padding: 0.5rem 0 0.5rem 0.5rem;
+    overflow: hidden;
+  }
+
+  /* Text column is vertically centred beside the thumbnail with even padding */
+  .blog-publications:has(.post-thumb-row) .post-thumb-text {
+    padding: 0.5rem 1.25rem 0.5rem 0.5rem;
+  }
+
+  .post-thumb-text {
+    font-size: 0.9em;
+  }
+
+  .post-thumb-text h3 {
+    margin-top: 0;
+    font-size: 1.35rem; /* 1.5rem * 0.9 */
+  }
+
+  .post-thumb-text .post-meta {
+    margin-bottom: 0;
+    font-size: 12.6px; /* 14px * 0.9 */
+    line-height: 1.8;
+  }
+
+  /* Keep the # icon and tag name together when the line wraps */
+  .post-thumb-text .post-meta a {
+    white-space: nowrap;
+  }
+
+  /* Meta line: read time, date and tags are separate items. Items wrap onto the next line whole, and the
+     "·" separator before each item is clipped when that item starts a line (the row is shifted left and
+     the wrapper clips the overflow), so a separator never dangles at the end or start of a line. */
+  .post-thumb-text .pm-wrap {
+    display: block;
+    overflow: hidden;
+  }
+
+  .post-thumb-text .pm-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -1.6em;
+  }
+
+  .post-thumb-text .pm {
+    position: relative;
+    padding-left: 1.6em;
+    white-space: nowrap;
+  }
+
+  /* A little more room between each icon and its text */
+  .post-thumb-text .pm i {
+    margin-right: 0.35em;
+  }
+
+  .post-thumb-text .pm::before {
+    content: "\00b7";
+    position: absolute;
+    left: 0.7em;
+  }
+
+  /* All tags stay together on one line (they only wrap as a last resort on very narrow screens).
+     Not named .post-tags: the theme already styles that class (font size and padding). */
+  .post-thumb-text .pm-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.9em;
+    /* Tags come first, on a line of their own, with the read time and date underneath */
+    order: -1;
+    flex-basis: 100%;
+    padding-bottom: 0.66rem;
+  }
+
+  /* Even vertical rhythm between title, description, tags and read time: the visible gap
+     (margin plus each line's own leading) works out the same, about 22px, between every pair. */
+  .post-list li .post-thumb-text > p:not(.post-meta) {
+    margin-bottom: 0.8rem;
+  }
+
+  /* Tags (the # symbol and the name) use the site's global (theme) colour */
+  .post-thumb-text .pm-tags a,
+  .post-thumb-text .pm-tags a i {
+    color: var(--global-theme-color);
+  }
+
+  .post-thumb-text .pm-tags a:hover,
+  .post-thumb-text .pm-tags a:hover i {
+    color: var(--global-hover-color);
+  }
+
+  /* DOI reads like the rest of the meta line; the link only picks up the theme colour on hover */
+  .post-thumb-text .pm-doi a {
+    color: inherit;
+  }
+
+  .post-thumb-text .pm-doi a:hover {
+    color: var(--global-theme-color);
+  }
+
+  /* Narrow side-by-side cards: the theme sets the meta line to 0.875rem with a more specific selector,
+     so match it here; 12.6px keeps the three tags on one line next to the thumbnail. */
+  @media (min-width: 577px) and (max-width: 640px) {
+    .post-list li .post-thumb-text .post-meta {
+      font-size: 12.6px;
+    }
+  }
+
+  .post-thumb-img {
+    flex: 0 0 180px;
+    max-width: 180px;
+    line-height: 0;
+  }
+
+  .post-thumb-img img {
+    display: block;
+    margin: 0;
+  }
+
+  .post-thumb-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Phones: stack the thumbnail above the text, capped in size so the card stays compact */
+  @media (max-width: 576px) {
+    .post-thumb-row {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .blog-publications:has(.post-thumb-row) {
+      padding: 0.5rem;
+    }
+
+    .post-thumb-img {
+      flex: none;
+      width: 200px;
+      max-width: 70%;
+    }
+
+    .blog-publications:has(.post-thumb-row) .post-thumb-text {
+      width: 100%;
+      padding: 0.25rem 0.5rem 0.5rem;
+    }
+
+    .post-thumb-text h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      width: 100%;
+    }
+
+    /* Scale the meta line with the screen so the three tags always fit on one line
+       (selector matches the theme's .post-list li .post-meta so it wins) */
+    .post-list li .post-thumb-text .post-meta {
+      font-size: clamp(10px, 3.1vw, 12.6px);
+    }
+
+    /* Phone spacing: the same even gap (about 13.5px) between every pair of lines */
+    .post-list li .post-thumb-text > p:not(.post-meta) {
+      margin-bottom: 0.32rem;
+    }
+
+    .post-thumb-text .pm-tags {
+      padding-bottom: 0.25rem;
+    }
+
+    .post-thumb-text p {
+      margin-bottom: 0.5rem;
+    }
   }
 </style>
 
@@ -179,10 +359,6 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
   {% endif %}
 
-    <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top:20px;">
-    <h5>Coming soon...</h5>
-  </div>
-
   <ul class="post-list">
     {% for post in paginator.posts %}
     {% if post.external_source == blank %}
@@ -200,6 +376,30 @@ document.addEventListener('DOMContentLoaded', function() {
     {% endif %}
 
     <li class="blog-publications">
+      {% if post.thumbnail %}
+      <div class="post-thumb-row">
+        <div class="post-thumb-img">
+          <img src="{{ post.thumbnail | relative_url }}"
+               alt="{{ post.title }}"
+               class="dark-mode-only"
+               style="width:100%;height:auto;border-radius:4px;"
+               loading="lazy" />
+          {% if post.thumbnail_dark %}
+          <img src="{{ post.thumbnail_dark | relative_url }}"
+               alt="{{ post.title }}"
+               class="light-mode-only"
+               style="width:100%;height:auto;border-radius:4px;"
+               loading="lazy" />
+          {% else %}
+          <img src="{{ post.thumbnail | relative_url }}"
+               alt="{{ post.title }}"
+               class="light-mode-only"
+               style="width:100%;height:auto;border-radius:4px;"
+               loading="lazy" />
+          {% endif %}
+        </div>
+        <div class="post-thumb-text">
+      {% endif %}
       <h3>
         {% if post.redirect == blank %}
           <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
@@ -212,21 +412,26 @@ document.addEventListener('DOMContentLoaded', function() {
         {% endif %}
       </h3>
       <p>{{ post.description }}</p>
-      <p class="post-meta">
-        {{ read_time }} min read &nbsp; &middot; &nbsp;
-        {{ post.date | date: '%B %-d, %Y' }}
+      <p class="post-meta"><span class="pm-wrap"><span class="pm-row">
+        <span class="pm"><i class="fa-solid fa-clock fa-sm"></i> {{ read_time }} min read</span>
+        <span class="pm"><i class="fa-solid fa-calendar-days fa-sm"></i> {{ post.date | date: '%B %-d, %Y' }}</span>
         {% if post.external_source %}
-          &nbsp; &middot; &nbsp; {{ post.external_source }}
+          <span class="pm">{{ post.external_source }}</span>
         {% endif %}
-      </p>
-      <p class="post-tags">
-        {% if post.tags %}
-          {% for tag in post.tags %}
-          <a href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}">
-            <i class="fas fa-hashtag fa-sm"></i> {{ tag }}</a> &nbsp;
-          {% endfor %}
+        {% if post.doi %}
+          <span class="pm pm-doi">
+            {%- if post.doi == "bla" -%}
+              <i class="fa-solid fa-fingerprint fa-sm"></i> DOI pending
+            {%- else -%}
+              <a href="https://doi.org/{{ post.doi }}" target="_blank" rel="noopener"><i class="fa-solid fa-fingerprint fa-sm"></i> {{ post.doi }}</a>
+            {%- endif -%}
+          </span>
         {% endif %}
-      </p>
+        {% if post.tags.size > 0 %}
+          <span class="pm pm-tags">{% for tag in post.tags %}<a href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}"><i class="fas fa-hashtag fa-sm"></i> {{ tag }}</a>{% endfor %}</span>
+        {% endif %}
+      </span></span></p>
+      {% if post.thumbnail %}</div></div>{% endif %}
     </li>
     {% endfor %}
   </ul>

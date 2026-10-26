@@ -224,6 +224,9 @@
         {
             "@type": "Person",
             "name": "{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}"
+            {%- if site.orcid_id -%}
+            ,"@id": "https://orcid.org/{{ site.orcid_id }}"
+            {%- endif -%}
         },
         "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}",
         "@type": "{%- if is_blog_post -%}BlogPosting{%- else -%}WebSite{%- endif -%}",

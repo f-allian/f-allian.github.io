@@ -5,9 +5,17 @@
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://unpkg.com">
 
-{% unless page.url == "/" %}
+{%- assign _is_indexable = false -%}
+{%- if page.url == "/" -%}
+  {%- assign _is_indexable = true -%}
+{%- elsif page.url contains '/blog/' and page.url != '/blog/index.html' -%}
+  {%- unless page.url contains '/tag/' or page.url contains '/category/' -%}
+    {%- assign _is_indexable = true -%}
+  {%- endunless -%}
+{%- endif -%}
+{%- unless _is_indexable -%}
 <meta name="robots" content="noindex">
-{% endunless %}
+{%- endunless -%}
 
 {% if page.url == "/" or page.title == "About" %}
 <link rel="preload" as="image" href="{{ '/assets/img/prof_pic-480-v1.webp' | relative_url }}" imagesrcset="{{ '/assets/img/prof_pic-480-v1.webp' | relative_url }} 480w, {{ '/assets/img/prof_pic-800-v1.webp' | relative_url }} 800w, {{ '/assets/img/prof_pic-1400-v1.webp' | relative_url }} 1400w" imagesizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1400px" type="image/webp" fetchpriority="high">

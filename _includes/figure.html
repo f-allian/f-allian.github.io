@@ -17,6 +17,11 @@
       />
     {% endif %}
 
+    {% if include.mobile_path %}
+      {% comment %}Optional narrow-screen version of the figure (e.g. a single-column layout){% endcomment %}
+      <source media="(max-width: 576px)" srcset="{{ include.mobile_path | relative_url }}" />
+    {% endif %}
+
     <!-- Fallback -->
     <img
         src="{% if include.path contains 'prof_pic' %}{{ img_path | relative_url }}-v1.jpg{% else %}{{ include.path | relative_url }}{% endif %}"

@@ -110,6 +110,19 @@ d-article {
       padding-left: 0 !important;
     }
   }
+  // Table 5.1 in the regression post: centre the equations horizontally and vertically
+  figure[id="Table5.1"] {
+    th,
+    td {
+      text-align: center !important;
+      vertical-align: middle !important;
+    }
+  }
+  // Equation references (\eqref) are links inside MathJax; drop Distill's link underline
+  mjx-container a {
+    border-bottom: none !important;
+    text-decoration: none !important;
+  }
 }
 d-appendix {
   border-top-color: var(--global-divider-color) !important;

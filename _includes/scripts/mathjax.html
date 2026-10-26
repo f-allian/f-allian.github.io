@@ -4,10 +4,24 @@
     tex: { tags: 'ams' },
     startup: {
       pageReady: () => {
-        return MathJax.startup.defaultPageReady();
+        return MathJax.startup.defaultPageReady().then(() => {
+          fitDisplayMath();
+          let resizeTimer;
+          window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(fitDisplayMath, 150);
+          });
+        });
       }
     }
   };
+
+  // Equations wider than the screen scroll horizontally; start them at the centre.
+  function fitDisplayMath() {
+    document.querySelectorAll('mjx-container[display="true"]').forEach((el) => {
+      el.scrollLeft = Math.max(0, (el.scrollWidth - el.clientWidth) / 2);
+    });
+  }
 
   window.addEventListener('load', function() {
     setTimeout(function() {

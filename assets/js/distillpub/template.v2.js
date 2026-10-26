@@ -2309,7 +2309,7 @@ d-citation-list .references .title {
 
         const heading = dom.createElement('h3');
         heading.id = 'references';
-        heading.textContent = 'References';
+        heading.textContent = 'Further Reading';
         element.appendChild(heading);
 
         list = dom.createElement('ol');
@@ -4247,8 +4247,7 @@ ${css}
 
   // Copyright 2018 The Distill Template Authors
 
-  const T$5 = Template('d-footnote', `
-<style>
+  const T$5 = Template('d-footnote', `<style>
 
 d-math[block] {
   display: block;
@@ -4267,7 +4266,8 @@ sup {
 }
 
 span {
-  color: hsla(206, 90%, 20%, 0.7);
+  color: var(--global-theme-color, hsla(206, 90%, 20%, 0.7));
+  font-weight: 600;
   cursor: default;
 }
 
@@ -4275,19 +4275,11 @@ span {
   padding: 10px;
 }
 
-</style>
-
-<d-hover-box>
+</style><d-hover-box>
   <div class="footnote-container">
     <slot id="slot"></slot>
   </div>
-</d-hover-box>
-
-<sup>
-  <span id="fn-" data-hover-ref=""></span>
-</sup>
-
-`);
+</d-hover-box><sup><span id="fn-" data-hover-ref=""></span></sup>`);
 
   class Footnote extends T$5(HTMLElement) {
 
