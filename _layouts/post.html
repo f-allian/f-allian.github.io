@@ -21,6 +21,7 @@ layout: default
       {% if page.author %}by {{ page.author }}{% endif %}
       {% if page.last_updated %}, last updated on {{ page.last_updated | date: '%B %d, %Y' }}{% endif %}
       {% if page.meta %}| {{ page.meta }}{% endif %}
+      {%- if site.orcid_id %}&nbsp;&middot;&nbsp;<a href="https://orcid.org/{{ site.orcid_id }}" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><i class="ai ai-orcid" style="color:#A6CE39;"></i> {{ site.orcid_id }}</a>{%- endif %}
       {% if page.tags %}|
         {% for tag in page.tags %}
           {% if url_beginning == '/blog/' %}

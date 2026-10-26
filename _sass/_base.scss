@@ -1520,6 +1520,19 @@ html.transition *:after {
 }
 
 
+// Display equations: stay centered when they fit, scroll horizontally instead
+// of being cropped when they are wider than the screen.
+mjx-container[jax="CHTML"][display="true"] {
+  max-width: 100%;
+  // MathJax sets an inline min-width on numbered (tagged) equations, which
+  // makes the container wider than the page and shifts the equation off-centre.
+  min-width: 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25em 0;
+  -webkit-overflow-scrolling: touch;
+}
+
 @media (min-width: 768px) {
   .repo {
     flex: 1 1 48%; // 2 per row
